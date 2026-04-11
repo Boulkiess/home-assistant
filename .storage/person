@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "minor_version": 1,
+  "key": "person",
+  "data": {
+    "items": [
+      {
+        "id": "fabien_tribel",
+        "name": "Fabien Tribel",
+        "user_id": "b2215f5110224e059f5a2d2ead0fe472",
+        "device_trackers": [
+          "device_tracker.macbook_pro_de_fabien",
+          "device_tracker.galaxy_s23_fabien"
+        ],
+        "picture": "/api/image/serve/73c563037e5eda0bfb17a418c3415d85/512x512"
+      },
+      {
+        "id": "mqtt",
+        "name": "mqtt",
+        "device_trackers": [],
+        "user_id": "993606b1a61d4b56947c26385e8af02a",
+        "picture": null
+      },
+      {
+        "id": "camille_gravier",
+        "name": "Camille Gravier",
+        "device_trackers": [],
+        "user_id": "e8b82fe8ccac4db3af9a5dac021f9872",
+        "picture": "/api/image/serve/738bb3adc33fb1a68c6f67dd2c7c4672/512x512"
+      },
+      {
+        "id": "control_center",
+        "name": "Control Center",
+        "device_trackers": [
+          "device_tracker.controlcenter_redmi9c"
+        ],
+        "user_id": "1d494fc25dc1468da14492630c322835",
+        "picture": null
+      }
+    ]
+  }
+}

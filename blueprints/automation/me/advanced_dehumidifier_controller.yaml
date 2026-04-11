@@ -1,0 +1,161 @@
+blueprint:
+  name: Advanced Dehumidifier Controller with Retry (Protected Switch)
+  description: >
+    Controls a fan or dehumidifier using a protected switch that enforces
+    minimum ON/OFF intervals. Automatically retries toggles every 30 seconds,
+    sending notifications if a command is blocked.
+
+  domain: automation
+
+  input:
+    humidity_sensor:
+      name: Humidity Sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: humidity
+
+    protected_device:
+      name: Protected Fan / Dehumidifier
+      description: Template/proxy switch enforcing minimum toggle intervals
+      selector:
+        entity:
+          domain:
+            - switch
+            - fan
+
+    humidity_on_threshold:
+      name: Humidity ON threshold
+      default: 60
+      selector:
+        number:
+          min: 30
+          max: 100
+          step: 1
+          unit_of_measurement: "%"
+
+    humidity_off_threshold:
+      name: Humidity OFF threshold
+      default: 55
+      selector:
+        number:
+          min: 30
+          max: 100
+          step: 1
+          unit_of_measurement: "%"
+
+    enable_template:
+      name: Enable template (only affects turning ON)
+      default: "{{ true }}"
+      selector:
+        template: {}
+
+    sensor_unavailable_shutdown:
+      name: Turn off if sensor unavailable
+      default: true
+      selector:
+        boolean: {}
+
+    notify_device:
+      name: Notification device (optional)
+      default: []
+      selector:
+        device:
+          multiple: false
+          filter:
+            integration: mobile_app
+
+mode: restart
+
+variables:
+  humidity_sensor: !input humidity_sensor
+  device: !input protected_device
+  humidity_on: !input humidity_on_threshold
+  humidity_off: !input humidity_off_threshold
+  enable_template: !input enable_template
+  sensor_unavailable_shutdown: !input sensor_unavailable_shutdown
+  notify_device: !input notify_device
+
+trigger:
+  - platform: state
+    entity_id: !input humidity_sensor
+
+  - platform: state
+    entity_id: !input protected_device
+
+  - platform: time_pattern
+    seconds: "/30"
+
+action:
+  - variables:
+      humidity: "{{ states(humidity_sensor) | float(0) }}"
+      sensor_state: "{{ states(humidity_sensor) }}"
+
+  - choose:
+
+      # Sensor unavailable safety (always allowed)
+      - conditions:
+          - condition: template
+            value_template: "{{ sensor_state in ['unknown','unavailable'] and sensor_unavailable_shutdown }}"
+        sequence:
+          - service: homeassistant.turn_off
+            target:
+              entity_id: !input protected_device
+
+      # Turn ON (gated by enable_template)
+      - conditions:
+          - condition: template
+            value_template: "{{ enable_template }}"
+          - condition: template
+            value_template: "{{ humidity > humidity_on }}"
+          - condition: state
+            entity_id: !input protected_device
+            state: "off"
+        sequence:
+          - service: homeassistant.turn_on
+            target:
+              entity_id: !input protected_device
+
+          - if:
+              - condition: template
+                value_template: "{{ is_state(device, 'off') and notify_device != [] }}"
+            then:
+              - device_id: !input notify_device
+                domain: mobile_app
+                type: notify
+                message: >
+                  Dehumidifier ON command blocked by protected switch cooldown. Will retry automatically.
+
+      # Turn OFF (ALWAYS allowed)
+      - conditions:
+          - condition: template
+            value_template: "{{ humidity < humidity_off }}"
+          - condition: state
+            entity_id: !input protected_device
+            state: "on"
+        sequence:
+          - service: homeassistant.turn_off
+            target:
+              entity_id: !input protected_device
+
+          - if:
+              - condition: template
+                value_template: "{{ is_state(device, 'on') and notify_device != [] }}"
+            then:
+              - device_id: !input notify_device
+                domain: mobile_app
+                type: notify
+                message: >
+                  Dehumidifier OFF command blocked by protected switch cooldown. Will retry automatically.
+
+    default:
+      - service: logbook.log
+        data:
+          name: Dehumidifier automation
+          message: |
+            No condition matched.
+            humidity={{ humidity }}
+            device_state={{ states(device) }}
+            humidity_on={{ humidity_on }}
+            humidity_off={{ humidity_off }}
+            enable_template={{ enable_template }}

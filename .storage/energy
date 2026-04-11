@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "minor_version": 3,
+  "key": "energy",
+  "data": {
+    "energy_sources": [
+      {
+        "type": "grid",
+        "cost_adjustment_day": 0.0,
+        "stat_energy_from": "linky:21534008552296",
+        "stat_cost": null,
+        "entity_energy_price": null,
+        "number_energy_price": null,
+        "stat_energy_to": null,
+        "stat_compensation": null,
+        "entity_energy_price_export": null,
+        "number_energy_price_export": null
+      }
+    ],
+    "device_consumption": [],
+    "device_consumption_water": []
+  }
+}

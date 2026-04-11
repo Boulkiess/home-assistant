@@ -1,0 +1,68 @@
+desk_lights_toggle:
+  alias: 'Desk Lights: Toggle'
+  sequence:
+  - action: light.toggle
+    target:
+      area_id:
+      - home
+    data: {}
+  description: ''
+  icon: mdi:lightbulb
+all_lights_toggle:
+  alias: 'All Lights: Toggle'
+  sequence:
+  - action: light.toggle
+    data:
+      transition: 1
+    target:
+      entity_id: light.all
+  description: ''
+  icon: mdi:lightbulb
+get_tomorrow_s_weather_forecast:
+  alias: Get Tomorrow's Weather Forecast
+  sequence:
+  - action: weather.get_forecasts
+    metadata: {}
+    target:
+      entity_id:
+      - weather.forecast_home
+    data:
+      type: daily
+    response_variable: weather_forecast
+  - action: script.notify_data
+    data:
+      value: '{{ weather_forecast[''weather.forecast_home''] }}'
+  - event: RELOAD_FORECAST
+    event_data:
+      value: test
+  description: ''
+  icon: mdi:weather-cloudy-clock
+notify_data:
+  alias: Notify Data
+  fields:
+    value:
+      name: value
+      example: a string
+      default: ''
+      required: false
+  sequence:
+  - action: notify.persistent_notification
+    metadata: {}
+    data:
+      title: Data received
+      message: '{{ value }}'
+  description: ''
+test_send_event:
+  alias: Reload Next Day Forecast
+  sequence:
+  - event: RELOAD_FORECAST
+    event_data: {}
+  description: ''
+light_on:
+  alias: Light On
+  sequence:
+  - data: {}
+    target:
+      entity_id: '{{ entity }}'
+    action: light.turn_on
+  description: ''

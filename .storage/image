@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "image",
+  "data": {
+    "items": [
+      {
+        "id": "738bb3adc33fb1a68c6f67dd2c7c4672",
+        "filesize": 453577,
+        "content_type": "image/jpeg",
+        "name": "IMG_20241029_232843_Bokeh.jpg",
+        "uploaded_at": "2024-10-29T22:29:39.526240+00:00"
+      },
+      {
+        "id": "73c563037e5eda0bfb17a418c3415d85",
+        "filesize": 548427,
+        "content_type": "image/jpeg",
+        "name": "IMG_20240629_123827.jpg",
+        "uploaded_at": "2024-10-29T22:31:46.666002+00:00"
+      }
+    ]
+  }
+}

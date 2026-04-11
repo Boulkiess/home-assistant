@@ -1,0 +1,31 @@
+trigger:
+  - trigger: time_pattern
+    hours: /1
+  - trigger: event
+    event_type:
+      - RELOAD_FORECAST
+
+action:
+  - action: weather.get_forecasts
+    data:
+      type: daily
+    target:
+      entity_id: weather.forecast_home
+    response_variable: daily
+
+sensor:
+  - name: Next Day Max Temperature
+    unique_id: next_day_max_temperature
+    state: "{{ daily['weather.forecast_home'].forecast[1].temperature }}"
+    unit_of_measurement: °C
+  - name: Next Day Min Temperature
+    unique_id: next_day_min_temperature
+    state: "{{ daily['weather.forecast_home'].forecast[1].templow }}"
+    unit_of_measurement: °C
+  - name: Next Day Forecast
+    unique_id: next_day_forecast
+    state: "on"
+    attributes:
+      min: "{{ daily['weather.forecast_home'].forecast[1].templow }}"
+      max: "{{ daily['weather.forecast_home'].forecast[1].temperature }}"
+      timestamp: "{{ now() }}"

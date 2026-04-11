@@ -1,0 +1,193 @@
+blueprint:
+  name: Advanced Alarm Light
+  description: "📦 [Version 1.1.0] Alarm wake-up light with sliders, dropdown offset, and per-day checkboxes."
+  domain: automation
+  homeassistant:
+    min_version: 2025.12.0
+
+  input:
+    alarm_sensor:
+      name: ⏰ Next Alarm Sensor
+      selector:
+        entity:
+          filter:
+            - domain: sensor
+              device_class: timestamp
+
+    person_entity:
+      name: 👤 Person
+      selector:
+        entity:
+          domain: person
+
+    lights_target:
+      name: 💡 Target Lights
+      selector:
+        target:
+          entity:
+            - domain: light
+
+    offset_from_alarm:
+      name: ⏱️ Offset From Alarm
+      description: Minutes before or after the alarm when lights should start
+      default: "-00:10:00"
+      selector:
+        select:
+          options:
+            - label: 30 minutes before
+              value: "-00:30:00"
+            - label: 25 minutes before
+              value: "-00:25:00"
+            - label: 20 minutes before
+              value: "-00:20:00"
+            - label: 15 minutes before
+              value: "-00:15:00"
+            - label: 10 minutes before
+              value: "-00:10:00"
+            - label: 5 minutes before
+              value: "-00:05:00"
+            - label: At alarm time
+              value: "00:00:00"
+            - label: 5 minutes after
+              value: "00:05:00"
+            - label: 10 minutes after
+              value: "00:10:00"
+            - label: 15 minutes after
+              value: "00:15:00"
+            - label: 20 minutes after
+              value: "00:20:00"
+            - label: 25 minutes after
+              value: "00:25:00"
+            - label: 30 minutes after
+              value: "00:30:00"
+          mode: dropdown
+          multiple: false
+          sort: false
+          custom_value: false
+
+    max_brightness:
+      name: ✨ Maximum Brightness
+      default: 33
+      selector:
+        number:
+          min: 0
+          max: 100
+          step: 1
+          unit_of_measurement: "%"
+          mode: slider
+
+    ramp_minutes:
+      name: 🌅 Ramp Duration
+      default: 10
+      selector:
+        number:
+          min: 0
+          max: 60
+          step: 1
+          unit_of_measurement: min
+          mode: slider
+
+    min_run_time:
+      name: 🕓 Earliest Allowed Time (optional)
+      default: ""
+      selector:
+        time: {}
+
+    max_run_time:
+      name: 🕘 Latest Allowed Time (optional)
+      default: ""
+      selector:
+        time: {}
+
+    monday:
+      name: Monday
+      default: true
+      selector: { boolean: {} }
+    tuesday:
+      name: Tuesday
+      default: true
+      selector: { boolean: {} }
+    wednesday:
+      name: Wednesday
+      default: true
+      selector: { boolean: {} }
+    thursday:
+      name: Thursday
+      default: true
+      selector: { boolean: {} }
+    friday:
+      name: Friday
+      default: true
+      selector: { boolean: {} }
+    saturday:
+      name: Saturday
+      default: true
+      selector: { boolean: {} }
+    sunday:
+      name: Sunday
+      default: true
+      selector: { boolean: {} }
+
+mode: restart
+max_exceeded: silent
+
+variables:
+  alarm_entity: !input alarm_sensor
+  offset_string: !input offset_from_alarm
+  ramp_min: !input ramp_minutes
+  min_time: !input min_run_time
+  max_time: !input max_run_time
+  day_mon: !input monday
+  day_tue: !input tuesday
+  day_wed: !input wednesday
+  day_thu: !input thursday
+  day_fri: !input friday
+  day_sat: !input saturday
+  day_sun: !input sunday
+
+trigger:
+  - platform: time
+    at:
+      entity_id: !input alarm_sensor
+      offset: !input offset_from_alarm
+
+condition:
+  # ✅ Person is home
+  - condition: state
+    entity_id: !input person_entity
+    state: home
+
+  # ✅ Optional time window
+  - condition: template
+    value_template: >
+      {% set now_t = now().strftime('%H:%M:%S') %}
+      {% if min_time and max_time %}
+        {{ min_time <= now_t <= max_time }}
+      {% elif min_time %}
+        {{ now_t >= min_time }}
+      {% elif max_time %}
+        {{ now_t <= max_time }}
+      {% else %}
+        true
+      {% endif %}
+
+  # ✅ Weekday checkboxes
+  - condition: template
+    value_template: >
+      {% set wd = now().weekday() %}
+      {% if wd == 0 %} {{ day_mon }}
+      {% elif wd == 1 %} {{ day_tue }}
+      {% elif wd == 2 %} {{ day_wed }}
+      {% elif wd == 3 %} {{ day_thu }}
+      {% elif wd == 4 %} {{ day_fri }}
+      {% elif wd == 5 %} {{ day_sat }}
+      {% elif wd == 6 %} {{ day_sun }}
+      {% else %} true
+      {% endif %}
+
+action:
+  - service: light.turn_on
+    target: !input lights_target
+    data:
+      brightness_pct: !input max_brightness
+      transition: "{{ (ramp_min | int) * 60 }}"

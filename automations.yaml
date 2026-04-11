@@ -1,0 +1,702 @@
+- id: '1726696576386'
+  alias: 'All Lights: Off'
+  description: ''
+  triggers:
+  - device_id: c06c44ab9913cccff41b5b481c127f8f
+    domain: hue
+    type: long_press
+    subtype: 1
+    unique_id: 942e1f34-f64d-49b3-894e-9ff96211f001
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_off
+    data:
+      transition: 3
+    target:
+      entity_id: light.all
+  mode: single
+- id: '1726697090475'
+  alias: 'Bedroom Lights: Toggle '
+  description: ''
+  triggers:
+  - device_id: c06c44ab9913cccff41b5b481c127f8f
+    domain: hue
+    type: initial_press
+    subtype: 1
+    unique_id: 942e1f34-f64d-49b3-894e-9ff96211f001
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.toggle
+    metadata: {}
+    data:
+      transition: 1
+    target:
+      area_id: chambre
+  mode: single
+- id: '1726784546763'
+  alias: 'Bedroom Lights: Brighter'
+  description: ''
+  triggers:
+  - device_id: c06c44ab9913cccff41b5b481c127f8f
+    domain: hue
+    type: initial_press
+    subtype: 2
+    unique_id: f37fc068-2eca-494f-88f4-bc08a8feecb4
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: 25
+      transition: 1
+    target:
+      area_id:
+      - chambre
+  mode: single
+- id: '1726784625001'
+  alias: 'Bedroom Lights: Dimmer'
+  description: ''
+  triggers:
+  - device_id: c06c44ab9913cccff41b5b481c127f8f
+    domain: hue
+    type: initial_press
+    subtype: 3
+    unique_id: 823ed00e-18ec-40aa-8eca-7f2064883809
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: -25
+      transition: 1
+    target:
+      area_id: chambre
+  mode: single
+- id: '1726784701931'
+  alias: Change Light Scene
+  description: ''
+  trigger:
+  - device_id: c06c44ab9913cccff41b5b481c127f8f
+    domain: hue
+    platform: device
+    type: initial_press
+    subtype: 4
+    unique_id: 808c1b46-b342-4655-8b8f-adfe2e60ace3
+  condition: []
+  action:
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      area_id: chambre
+  mode: single
+- id: '1729010381976'
+  alias: Toggle Desk
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - action: light.toggle
+    metadata: {}
+    data: {}
+    target:
+      area_id: home
+  mode: single
+- id: '1729508370643'
+  alias: 'Living Room Lights: On'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: fcd3935232d849b032ec9b2b8847f185
+    type: action
+    subtype: 'on'
+    metadata: {}
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 80
+    target:
+      area_id: salon
+  - action: switch.turn_on
+    metadata: {}
+    data: {}
+    target:
+      area_id: salon
+  mode: single
+- id: '1729508444518'
+  alias: 'Living Room Lights: Off'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: fcd3935232d849b032ec9b2b8847f185
+    type: action
+    subtype: brightness_move_down
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_off
+    target:
+      area_id:
+      - salon
+    data: {}
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      area_id: salon
+  mode: single
+- id: '1729509040592'
+  alias: 'Living Room Lights: Brighter'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: fcd3935232d849b032ec9b2b8847f185
+    type: action
+    subtype: 'on'
+    metadata: {}
+    trigger: device
+  conditions:
+  - condition: state
+    entity_id: light.living_room
+    state: 'on'
+  actions:
+  - action: light.turn_on
+    target:
+      area_id:
+      - salon
+    data:
+      brightness_step_pct: 25
+  mode: single
+- id: '1729509195050'
+  alias: 'Living Room Lights: Dimmer'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: fcd3935232d849b032ec9b2b8847f185
+    type: action
+    subtype: 'off'
+    trigger: device
+  conditions:
+  - condition: state
+    entity_id: light.living_room
+    state: 'on'
+  actions:
+  - action: light.turn_on
+    target:
+      area_id:
+      - salon
+    data:
+      brightness_step_pct: -25
+  mode: single
+- id: '1729518746458'
+  alias: 'All Lights: Workdays Morning Shutdown'
+  description: Shut down all lights on working day mornings.
+  triggers:
+  - trigger: time
+    at: '10:00:00'
+  conditions:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.all
+  mode: single
+- id: '1729540778108'
+  alias: 'Kitchen Lights: Off'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 8e0bc62150294ab4b019cb5f78d8efd7
+    type: action
+    subtype: 'off'
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_off
+    data: {}
+    target:
+      entity_id: light.kitchen
+  mode: single
+- id: '1729540848572'
+  alias: 'Kitchen Lights: On'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 8e0bc62150294ab4b019cb5f78d8efd7
+    type: action
+    subtype: 'on'
+    trigger: device
+  conditions:
+  - condition: state
+    entity_id: light.kitchen
+    state: 'off'
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 80
+      transition: 2
+    target:
+      entity_id: light.kitchen
+  mode: single
+- id: '1729548190513'
+  alias: 'Bedroom Lights: Workdays Morning Sun'
+  description: ''
+  triggers:
+  - trigger: time
+    at: 08:00:00
+  conditions:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      transition: 900
+      brightness_pct: 100
+    target:
+      area_id: chambre
+  mode: single
+- id: '1729935888965'
+  alias: Test Event Trigger
+  description: ''
+  triggers:
+  - trigger: event
+    event_type: TEST
+  conditions: []
+  actions:
+  - action: script.notify_data
+    metadata: {}
+    data:
+      value: '{{ trigger.event.data.key }}'
+  mode: single
+- id: '1734034374842'
+  alias: 'Desk Lights: Brighter'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: c19c6a1c714b10a5101b61f1096e2500
+    type: action
+    subtype: 'on'
+    trigger: device
+  - domain: mqtt
+    device_id: a7e1b5e56d327b76ae11f67489db6196
+    type: action
+    subtype: 'on'
+    trigger: device
+  conditions:
+  - condition: state
+    entity_id: light.desk
+    state: 'on'
+  actions:
+  - action: light.turn_on
+    target:
+      area_id:
+      - home
+    data:
+      brightness_step_pct: 25
+  mode: single
+- id: '1734034524925'
+  alias: 'Desk Lights: On'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: c19c6a1c714b10a5101b61f1096e2500
+    type: action
+    subtype: 'on'
+    trigger: device
+  - domain: mqtt
+    device_id: a7e1b5e56d327b76ae11f67489db6196
+    type: action
+    subtype: 'on'
+    trigger: device
+  conditions:
+  - condition: state
+    entity_id: light.desk
+    state: 'off'
+  actions:
+  - action: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 80
+    target:
+      area_id:
+      - home
+  mode: single
+- id: '1734034561541'
+  alias: 'Desk Lights: Off'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: c19c6a1c714b10a5101b61f1096e2500
+    type: action
+    subtype: brightness_move_down
+    trigger: device
+  - domain: mqtt
+    device_id: a7e1b5e56d327b76ae11f67489db6196
+    type: action
+    subtype: 'off'
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_off
+    target:
+      area_id:
+      - home
+    data: {}
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+  mode: single
+- id: '1734034628286'
+  alias: 'Desk Lights: Dimmer'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: c19c6a1c714b10a5101b61f1096e2500
+    type: action
+    subtype: 'off'
+    trigger: device
+  conditions:
+  - condition: state
+    entity_id: light.desk
+    state: 'on'
+  actions:
+  - action: light.turn_on
+    target:
+      area_id:
+      - home
+    data:
+      brightness_step_pct: -25
+  mode: single
+- id: '1737059706263'
+  alias: Test Light On Script
+  description: ''
+  triggers:
+  - type: occupied
+    device_id: c67d078a52cc8c6eb38f24d5967bdbe5
+    entity_id: a54ba55f95f2ed8fd72bc8b317f3e640
+    domain: binary_sensor
+    trigger: device
+  conditions:
+  - condition: template
+    value_template: '{{ states(''sensor.ikea_vallhorn_detector_1_illuminance'') |
+      float(0) < 10 }}'
+  actions:
+  - action: script.light_on
+    metadata: {}
+    data:
+      entity: light.desk
+  mode: single
+- id: '1737063423424'
+  alias: Desk Auto Light
+  description: ''
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.ikea_vallhorn_detector_1_occupancy
+      light_target:
+        area_id: home
+- id: '1737064501210'
+  alias: Desk Auto Lights 2
+  description: ''
+  triggers:
+  - entity_id:
+    - binary_sensor.ikea_vallhorn_detector_1_occupancy
+    from: 'off'
+    to: 'on'
+    trigger: state
+  - entity_id:
+    - binary_sensor.ikea_vallhorn_detector_1_occupancy
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    trigger: state
+  conditions:
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: '{{ automation_blocker == none }}'
+    - condition: template
+      value_template: '{{ automation_blocker_boolean and states[automation_blocker].state
+        == ''on'' }}'
+    - condition: template
+      value_template: '{{ not automation_blocker_boolean and states[automation_blocker].state
+        == ''off'' }}'
+  - condition: template
+    value_template: "{% if 'Always' == elevation %}\n  true\n{% else %} {% set sun_elevation
+      = state_attr('sun.sun', 'elevation') %} {% if sun_elevation is none %}\n    false\n{%
+      else %}\n  {% \n     if (sun_elevation > elevation_adjustment and 'Above horizon'
+      == elevation) or\n        (sun_elevation <= elevation_adjustment and 'Below
+      horizon' == elevation) %}\n    true\n  {% else %}\n    false\n  {% endif %}\n{%
+      endif %} {% endif %}\n"
+  actions:
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.to_state.state == ''on'' }}'
+      - condition: numeric_state
+        entity_id: sensor.ikea_vallhorn_detector_1_illuminance
+        below: 40
+      sequence:
+      - condition: time
+        after: 00:00:00
+        before: 00:00:00
+      - action: light.turn_on
+        data: {}
+        target:
+          device_id:
+          - 62b90b3217eb4061516405b704f815dd
+          - b1c603ec6c041c9b06cff4d1fa078164
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.to_state.state == ''off'' }}'
+      - condition: or
+        conditions:
+        - condition: template
+          value_template: '{{ motion_off_blocker == none }}'
+        - condition: template
+          value_template: '{{ motion_off_blocker_boolean and states[motion_off_blocker].state
+            == ''on'' }}'
+        - condition: template
+          value_template: '{{ not motion_off_blocker_boolean and states[motion_off_blocker].state
+            == ''off'' }}'
+      sequence:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: '{{ scene_ambient != ''scene.none'' }}'
+          - condition: time
+            after: 00:00:00
+            before: 00:00:00
+          sequence:
+          - action: scene.turn_on
+            target:
+              entity_id: scene.none
+            data: {}
+        default:
+        - action: light.turn_off
+          data: {}
+          target:
+            device_id:
+            - 62b90b3217eb4061516405b704f815dd
+            - b1c603ec6c041c9b06cff4d1fa078164
+  mode: restart
+  max_exceeded: silent
+  variables:
+    scene_ambient: scene.none
+    automation_blocker:
+    automation_blocker_boolean: false
+    motion_off_blocker:
+    motion_off_blocker_boolean: false
+    elevation: Always
+    elevation_adjustment: 0
+    motion_entity:
+    - binary_sensor.ikea_vallhorn_detector_1_occupancy
+    luminance_sensor: sensor.ikea_vallhorn_detector_1_illuminance
+    luminance_required: 70
+- id: '1754080017347'
+  alias: 'Living Room Lights: Only'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: fcd3935232d849b032ec9b2b8847f185
+    type: action
+    subtype: arrow_left_click
+    trigger: device
+  conditions: []
+  actions:
+  - action: light.turn_off
+    metadata: {}
+    data:
+      transition: 2
+    target:
+      area_id:
+      - cuisine
+      - home
+  mode: single
+- id: '1754331996273'
+  alias: 'Living Room Lights: Night Auto Trigger'
+  description: ''
+  use_blueprint:
+    path: homeassistant/advanced_custom_motion_sensor.yaml
+    input:
+      motion_entity:
+      - binary_sensor.ikea_vallhorn_detector_1_occupancy
+      light_target:
+        area_id: salon
+      luminance_sensor: sensor.ikea_vallhorn_detector_1_illuminance
+      luminance_required: 60
+      no_motion_wait: 600
+      elevation: Always
+      time_default_end: 01:00:00
+      time_default_start: '16:00:00'
+      motion_off_blocker_boolean: false
+      automation_blocker_boolean: false
+- id: '1763400730622'
+  alias: 'Living Room Lights: Toggle from Desk'
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: c19c6a1c714b10a5101b61f1096e2500
+    type: action
+    subtype: arrow_left_click
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      area_id: salon
+  - action: light.toggle
+    metadata: {}
+    data: {}
+    target:
+      area_id: salon
+  mode: single
+- id: '1770235803193'
+  alias: 'Living Room Lights: Auto On'
+  description: ''
+  use_blueprint:
+    path: homeassistant/motion_light.yaml
+    input:
+      motion_entity: binary_sensor.ikea_vallhorn_detector_1_occupancy
+      light_target:
+        area_id: salon
+      no_motion_wait: 3600
+- id: '1770236463402'
+  alias: 'Living Room Lights: Evening Activation'
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.ikea_vallhorn_detector_1_occupancy
+      light_switch:
+        entity_id: light.living_room
+      time_delay: 30
+      light_brightness: 65
+      light_transition_on: 2
+      light_transition_off: 2
+      dim_before_off_time_delay: 60
+      include_dim_before_off: dim_before_off_disabled
+      include_time: time_enabled
+      ambient_light_value: 60
+      ambient_light_low_value_delay: 1
+      ambient_light_options: ambient_light_option_enabled
+      include_light_control:
+      - use_brightness
+      - use_transition
+      dim_before_off_pct: 70
+      after_time: '16:00:00'
+      before_time: 00:00:00
+      include_sun: sun_enabled
+      sun_elevation: -1.5
+      sun_elevation_rising: -4
+      include_bypass:
+      - bypass_enabled_stop
+      motion_bypass_lights_off: []
+      motion_bypass_lights_stop:
+      - binary_sensor.tv_playing
+      include_bypass_auto_off:
+      - bypass_auto_off_enabled_stop
+      bypass_time_delay: 5
+- id: '1770241133588'
+  alias: 'Living Room: Auto Lights'
+  description: ''
+  use_blueprint:
+    path: freakshock88/motion_illuminance_activated_entity.yaml
+    input:
+      motion_sensor: binary_sensor.ikea_vallhorn_detector_1_occupancy
+      target_entity: light.living_room
+      illuminance_sensor: sensor.ikea_vallhorn_detector_1_illuminance
+- id: '1771270100576'
+  alias: Workdays Alarm Light
+  description: ''
+  use_blueprint:
+    path: me/advanced_alarm_light.yaml
+    input:
+      offset_from_alarm: -00:05:00
+      ramp_minutes: 20
+      alarm_sensor: sensor.galaxy_s23_alarm_workday_morning
+      person_entity: person.fabien_tribel
+      lights_target:
+        entity_id: light.bedroom
+      max_brightness: 100
+      sunday: false
+      saturday: false
+- id: '1772996595567'
+  alias: Hallway Night Auto Light
+  description: ''
+  use_blueprint:
+    path: homeassistant/advanced_custom_motion_sensor.yaml
+    input:
+      motion_entity:
+      - update.ikea_vallhorn_detector_1
+      light_target:
+        entity_id: light.hallway_night_light
+      luminance_sensor: sensor.ikea_vallhorn_detector_1_illuminance
+      luminance_required: 1000
+      elevation: Always
+- id: '1772996765555'
+  alias: Hallway Night Auto Light
+  description: ''
+  use_blueprint:
+    path: Blackshome/sensor-light.yaml
+    input:
+      motion_trigger:
+      - binary_sensor.ikea_vallhorn_detector_1_occupancy
+      light_switch:
+        entity_id: light.hallway_light
+      time_delay: 1
+      ambient_light_sensor: sensor.ikea_vallhorn_detector_1_illuminance
+      ambient_light_options: ambient_light_option_enabled
+      ambient_light_value: 10
+      dynamic_lighting_min_lux: 10
+      include_ambient: ambient_enabled
+      include_time: time_enabled
+      after_time: '19:00:00'
+      before_time: 09:00:00
+      include_sun: sun_enabled
+- id: '1773484560489'
+  alias: Dehumidifier Minimum Toggle Time Enforcement
+  description: ''
+  use_blueprint:
+    path: me/enforce_minimum_toggle_interval.yaml
+    input:
+      target_entity: switch.dehumidifier
+- id: '1773486308265'
+  alias: Shower Auto Dehumidifier
+  description: ''
+  use_blueprint:
+    path: me/advanced_dehumidifier_controller.yaml
+    input:
+      humidity_sensor: sensor.sonoff_snzb_02d_4_humidity
+      protected_device: switch.dehumidifier_protected
+      humidity_on_threshold: 57
+      humidity_off_threshold: 53
+      notify_device: 772ed3533b28dad67b73d424c02a51e5
+      enable_template: '{{ ''10:00:00'' <= now().strftime(''%H:%M:%S'') < ''23:15:00''
+        }}'

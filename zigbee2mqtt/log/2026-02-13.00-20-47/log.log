@@ -1,0 +1,807 @@
+[2026-02-13 10:00:10] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/temperature_calibration/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D Living Room/set/temperature_calibration","default_entity_id":"number.sonoff_snzb-02d_living_room_temperature_calibration","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D Living Room","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","icon":"mdi:wrench-clock","max":50,"min":-50,"name":"Temperature calibration","object_id":"sonoff_snzb-02d_living_room_temperature_calibration","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D Living Room","step":0.1,"unique_id":"0x18690afffe1daaec_temperature_calibration_zigbee2mqtt","unit_of_measurement":"°C","value_template":"{{ value_json.temperature_calibration }}"}'
+[2026-02-13 10:00:10] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/humidity_calibration/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D Living Room/set/humidity_calibration","default_entity_id":"number.sonoff_snzb-02d_living_room_humidity_calibration","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D Living Room","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","icon":"mdi:wrench-clock","max":50,"min":-50,"name":"Humidity calibration","object_id":"sonoff_snzb-02d_living_room_humidity_calibration","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D Living Room","step":0.1,"unique_id":"0x18690afffe1daaec_humidity_calibration_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.humidity_calibration }}"}'
+[2026-02-13 10:00:10] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe1daaec/linkquality/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"default_entity_id":"sensor.sonoff_snzb-02d_living_room_linkquality","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D Living Room","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"enabled_by_default":false,"entity_category":"diagnostic","icon":"mdi:signal","name":"Linkquality","object_id":"sonoff_snzb-02d_living_room_linkquality","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_class":"measurement","state_topic":"zigbee2mqtt/Sonoff SNZB-02D Living Room","unique_id":"0x18690afffe1daaec_linkquality_zigbee2mqtt","unit_of_measurement":"lqi","value_template":"{{ value_json.linkquality }}"}'
+[2026-02-13 10:00:10] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/update/0x18690afffe1daaec/update/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/bridge/request/device/ota_update/update","default_entity_id":"update.sonoff_snzb-02d_living_room","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D Living Room","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"device_class":"firmware","entity_category":"config","entity_picture":"https://github.com/Koenkk/zigbee2mqtt/raw/master/images/logo.png","name":null,"object_id":"sonoff_snzb-02d_living_room","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"payload_install":"{\"id\": \"0x18690afffe1daaec\"}","state_topic":"zigbee2mqtt/Sonoff SNZB-02D Living Room","unique_id":"0x18690afffe1daaec_update_zigbee2mqtt","value_template":"{\"latest_version\":\"{{ value_json['update']['latest_version'] }}\",\"installed_version\":\"{{ value_json['update']['installed_version'] }}\",\"update_percentage\":{{ value_json['update'].get('progress', 'null') }},\"in_progress\":{{ (value_json['update']['state'] == 'updating')|lower }}}"}'
+[2026-02-13 10:00:18] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:18] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=2 frmTx=2)
+[2026-02-13 10:00:19] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:00:19] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=2)
+[2026-02-13 10:00:19] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=25:"STACK_STATUS_HANDLER" Seq=57 Len=6]
+[2026-02-13 10:00:19] debug: 	zh:ember:ezsp: ezspStackStatusHandler: status=ZIGBEE_NETWORK_CLOSED
+[2026-02-13 10:00:19] info: 	zh:ember: [STACK STATUS] Network closed.
+[2026-02-13 10:00:19] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/rename' with data '{"from":"SNZB-02D 2","homeassistant_rename":true,"last":null,"to":"Sonoff SNZB-02D 2","transaction":"i52sr-4"}'
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/SNZB-02D 2', payload ''
+[2026-02-13 10:00:19] debug: 	z2m: Refreshing Home Assistant discovery topic for 'Sonoff SNZB-02D 2'
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x8c73dafffe8ff178/battery/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Sonoff SNZB-02D 2', payload '{"battery":100,"comfort_humidity_max":60,"comfort_humidity_min":40,"comfort_temperature_max":27,"comfort_temperature_min":19,"humidity":71.1,"humidity_calibration":0,"linkquality":144,"temperature":17.1,"temperature_calibration":0,"temperature_units":"celsius","update":{"installed_version":8960,"latest_release_notes":null,"latest_source":"https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Sonoff/snzb-02d_v2.3.0.ota","latest_version":8960,"state":"idle"}}'
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/rename', payload '{"data":{"from":"SNZB-02D 2","homeassistant_rename":true,"to":"Sonoff SNZB-02D 2"},"status":"ok","transaction":"i52sr-4"}'
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x8c73dafffe8ff178/temperature/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x8c73dafffe8ff178/humidity/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/comfort_temperature_min/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/comfort_temperature_max/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/comfort_humidity_min/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/comfort_humidity_max/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/select/0x8c73dafffe8ff178/temperature_units/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/temperature_calibration/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/humidity_calibration/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x8c73dafffe8ff178/linkquality/config', payload ''
+[2026-02-13 10:00:19] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/update/0x8c73dafffe8ff178/update/config', payload ''
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=2 frmTx=2)
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=2)
+[2026-02-13 10:00:20] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=89:"INCOMING_ROUTE_RECORD_HANDLER" Seq=57 Len=18]
+[2026-02-13 10:00:20] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=25563 sourceEui=0xa4c13800ab3b1cc6 lastHopLqi=232 lastHopRssi=-42 relayCount=0 relayList=
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=2 frmTx=2)
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=2)
+[2026-02-13 10:00:20] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=57 Len=37]
+[2026-02-13 10:00:20] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":25,"sourceEndpoint":1,"destinationEndpoint":1,"options":256,"groupId":0,"sequence":229} packetInfo:{"senderShortId":25563,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":232,"lastHopRssi":-42,"lastHopTimestamp":0} messageContents=01d201001812100502200110
+[2026-02-13 10:00:20] debug: 	zh:controller: Received payload: clusterID=25, address=25563, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=232, frame={"header":{"frameControl":{"frameType":1,"manufacturerSpecific":false,"direction":0,"disableDefaultResponse":false,"reservedBits":0},"transactionSequenceNumber":210,"commandIdentifier":1},"payload":{"fieldControl":0,"manufacturerCode":4632,"imageType":1296,"fileVersion":268509186},"command":{"ID":1,"response":2,"parameters":[{"name":"fieldControl","type":24},{"name":"manufacturerCode","type":33},{"name":"imageType","type":33,"max":65471},{"name":"fileVersion","type":35},{"name":"hardwareVersion","type":33,"conditions":[{"type":"bitMaskSet","param":"fieldControl","mask":1}]}],"required":true,"name":"queryNextImageRequest"}}
+[2026-02-13 10:00:20] debug: 	z2m: Received Zigbee message from 'Paulmann Spring Bulb 29159', type 'commandQueryNextImageRequest', cluster 'genOta', data '{"fieldControl":0,"fileVersion":268509186,"imageType":1296,"manufacturerCode":4632}' from endpoint 1 with groupID 0
+[2026-02-13 10:00:20] debug: 	z2m: Device 'Paulmann Spring Bulb 29159' requested OTA
+[2026-02-13 10:00:20] debug: 	zh:controller:endpoint: CommandResponse 0xa4c13800ab3b1cc6/1 genOta.queryNextImageResponse({"status":152}, {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":1,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:00:20] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13800ab3b1cc6:25563 apsFrame={"profileId":260,"clusterId":25,"sourceEndpoint":1,"destinationEndpoint":1,"options":4352,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":1,"direction":1,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":210,"commandIdentifier":2}]
+[2026-02-13 10:00:20] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=58 Len=25]
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=2 frmRx=4](ackRx=2)
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=2 frmTx=3)
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=3)
+[2026-02-13 10:00:20] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=58 Len=7]
+[2026-02-13 10:00:20] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=7 messageTag=58 status=OK]
+[2026-02-13 10:00:20] debug: 	z2m: Responded to OTA request of 'Paulmann Spring Bulb 29159' with 'NO_IMAGE_AVAILABLE'
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=3 frmTx=3)
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:00:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=3)
+[2026-02-13 10:00:20] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=58 Len=22]
+[2026-02-13 10:00:20] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=25563 apsFrame={"profileId":260,"clusterId":25,"sourceEndpoint":1,"destinationEndpoint":1,"options":4352,"groupId":0,"sequence":7} messageTag=58
+[2026-02-13 10:00:21] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x8c73dafffe8ff178/battery/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"default_entity_id":"sensor.sonoff_snzb-02d_2_battery","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"device_class":"battery","enabled_by_default":true,"entity_category":"diagnostic","object_id":"sonoff_snzb-02d_2_battery","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_class":"measurement","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","unique_id":"0x8c73dafffe8ff178_battery_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.battery }}"}'
+[2026-02-13 10:00:21] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x8c73dafffe8ff178/temperature/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"default_entity_id":"sensor.sonoff_snzb-02d_2_temperature","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"device_class":"temperature","enabled_by_default":true,"object_id":"sonoff_snzb-02d_2_temperature","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_class":"measurement","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","unique_id":"0x8c73dafffe8ff178_temperature_zigbee2mqtt","unit_of_measurement":"°C","value_template":"{{ value_json.temperature }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x8c73dafffe8ff178/humidity/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"default_entity_id":"sensor.sonoff_snzb-02d_2_humidity","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"device_class":"humidity","enabled_by_default":true,"object_id":"sonoff_snzb-02d_2_humidity","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_class":"measurement","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","unique_id":"0x8c73dafffe8ff178_humidity_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.humidity }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/comfort_temperature_min/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 2/set/comfort_temperature_min","default_entity_id":"number.sonoff_snzb-02d_2_comfort_temperature_min","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","max":60,"min":-10,"name":"Comfort temperature min","object_id":"sonoff_snzb-02d_2_comfort_temperature_min","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","step":0.1,"unique_id":"0x8c73dafffe8ff178_comfort_temperature_min_zigbee2mqtt","unit_of_measurement":"°C","value_template":"{{ value_json.comfort_temperature_min }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/comfort_temperature_max/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 2/set/comfort_temperature_max","default_entity_id":"number.sonoff_snzb-02d_2_comfort_temperature_max","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","max":60,"min":-10,"name":"Comfort temperature max","object_id":"sonoff_snzb-02d_2_comfort_temperature_max","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","step":0.1,"unique_id":"0x8c73dafffe8ff178_comfort_temperature_max_zigbee2mqtt","unit_of_measurement":"°C","value_template":"{{ value_json.comfort_temperature_max }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/comfort_humidity_min/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 2/set/comfort_humidity_min","default_entity_id":"number.sonoff_snzb-02d_2_comfort_humidity_min","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","max":95,"min":5,"name":"Comfort humidity min","object_id":"sonoff_snzb-02d_2_comfort_humidity_min","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","step":0.1,"unique_id":"0x8c73dafffe8ff178_comfort_humidity_min_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.comfort_humidity_min }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/comfort_humidity_max/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 2/set/comfort_humidity_max","default_entity_id":"number.sonoff_snzb-02d_2_comfort_humidity_max","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","max":95,"min":5,"name":"Comfort humidity max","object_id":"sonoff_snzb-02d_2_comfort_humidity_max","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","step":0.1,"unique_id":"0x8c73dafffe8ff178_comfort_humidity_max_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.comfort_humidity_max }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/select/0x8c73dafffe8ff178/temperature_units/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 2/set/temperature_units","default_entity_id":"select.sonoff_snzb-02d_2_temperature_units","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","name":"Temperature units","object_id":"sonoff_snzb-02d_2_temperature_units","options":["celsius","fahrenheit"],"origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","unique_id":"0x8c73dafffe8ff178_temperature_units_zigbee2mqtt","value_template":"{{ value_json.temperature_units }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/temperature_calibration/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 2/set/temperature_calibration","default_entity_id":"number.sonoff_snzb-02d_2_temperature_calibration","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","icon":"mdi:wrench-clock","max":50,"min":-50,"name":"Temperature calibration","object_id":"sonoff_snzb-02d_2_temperature_calibration","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","step":0.1,"unique_id":"0x8c73dafffe8ff178_temperature_calibration_zigbee2mqtt","unit_of_measurement":"°C","value_template":"{{ value_json.temperature_calibration }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x8c73dafffe8ff178/humidity_calibration/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 2/set/humidity_calibration","default_entity_id":"number.sonoff_snzb-02d_2_humidity_calibration","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","icon":"mdi:wrench-clock","max":50,"min":-50,"name":"Humidity calibration","object_id":"sonoff_snzb-02d_2_humidity_calibration","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","step":0.1,"unique_id":"0x8c73dafffe8ff178_humidity_calibration_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.humidity_calibration }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x8c73dafffe8ff178/linkquality/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"default_entity_id":"sensor.sonoff_snzb-02d_2_linkquality","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"enabled_by_default":false,"entity_category":"diagnostic","icon":"mdi:signal","name":"Linkquality","object_id":"sonoff_snzb-02d_2_linkquality","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_class":"measurement","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","unique_id":"0x8c73dafffe8ff178_linkquality_zigbee2mqtt","unit_of_measurement":"lqi","value_template":"{{ value_json.linkquality }}"}'
+[2026-02-13 10:00:22] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/update/0x8c73dafffe8ff178/update/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/bridge/request/device/ota_update/update","default_entity_id":"update.sonoff_snzb-02d_2","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x8c73dafffe8ff178"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 2","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"device_class":"firmware","entity_category":"config","entity_picture":"https://github.com/Koenkk/zigbee2mqtt/raw/master/images/logo.png","name":null,"object_id":"sonoff_snzb-02d_2","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"payload_install":"{\"id\": \"0x8c73dafffe8ff178\"}","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 2","unique_id":"0x8c73dafffe8ff178_update_zigbee2mqtt","value_template":"{\"latest_version\":\"{{ value_json['update']['latest_version'] }}\",\"installed_version\":\"{{ value_json['update']['installed_version'] }}\",\"update_percentage\":{{ value_json['update'].get('progress', 'null') }},\"in_progress\":{{ (value_json['update']['state'] == 'updating')|lower }}}"}'
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=3 frmTx=3)
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=3)
+[2026-02-13 10:00:22] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=89:"INCOMING_ROUTE_RECORD_HANDLER" Seq=58 Len=18]
+[2026-02-13 10:00:22] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=7447 sourceEui=0xa4c138247a1a948b lastHopLqi=176 lastHopRssi=-56 relayCount=0 relayList=
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=3 frmTx=3)
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=3)
+[2026-02-13 10:00:22] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=58 Len=30]
+[2026-02-13 10:00:22] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":10,"sourceEndpoint":1,"destinationEndpoint":1,"options":256,"groupId":0,"sequence":82} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":176,"lastHopRssi":-56,"lastHopTimestamp":0} messageContents=10e6000700
+[2026-02-13 10:00:22] debug: 	zh:controller: Received payload: clusterID=10, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=176, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":0,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":230,"commandIdentifier":0},"payload":[{"attrId":7}],"command":{"ID":0,"name":"read","parameters":[{"name":"attrId","type":9}],"response":1}}
+[2026-02-13 10:00:22] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 genTime.readRsp({"localTime":824292023}, {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":1,"srcEndpoint":1,"reservedBits":0,"transactionSequenceNumber":230,"writeUndiv":false})
+[2026-02-13 10:00:22] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":10,"sourceEndpoint":1,"destinationEndpoint":1,"options":4352,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":1,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":230,"commandIdentifier":1}]
+[2026-02-13 10:00:22] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=59 Len=32]
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=3 frmRx=0](ackRx=3)
+[2026-02-13 10:00:22] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'read', cluster 'genTime', data '["localTime"]' from endpoint 1 with groupID 0
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=3 frmTx=4)
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=4)
+[2026-02-13 10:00:22] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=59 Len=7]
+[2026-02-13 10:00:22] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=8 messageTag=59 status=OK]
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=4 frmTx=4)
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:00:22] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=4)
+[2026-02-13 10:00:22] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=59 Len=22]
+[2026-02-13 10:00:22] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":10,"sourceEndpoint":1,"destinationEndpoint":1,"options":4352,"groupId":0,"sequence":8} messageTag=59
+[2026-02-13 10:00:28] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/rename' with data '{"from":"Sonoff SNZB-02D Living Room","homeassistant_rename":true,"last":null,"to":"Sonoff SNZB-02D 1","transaction":"i52sr-5"}'
+[2026-02-13 10:00:28] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Sonoff SNZB-02D Living Room', payload ''
+[2026-02-13 10:00:28] debug: 	z2m: Refreshing Home Assistant discovery topic for 'Sonoff SNZB-02D 1'
+[2026-02-13 10:00:28] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe1daaec/battery/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Sonoff SNZB-02D 1', payload '{"battery":100,"comfort_humidity_max":60,"comfort_humidity_min":40,"comfort_temperature_max":27,"comfort_temperature_min":19,"humidity":53.4,"humidity_calibration":0,"linkquality":184,"temperature":16.8,"temperature_calibration":0,"temperature_units":"celsius","update":{"installed_version":8960,"latest_release_notes":null,"latest_source":"https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Sonoff/snzb-02d_v2.3.0.ota","latest_version":8960,"state":"idle"}}'
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/rename', payload '{"data":{"from":"Sonoff SNZB-02D Living Room","homeassistant_rename":true,"to":"Sonoff SNZB-02D 1"},"status":"ok","transaction":"i52sr-5"}'
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe1daaec/temperature/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe1daaec/humidity/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/comfort_temperature_min/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/comfort_temperature_max/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/comfort_humidity_min/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/comfort_humidity_max/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/select/0x18690afffe1daaec/temperature_units/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/temperature_calibration/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/humidity_calibration/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe1daaec/linkquality/config', payload ''
+[2026-02-13 10:00:29] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/update/0x18690afffe1daaec/update/config', payload ''
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe1daaec/battery/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"default_entity_id":"sensor.sonoff_snzb-02d_1_battery","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"device_class":"battery","enabled_by_default":true,"entity_category":"diagnostic","object_id":"sonoff_snzb-02d_1_battery","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_class":"measurement","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","unique_id":"0x18690afffe1daaec_battery_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.battery }}"}'
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe1daaec/temperature/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"default_entity_id":"sensor.sonoff_snzb-02d_1_temperature","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"device_class":"temperature","enabled_by_default":true,"object_id":"sonoff_snzb-02d_1_temperature","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_class":"measurement","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","unique_id":"0x18690afffe1daaec_temperature_zigbee2mqtt","unit_of_measurement":"°C","value_template":"{{ value_json.temperature }}"}'
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe1daaec/humidity/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"default_entity_id":"sensor.sonoff_snzb-02d_1_humidity","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"device_class":"humidity","enabled_by_default":true,"object_id":"sonoff_snzb-02d_1_humidity","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_class":"measurement","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","unique_id":"0x18690afffe1daaec_humidity_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.humidity }}"}'
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/comfort_temperature_min/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 1/set/comfort_temperature_min","default_entity_id":"number.sonoff_snzb-02d_1_comfort_temperature_min","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","max":60,"min":-10,"name":"Comfort temperature min","object_id":"sonoff_snzb-02d_1_comfort_temperature_min","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","step":0.1,"unique_id":"0x18690afffe1daaec_comfort_temperature_min_zigbee2mqtt","unit_of_measurement":"°C","value_template":"{{ value_json.comfort_temperature_min }}"}'
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/comfort_temperature_max/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 1/set/comfort_temperature_max","default_entity_id":"number.sonoff_snzb-02d_1_comfort_temperature_max","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","max":60,"min":-10,"name":"Comfort temperature max","object_id":"sonoff_snzb-02d_1_comfort_temperature_max","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","step":0.1,"unique_id":"0x18690afffe1daaec_comfort_temperature_max_zigbee2mqtt","unit_of_measurement":"°C","value_template":"{{ value_json.comfort_temperature_max }}"}'
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/comfort_humidity_min/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 1/set/comfort_humidity_min","default_entity_id":"number.sonoff_snzb-02d_1_comfort_humidity_min","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","max":95,"min":5,"name":"Comfort humidity min","object_id":"sonoff_snzb-02d_1_comfort_humidity_min","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","step":0.1,"unique_id":"0x18690afffe1daaec_comfort_humidity_min_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.comfort_humidity_min }}"}'
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/comfort_humidity_max/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 1/set/comfort_humidity_max","default_entity_id":"number.sonoff_snzb-02d_1_comfort_humidity_max","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","max":95,"min":5,"name":"Comfort humidity max","object_id":"sonoff_snzb-02d_1_comfort_humidity_max","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","step":0.1,"unique_id":"0x18690afffe1daaec_comfort_humidity_max_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.comfort_humidity_max }}"}'
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/select/0x18690afffe1daaec/temperature_units/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 1/set/temperature_units","default_entity_id":"select.sonoff_snzb-02d_1_temperature_units","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","name":"Temperature units","object_id":"sonoff_snzb-02d_1_temperature_units","options":["celsius","fahrenheit"],"origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","unique_id":"0x18690afffe1daaec_temperature_units_zigbee2mqtt","value_template":"{{ value_json.temperature_units }}"}'
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/temperature_calibration/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 1/set/temperature_calibration","default_entity_id":"number.sonoff_snzb-02d_1_temperature_calibration","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","icon":"mdi:wrench-clock","max":50,"min":-50,"name":"Temperature calibration","object_id":"sonoff_snzb-02d_1_temperature_calibration","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","step":0.1,"unique_id":"0x18690afffe1daaec_temperature_calibration_zigbee2mqtt","unit_of_measurement":"°C","value_template":"{{ value_json.temperature_calibration }}"}'
+[2026-02-13 10:00:31] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/number/0x18690afffe1daaec/humidity_calibration/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/Sonoff SNZB-02D 1/set/humidity_calibration","default_entity_id":"number.sonoff_snzb-02d_1_humidity_calibration","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"entity_category":"config","icon":"mdi:wrench-clock","max":50,"min":-50,"name":"Humidity calibration","object_id":"sonoff_snzb-02d_1_humidity_calibration","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","step":0.1,"unique_id":"0x18690afffe1daaec_humidity_calibration_zigbee2mqtt","unit_of_measurement":"%","value_template":"{{ value_json.humidity_calibration }}"}'
+[2026-02-13 10:00:32] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe1daaec/linkquality/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"default_entity_id":"sensor.sonoff_snzb-02d_1_linkquality","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"enabled_by_default":false,"entity_category":"diagnostic","icon":"mdi:signal","name":"Linkquality","object_id":"sonoff_snzb-02d_1_linkquality","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"state_class":"measurement","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","unique_id":"0x18690afffe1daaec_linkquality_zigbee2mqtt","unit_of_measurement":"lqi","value_template":"{{ value_json.linkquality }}"}'
+[2026-02-13 10:00:32] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/update/0x18690afffe1daaec/update/config', payload '{"availability":[{"topic":"zigbee2mqtt/bridge/state","value_template":"{{ value_json.state }}"}],"command_topic":"zigbee2mqtt/bridge/request/device/ota_update/update","default_entity_id":"update.sonoff_snzb-02d_1","device":{"hw_version":0,"identifiers":["zigbee2mqtt_0x18690afffe1daaec"],"manufacturer":"SONOFF","model":"Temperature and humidity sensor with screen","model_id":"SNZB-02D","name":"Sonoff SNZB-02D 1","sw_version":"2.3.0","via_device":"zigbee2mqtt_bridge_0x6c5cb1fffe9940a9"},"device_class":"firmware","entity_category":"config","entity_picture":"https://github.com/Koenkk/zigbee2mqtt/raw/master/images/logo.png","name":null,"object_id":"sonoff_snzb-02d_1","origin":{"name":"Zigbee2MQTT","sw":"2.8.0","url":"https://www.zigbee2mqtt.io"},"payload_install":"{\"id\": \"0x18690afffe1daaec\"}","state_topic":"zigbee2mqtt/Sonoff SNZB-02D 1","unique_id":"0x18690afffe1daaec_update_zigbee2mqtt","value_template":"{\"latest_version\":\"{{ value_json['update']['latest_version'] }}\",\"installed_version\":\"{{ value_json['update']['installed_version'] }}\",\"update_percentage\":{{ value_json['update'].get('progress', 'null') }},\"in_progress\":{{ (value_json['update']['state'] == 'updating')|lower }}}"}'
+[2026-02-13 10:00:46] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:46] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=4 frmTx=4)
+[2026-02-13 10:00:46] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:00:46] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=4)
+[2026-02-13 10:00:46] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=125:"INCOMING_MANY_TO_ONE_ROUTE_REQUEST_HANDLER" Seq=59 Len=16]
+[2026-02-13 10:00:46] debug: 	zh:ember:ezsp: ezspIncomingManyToOneRouteRequestHandler: source=40200 longId=0x842712fffedb8ddb cost=1
+[2026-02-13 10:00:47] debug: 	z2m: Saving state to file /config/zigbee2mqtt/state.json
+[2026-02-13 10:00:49] debug: 	zh:controller:database: Writing database to '/config/zigbee2mqtt/database.db'
+[2026-02-13 10:00:50] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/health', payload '{"response_time":1770973250099,"os":{"load_average":[0.13,0.09,0.03],"memory_used_mb":1829.95,"memory_percent":46.6438},"process":{"uptime_sec":791034,"memory_used_mb":120.07,"memory_percent":3.0606},"mqtt":{"connected":true,"queued":0,"published":3107,"received":125},"devices":{"0xa4c138247a1a948b":{"messages":1643,"messages_per_sec":0.0472,"leave_count":0,"network_address_changes":0},"0xa4c13800ab3b1cc6":{"messages":294,"messages_per_sec":0.0085,"leave_count":0,"network_address_changes":0},"0x6cfd22fffe610d7c":{"messages":20,"messages_per_sec":0.0006,"leave_count":0,"network_address_changes":0},"0x18690afffe1daaec":{"messages":92,"messages_per_sec":0.0027,"leave_count":0,"network_address_changes":0},"0x30fb10fffe4c12d6":{"messages":5,"messages_per_sec":0.0001,"leave_count":0,"network_address_changes":0},"0x8c8b48fffe18b6d8":{"messages":5,"messages_per_sec":0.0003,"leave_count":0,"network_address_changes":0},"0xd44867fffeff5bc8":{"messages":2,"messages_per_sec":0.0002,"leave_count":0,"network_address_changes":0},"0x8c73dafffe8ff178":{"messages":43,"messages_per_sec":0.033,"leave_count":0,"network_address_changes":0},"0x18690afffe11019c":{"messages":3,"messages_per_sec":0.0032,"leave_count":0,"network_address_changes":0},"0x30fb10fffe4c1e7d":{"messages":3,"messages_per_sec":0.0332,"leave_count":0,"network_address_changes":0},"0x842712fffedb8ddb":{"messages":1,"messages_per_sec":0.0201,"leave_count":0,"network_address_changes":0}}}'
+[2026-02-13 10:00:57] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 haElectricalMeasurement.read(["rmsVoltage","rmsCurrent","activePower"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:00:57] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":32,"commandIdentifier":0}]
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=60 Len=30]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=4 frmRx=3](ackRx=4)
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=4 frmTx=5)
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=5)
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=60 Len=7]
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=9 messageTag=60 status=OK]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=5 frmTx=5)
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=5)
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=60 Len=22]
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":9} messageTag=60
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=5 frmTx=5)
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=5)
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=60 Len=46]
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":83} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":168,"lastHopRssi":-58,"lastHopTimestamp":0} messageContents=18200105050021eb000805002100000b0500210000
+[2026-02-13 10:00:57] debug: 	zh:controller: Received payload: clusterID=2820, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=168, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":32,"commandIdentifier":1},"payload":[{"attrId":1285,"status":0,"dataType":33,"attrData":235},{"attrId":1288,"status":0,"dataType":33,"attrData":0},{"attrId":1291,"status":0,"dataType":33,"attrData":0}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:00:57] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'haElectricalMeasurement', data '{"activePower":0,"rmsCurrent":0,"rmsVoltage":235}' from endpoint 1 with groupID 0
+[2026-02-13 10:00:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":168,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":235}'
+[2026-02-13 10:00:57] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 seMetering.read(["currentSummDelivered"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:00:57] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":33,"commandIdentifier":0}]
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=61 Len=26]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=5 frmRx=6](ackRx=5)
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=5 frmTx=6)
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=6)
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=61 Len=7]
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=10 messageTag=61 status=OK]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=6)
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=61 Len=22]
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":10} messageTag=61
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:00:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=6)
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=61 Len=38]
+[2026-02-13 10:00:57] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":84} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":164,"lastHopRssi":-59,"lastHopTimestamp":0} messageContents=18210100000025a50b00000000
+[2026-02-13 10:00:57] debug: 	zh:controller: Received payload: clusterID=1794, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=164, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":33,"commandIdentifier":1},"payload":[{"attrId":0,"status":0,"dataType":37,"attrData":2981}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:00:57] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'seMetering', data '{"currentSummDelivered":2981}' from endpoint 1 with groupID 0
+[2026-02-13 10:00:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":164,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":235}'
+[2026-02-13 10:01:05] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:05] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:01:05] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:01:05] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=6)
+[2026-02-13 10:01:05] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=155:"ZIGBEE_KEY_ESTABLISHMENT_HANDLER" Seq=61 Len=14]
+[2026-02-13 10:01:05] debug: 	zh:ember:ezsp: ezspZigbeeKeyEstablishmentHandler: partner=0xffffffffffffffff status=TC_REQUESTER_VERIFY_KEY_TIMEOUT
+[2026-02-13 10:01:10] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/configure' with data '{"id":"0x18690afffe11019c","transaction":"i52sr-6"}'
+[2026-02-13 10:01:10] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/configure', payload '{"data":{},"error":"Device '0x18690afffe11019c' cannot be configured","status":"error","transaction":"i52sr-6"}'
+[2026-02-13 10:01:18] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/interview' with data '{"id":"0x18690afffe11019c","transaction":"i52sr-7"}'
+[2026-02-13 10:01:18] info: 	z2m: Interviewing '0x18690afffe11019c'
+[2026-02-13 10:01:18] debug: 	zh:controller:device: Interview - start device '0x18690afffe11019c'
+[2026-02-13 10:01:18] debug: 	zh:ember: ~~~> [ZDO NODE_DESCRIPTOR_REQUEST UNICAST to=0x18690afffe11019c:23674 messageTag=45 payload=2d7a5c]
+[2026-02-13 10:01:18] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=62 Len=24]
+[2026-02-13 10:01:18] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=6 frmRx=2](ackRx=6)
+[2026-02-13 10:01:18] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x18690afffe11019c","ieee_address":"0x18690afffe11019c","status":"started"},"type":"device_interview"}'
+[2026-02-13 10:01:18] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:18] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7](ackRx=6 frmTx=7)
+[2026-02-13 10:01:18] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:01:18] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=7)
+[2026-02-13 10:01:18] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=62 Len=7]
+[2026-02-13 10:01:18] debug: 	zh:ember: ~~~> [SENT ZDO UNICAST messageTag=45 apsSequence=11 status=OK]
+[2026-02-13 10:01:23] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:23] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7](ackRx=7 frmTx=7)
+[2026-02-13 10:01:23] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:01:23] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=7)
+[2026-02-13 10:01:23] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=62 Len=22]
+[2026-02-13 10:01:23] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=ZIGBEE_DELIVERY_FAILED type=DIRECT indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":11} messageTag=45
+[2026-02-13 10:01:23] debug: 	zh:ember: ~x~> DELIVERY_FAILED [indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":11} messageTag=45]
+[2026-02-13 10:01:23] debug: 	zh:controller:device: Interview - quirks check for 'undefined'-'undefined'-'Unknown'
+[2026-02-13 10:01:23] debug: 	zh:controller:device: Interview - quirks did not match
+[2026-02-13 10:01:23] debug: 	zh:controller:device: Interview - node descriptor request failed for '0x18690afffe11019c', attempt 1
+[2026-02-13 10:01:23] debug: 	zh:ember: ~~~> [ZDO NODE_DESCRIPTOR_REQUEST UNICAST to=0x18690afffe11019c:23674 messageTag=46 payload=2e7a5c]
+[2026-02-13 10:01:23] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=63 Len=24]
+[2026-02-13 10:01:23] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=7 frmRx=4](ackRx=7)
+[2026-02-13 10:01:23] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:23] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0](ackRx=7 frmTx=0)
+[2026-02-13 10:01:23] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:01:23] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=0)
+[2026-02-13 10:01:23] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=63 Len=7]
+[2026-02-13 10:01:23] debug: 	zh:ember: ~~~> [SENT ZDO UNICAST messageTag=46 apsSequence=12 status=OK]
+[2026-02-13 10:01:28] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:28] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0](ackRx=0 frmTx=0)
+[2026-02-13 10:01:28] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:01:28] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=0)
+[2026-02-13 10:01:28] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=63 Len=22]
+[2026-02-13 10:01:28] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=ZIGBEE_DELIVERY_FAILED type=DIRECT indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":12} messageTag=46
+[2026-02-13 10:01:28] debug: 	zh:ember: ~x~> DELIVERY_FAILED [indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":12} messageTag=46]
+[2026-02-13 10:01:28] debug: 	zh:controller:device: Interview - quirks check for 'undefined'-'undefined'-'Unknown'
+[2026-02-13 10:01:28] debug: 	zh:controller:device: Interview - quirks did not match
+[2026-02-13 10:01:28] debug: 	zh:controller:device: Interview - node descriptor request failed for '0x18690afffe11019c', attempt 2
+[2026-02-13 10:01:28] debug: 	zh:ember: ~~~> [ZDO NODE_DESCRIPTOR_REQUEST UNICAST to=0x18690afffe11019c:23674 messageTag=47 payload=2f7a5c]
+[2026-02-13 10:01:28] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=64 Len=24]
+[2026-02-13 10:01:28] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=0 frmRx=6](ackRx=0)
+[2026-02-13 10:01:28] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:28] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1](ackRx=0 frmTx=1)
+[2026-02-13 10:01:28] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:01:28] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=1)
+[2026-02-13 10:01:28] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=64 Len=7]
+[2026-02-13 10:01:28] debug: 	zh:ember: ~~~> [SENT ZDO UNICAST messageTag=47 apsSequence=13 status=OK]
+[2026-02-13 10:01:33] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:33] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1](ackRx=1 frmTx=1)
+[2026-02-13 10:01:33] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:01:33] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=1)
+[2026-02-13 10:01:33] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=64 Len=22]
+[2026-02-13 10:01:33] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=ZIGBEE_DELIVERY_FAILED type=DIRECT indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":13} messageTag=47
+[2026-02-13 10:01:33] debug: 	zh:ember: ~x~> DELIVERY_FAILED [indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":13} messageTag=47]
+[2026-02-13 10:01:33] debug: 	zh:controller:device: Interview - quirks check for 'undefined'-'undefined'-'Unknown'
+[2026-02-13 10:01:33] debug: 	zh:controller:device: Interview - quirks did not match
+[2026-02-13 10:01:33] debug: 	zh:controller:device: Interview - node descriptor request failed for '0x18690afffe11019c', attempt 3
+[2026-02-13 10:01:33] debug: 	zh:ember: ~~~> [ZDO NODE_DESCRIPTOR_REQUEST UNICAST to=0x18690afffe11019c:23674 messageTag=48 payload=307a5c]
+[2026-02-13 10:01:33] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=65 Len=24]
+[2026-02-13 10:01:33] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=1 frmRx=0](ackRx=1)
+[2026-02-13 10:01:33] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:33] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=1 frmTx=2)
+[2026-02-13 10:01:33] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:01:33] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=2)
+[2026-02-13 10:01:33] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=65 Len=7]
+[2026-02-13 10:01:33] debug: 	zh:ember: ~~~> [SENT ZDO UNICAST messageTag=48 apsSequence=14 status=OK]
+[2026-02-13 10:01:33] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/interview' with data '{"id":"0x18690afffe11019c","transaction":"i52sr-8"}'
+[2026-02-13 10:01:33] info: 	z2m: Interviewing '0x18690afffe11019c'
+[2026-02-13 10:01:33] debug: 	zh:controller:device: Interview - interview already in progress for '0x18690afffe11019c'
+[2026-02-13 10:01:33] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x18690afffe11019c","ieee_address":"0x18690afffe11019c","status":"started"},"type":"device_interview"}'
+[2026-02-13 10:01:33] error: 	z2m: Request 'zigbee2mqtt/bridge/request/device/interview' failed with error: 'Interview of '0x18690afffe11019c' (0x18690afffe11019c) failed: Error: Interview - interview already in progress for '0x18690afffe11019c''
+[2026-02-13 10:01:33] debug: 	z2m: Error: Interview of '0x18690afffe11019c' (0x18690afffe11019c) failed: Error: Interview - interview already in progress for '0x18690afffe11019c'
+    at Device.reInterview (/app/lib/model/device.ts:86:19)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at Bridge.deviceInterview (/app/lib/extension/bridge.ts:577:9)
+    at Bridge.onMQTTMessage (/app/lib/extension/bridge.ts:216:34)
+    at EventEmitter.wrappedCallback (/app/lib/eventBus.ts:252:17)
+[2026-02-13 10:01:33] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/interview', payload '{"data":{},"error":"Interview of '0x18690afffe11019c' (0x18690afffe11019c) failed: Error: Interview - interview already in progress for '0x18690afffe11019c'","status":"error","transaction":"i52sr-8"}'
+[2026-02-13 10:01:33] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x18690afffe11019c","ieee_address":"0x18690afffe11019c","status":"failed"},"type":"device_interview"}'
+[2026-02-13 10:01:38] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:38] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=2 frmTx=2)
+[2026-02-13 10:01:38] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:01:38] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=2)
+[2026-02-13 10:01:38] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=65 Len=22]
+[2026-02-13 10:01:38] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=ZIGBEE_DELIVERY_FAILED type=DIRECT indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":14} messageTag=48
+[2026-02-13 10:01:38] debug: 	zh:ember: ~x~> DELIVERY_FAILED [indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":14} messageTag=48]
+[2026-02-13 10:01:38] debug: 	zh:controller:device: Interview - quirks check for 'undefined'-'undefined'-'Unknown'
+[2026-02-13 10:01:38] debug: 	zh:controller:device: Interview - quirks did not match
+[2026-02-13 10:01:38] debug: 	zh:controller:device: Interview - node descriptor request failed for '0x18690afffe11019c', attempt 4
+[2026-02-13 10:01:38] debug: 	zh:ember: ~~~> [ZDO NODE_DESCRIPTOR_REQUEST UNICAST to=0x18690afffe11019c:23674 messageTag=49 payload=317a5c]
+[2026-02-13 10:01:38] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=66 Len=24]
+[2026-02-13 10:01:38] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=2 frmRx=2](ackRx=2)
+[2026-02-13 10:01:38] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:38] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=2 frmTx=3)
+[2026-02-13 10:01:38] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:01:38] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=3)
+[2026-02-13 10:01:38] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=66 Len=7]
+[2026-02-13 10:01:38] debug: 	zh:ember: ~~~> [SENT ZDO UNICAST messageTag=49 apsSequence=15 status=OK]
+[2026-02-13 10:01:42] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:42] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=3 frmTx=3)
+[2026-02-13 10:01:42] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:01:42] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=3)
+[2026-02-13 10:01:42] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=66 Len=22]
+[2026-02-13 10:01:42] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=ZIGBEE_DELIVERY_FAILED type=DIRECT indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":15} messageTag=49
+[2026-02-13 10:01:42] debug: 	zh:ember: ~x~> DELIVERY_FAILED [indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":15} messageTag=49]
+[2026-02-13 10:01:42] debug: 	zh:controller:device: Interview - quirks check for 'undefined'-'undefined'-'Unknown'
+[2026-02-13 10:01:42] debug: 	zh:controller:device: Interview - quirks did not match
+[2026-02-13 10:01:42] debug: 	zh:controller:device: Interview - node descriptor request failed for '0x18690afffe11019c', attempt 5
+[2026-02-13 10:01:42] debug: 	zh:ember: ~~~> [ZDO NODE_DESCRIPTOR_REQUEST UNICAST to=0x18690afffe11019c:23674 messageTag=50 payload=327a5c]
+[2026-02-13 10:01:42] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=67 Len=24]
+[2026-02-13 10:01:42] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=3 frmRx=4](ackRx=3)
+[2026-02-13 10:01:42] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:42] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=3 frmTx=4)
+[2026-02-13 10:01:42] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:01:42] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=4)
+[2026-02-13 10:01:42] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=67 Len=7]
+[2026-02-13 10:01:42] debug: 	zh:ember: ~~~> [SENT ZDO UNICAST messageTag=50 apsSequence=16 status=OK]
+[2026-02-13 10:01:47] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:47] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=4 frmTx=4)
+[2026-02-13 10:01:47] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:01:47] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=4)
+[2026-02-13 10:01:47] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=125:"INCOMING_MANY_TO_ONE_ROUTE_REQUEST_HANDLER" Seq=67 Len=16]
+[2026-02-13 10:01:47] debug: 	zh:ember:ezsp: ezspIncomingManyToOneRouteRequestHandler: source=40200 longId=0x842712fffedb8ddb cost=1
+[2026-02-13 10:01:47] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:47] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=4 frmTx=4)
+[2026-02-13 10:01:47] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:01:47] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=4)
+[2026-02-13 10:01:47] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=67 Len=22]
+[2026-02-13 10:01:47] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=ZIGBEE_DELIVERY_FAILED type=DIRECT indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":16} messageTag=50
+[2026-02-13 10:01:47] debug: 	zh:ember: ~x~> DELIVERY_FAILED [indexOrDestination=23674 apsFrame={"profileId":0,"clusterId":2,"sourceEndpoint":0,"destinationEndpoint":0,"options":4416,"groupId":0,"sequence":16} messageTag=50]
+[2026-02-13 10:01:47] debug: 	zh:controller:device: Interview - quirks check for 'undefined'-'undefined'-'Unknown'
+[2026-02-13 10:01:47] debug: 	zh:controller:device: Interview - quirks did not match
+[2026-02-13 10:01:47] debug: 	zh:controller:device: Interview - node descriptor request failed for '0x18690afffe11019c', attempt 6
+[2026-02-13 10:01:47] debug: 	zh:controller:device: Interview - quirks check for 'undefined'-'undefined'-'Unknown'
+[2026-02-13 10:01:47] debug: 	zh:controller:device: Interview - quirks did not match
+[2026-02-13 10:01:47] debug: 	zh:controller:device: Interview - failed for device '0x18690afffe11019c' with error 'Error: Interview failed because can not get node descriptor ('0x18690afffe11019c')'
+[2026-02-13 10:01:47] debug: 	zh:controller:database: Writing database to '/config/zigbee2mqtt/database.db'
+[2026-02-13 10:01:47] error: 	z2m: Request 'zigbee2mqtt/bridge/request/device/interview' failed with error: 'Interview of '0x18690afffe11019c' (0x18690afffe11019c) failed: Error: Interview failed because can not get node descriptor ('0x18690afffe11019c')'
+[2026-02-13 10:01:47] debug: 	z2m: Error: Interview of '0x18690afffe11019c' (0x18690afffe11019c) failed: Error: Interview failed because can not get node descriptor ('0x18690afffe11019c')
+    at Device.reInterview (/app/lib/model/device.ts:86:19)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at runNextTicks (node:internal/process/task_queues:69:3)
+    at processImmediate (node:internal/timers:453:9)
+    at Bridge.deviceInterview (/app/lib/extension/bridge.ts:577:9)
+    at Bridge.onMQTTMessage (/app/lib/extension/bridge.ts:216:34)
+    at EventEmitter.wrappedCallback (/app/lib/eventBus.ts:252:17)
+[2026-02-13 10:01:47] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/interview', payload '{"data":{},"error":"Interview of '0x18690afffe11019c' (0x18690afffe11019c) failed: Error: Interview failed because can not get node descriptor ('0x18690afffe11019c')","status":"error","transaction":"i52sr-7"}'
+[2026-02-13 10:01:47] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/event', payload '{"data":{"friendly_name":"0x18690afffe11019c","ieee_address":"0x18690afffe11019c","status":"failed"},"type":"device_interview"}'
+[2026-02-13 10:01:57] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 haElectricalMeasurement.read(["rmsVoltage","rmsCurrent","activePower"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:01:57] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":34,"commandIdentifier":0}]
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=68 Len=30]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=4 frmRx=7](ackRx=4)
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=4 frmTx=5)
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=5)
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=68 Len=7]
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=17 messageTag=62 status=OK]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=5 frmTx=5)
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=5)
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=89:"INCOMING_ROUTE_RECORD_HANDLER" Seq=68 Len=18]
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=7447 sourceEui=0xa4c138247a1a948b lastHopLqi=172 lastHopRssi=-57 relayCount=0 relayList=
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=5 frmTx=5)
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=5)
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=68 Len=22]
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":17} messageTag=62
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=5 frmTx=5)
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=5)
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=68 Len=46]
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":85} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":168,"lastHopRssi":-58,"lastHopTimestamp":0} messageContents=18220105050021eb000805002100000b0500210000
+[2026-02-13 10:01:57] debug: 	zh:controller: Received payload: clusterID=2820, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=168, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":34,"commandIdentifier":1},"payload":[{"attrId":1285,"status":0,"dataType":33,"attrData":235},{"attrId":1288,"status":0,"dataType":33,"attrData":0},{"attrId":1291,"status":0,"dataType":33,"attrData":0}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:01:57] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'haElectricalMeasurement', data '{"activePower":0,"rmsCurrent":0,"rmsVoltage":235}' from endpoint 1 with groupID 0
+[2026-02-13 10:01:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":168,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":235}'
+[2026-02-13 10:01:57] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 seMetering.read(["currentSummDelivered"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:01:57] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":35,"commandIdentifier":0}]
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=69 Len=26]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=5 frmRx=3](ackRx=5)
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=5 frmTx=6)
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=6)
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=69 Len=7]
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=18 messageTag=63 status=OK]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=6)
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=69 Len=22]
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":18} messageTag=63
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:01:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=6)
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=69 Len=38]
+[2026-02-13 10:01:57] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":86} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":172,"lastHopRssi":-57,"lastHopTimestamp":0} messageContents=18230100000025a50b00000000
+[2026-02-13 10:01:57] debug: 	zh:controller: Received payload: clusterID=1794, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=172, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":35,"commandIdentifier":1},"payload":[{"attrId":0,"status":0,"dataType":37,"attrData":2981}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:01:57] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'seMetering', data '{"currentSummDelivered":2981}' from endpoint 1 with groupID 0
+[2026-02-13 10:01:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":172,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":235}'
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=6)
+[2026-02-13 10:02:20] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=89:"INCOMING_ROUTE_RECORD_HANDLER" Seq=69 Len=18]
+[2026-02-13 10:02:20] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=25563 sourceEui=0xa4c13800ab3b1cc6 lastHopLqi=228 lastHopRssi=-43 relayCount=0 relayList=
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=6)
+[2026-02-13 10:02:20] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=69 Len=37]
+[2026-02-13 10:02:20] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":25,"sourceEndpoint":1,"destinationEndpoint":1,"options":256,"groupId":0,"sequence":230} packetInfo:{"senderShortId":25563,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":232,"lastHopRssi":-42,"lastHopTimestamp":0} messageContents=01d301001812100502200110
+[2026-02-13 10:02:20] debug: 	zh:controller: Received payload: clusterID=25, address=25563, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=232, frame={"header":{"frameControl":{"frameType":1,"manufacturerSpecific":false,"direction":0,"disableDefaultResponse":false,"reservedBits":0},"transactionSequenceNumber":211,"commandIdentifier":1},"payload":{"fieldControl":0,"manufacturerCode":4632,"imageType":1296,"fileVersion":268509186},"command":{"ID":1,"response":2,"parameters":[{"name":"fieldControl","type":24},{"name":"manufacturerCode","type":33},{"name":"imageType","type":33,"max":65471},{"name":"fileVersion","type":35},{"name":"hardwareVersion","type":33,"conditions":[{"type":"bitMaskSet","param":"fieldControl","mask":1}]}],"required":true,"name":"queryNextImageRequest"}}
+[2026-02-13 10:02:20] debug: 	z2m: Received Zigbee message from 'Paulmann Spring Bulb 29159', type 'commandQueryNextImageRequest', cluster 'genOta', data '{"fieldControl":0,"fileVersion":268509186,"imageType":1296,"manufacturerCode":4632}' from endpoint 1 with groupID 0
+[2026-02-13 10:02:20] debug: 	z2m: Device 'Paulmann Spring Bulb 29159' requested OTA
+[2026-02-13 10:02:20] debug: 	zh:controller:endpoint: CommandResponse 0xa4c13800ab3b1cc6/1 genOta.queryNextImageResponse({"status":152}, {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":1,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:02:20] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13800ab3b1cc6:25563 apsFrame={"profileId":260,"clusterId":25,"sourceEndpoint":1,"destinationEndpoint":1,"options":4352,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":1,"direction":1,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":211,"commandIdentifier":2}]
+[2026-02-13 10:02:20] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=70 Len=25]
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=6 frmRx=0](ackRx=6)
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7](ackRx=6 frmTx=7)
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=7)
+[2026-02-13 10:02:20] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=70 Len=7]
+[2026-02-13 10:02:20] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=19 messageTag=64 status=OK]
+[2026-02-13 10:02:20] debug: 	z2m: Responded to OTA request of 'Paulmann Spring Bulb 29159' with 'NO_IMAGE_AVAILABLE'
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7](ackRx=7 frmTx=7)
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:02:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=7)
+[2026-02-13 10:02:20] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=70 Len=22]
+[2026-02-13 10:02:20] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=25563 apsFrame={"profileId":260,"clusterId":25,"sourceEndpoint":1,"destinationEndpoint":1,"options":4352,"groupId":0,"sequence":19} messageTag=64
+[2026-02-13 10:02:48] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:48] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7](ackRx=7 frmTx=7)
+[2026-02-13 10:02:48] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:02:48] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=7)
+[2026-02-13 10:02:48] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=125:"INCOMING_MANY_TO_ONE_ROUTE_REQUEST_HANDLER" Seq=70 Len=16]
+[2026-02-13 10:02:48] debug: 	zh:ember:ezsp: ezspIncomingManyToOneRouteRequestHandler: source=40200 longId=0x842712fffedb8ddb cost=1
+[2026-02-13 10:02:57] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 haElectricalMeasurement.read(["rmsVoltage","rmsCurrent","activePower"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:02:57] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":36,"commandIdentifier":0}]
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=71 Len=30]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=7 frmRx=3](ackRx=7)
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0](ackRx=7 frmTx=0)
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=0)
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=71 Len=7]
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=20 messageTag=65 status=OK]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0](ackRx=0 frmTx=0)
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=0)
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=89:"INCOMING_ROUTE_RECORD_HANDLER" Seq=71 Len=18]
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=7447 sourceEui=0xa4c138247a1a948b lastHopLqi=172 lastHopRssi=-57 relayCount=0 relayList=
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0](ackRx=0 frmTx=0)
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=0)
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=71 Len=22]
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":20} messageTag=65
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0](ackRx=0 frmTx=0)
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=0)
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=71 Len=46]
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":87} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":168,"lastHopRssi":-58,"lastHopTimestamp":0} messageContents=18240105050021ed000805002100000b0500210000
+[2026-02-13 10:02:57] debug: 	zh:controller: Received payload: clusterID=2820, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=168, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":36,"commandIdentifier":1},"payload":[{"attrId":1285,"status":0,"dataType":33,"attrData":237},{"attrId":1288,"status":0,"dataType":33,"attrData":0},{"attrId":1291,"status":0,"dataType":33,"attrData":0}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:02:57] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'haElectricalMeasurement', data '{"activePower":0,"rmsCurrent":0,"rmsVoltage":237}' from endpoint 1 with groupID 0
+[2026-02-13 10:02:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":168,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":237}'
+[2026-02-13 10:02:57] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 seMetering.read(["currentSummDelivered"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:02:57] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":37,"commandIdentifier":0}]
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=72 Len=26]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=0 frmRx=7](ackRx=0)
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1](ackRx=0 frmTx=1)
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=1)
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=72 Len=7]
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=21 messageTag=66 status=OK]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1](ackRx=1 frmTx=1)
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=1)
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=72 Len=22]
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":21} messageTag=66
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1](ackRx=1 frmTx=1)
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:02:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=1)
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=72 Len=38]
+[2026-02-13 10:02:57] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":88} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":168,"lastHopRssi":-58,"lastHopTimestamp":0} messageContents=18250100000025a50b00000000
+[2026-02-13 10:02:57] debug: 	zh:controller: Received payload: clusterID=1794, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=168, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":37,"commandIdentifier":1},"payload":[{"attrId":0,"status":0,"dataType":37,"attrData":2981}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:02:57] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'seMetering', data '{"currentSummDelivered":2981}' from endpoint 1 with groupID 0
+[2026-02-13 10:02:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":168,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":237}'
+[2026-02-13 10:03:16] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/device/remove' with data '{"block":false,"force":true,"id":"0x18690afffe11019c","transaction":"i52sr-9"}'
+[2026-02-13 10:03:16] info: 	z2m: Removing device '0x18690afffe11019c' (block: false, force: true)
+[2026-02-13 10:03:16] debug: 	zh:controller:database: Writing database to '/config/zigbee2mqtt/database.db'
+[2026-02-13 10:03:16] debug: 	z2m: Clearing Home Assistant discovery for '0x18690afffe11019c'
+[2026-02-13 10:03:16] info: 	z2m:mqtt: MQTT publish: topic 'homeassistant/sensor/0x18690afffe11019c/linkquality/config', payload ''
+[2026-02-13 10:03:16] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/0x18690afffe11019c', payload ''
+[2026-02-13 10:03:16] info: 	z2m: Successfully removed device '0x18690afffe11019c' (block: false, force: true)
+[2026-02-13 10:03:16] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/device/remove', payload '{"data":{"block":false,"force":true,"id":"0x18690afffe11019c"},"status":"ok","transaction":"i52sr-9"}'
+[2026-02-13 10:03:47] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:03:47] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1](ackRx=1 frmTx=1)
+[2026-02-13 10:03:47] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:03:47] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=1)
+[2026-02-13 10:03:47] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=155:"ZIGBEE_KEY_ESTABLISHMENT_HANDLER" Seq=72 Len=14]
+[2026-02-13 10:03:47] debug: 	zh:ember:ezsp: ezspZigbeeKeyEstablishmentHandler: partner=0x18690afffe11019c status=TC_REQUESTER_VERIFY_KEY_TIMEOUT
+[2026-02-13 10:03:50] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:03:50] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1](ackRx=1 frmTx=1)
+[2026-02-13 10:03:50] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:03:50] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=1)
+[2026-02-13 10:03:50] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=125:"INCOMING_MANY_TO_ONE_ROUTE_REQUEST_HANDLER" Seq=72 Len=16]
+[2026-02-13 10:03:50] debug: 	zh:ember:ezsp: ezspIncomingManyToOneRouteRequestHandler: source=40200 longId=0x842712fffedb8ddb cost=1
+[2026-02-13 10:03:57] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 haElectricalMeasurement.read(["rmsVoltage","rmsCurrent","activePower"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:03:57] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":38,"commandIdentifier":0}]
+[2026-02-13 10:03:57] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=73 Len=30]
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=1 frmRx=4](ackRx=1)
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=1 frmTx=2)
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=2)
+[2026-02-13 10:03:57] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=73 Len=7]
+[2026-02-13 10:03:57] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=22 messageTag=67 status=OK]
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=2 frmTx=2)
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=2)
+[2026-02-13 10:03:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=89:"INCOMING_ROUTE_RECORD_HANDLER" Seq=73 Len=18]
+[2026-02-13 10:03:57] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=7447 sourceEui=0xa4c138247a1a948b lastHopLqi=172 lastHopRssi=-57 relayCount=0 relayList=
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=2 frmTx=2)
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=2)
+[2026-02-13 10:03:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=73 Len=22]
+[2026-02-13 10:03:57] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":22} messageTag=67
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=2 frmTx=2)
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:03:57] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=2)
+[2026-02-13 10:03:57] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=73 Len=46]
+[2026-02-13 10:03:57] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":89} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":172,"lastHopRssi":-57,"lastHopTimestamp":0} messageContents=18260105050021ee000805002100000b0500210000
+[2026-02-13 10:03:57] debug: 	zh:controller: Received payload: clusterID=2820, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=172, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":38,"commandIdentifier":1},"payload":[{"attrId":1285,"status":0,"dataType":33,"attrData":238},{"attrId":1288,"status":0,"dataType":33,"attrData":0},{"attrId":1291,"status":0,"dataType":33,"attrData":0}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:03:57] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'haElectricalMeasurement', data '{"activePower":0,"rmsCurrent":0,"rmsVoltage":238}' from endpoint 1 with groupID 0
+[2026-02-13 10:03:57] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":172,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":238}'
+[2026-02-13 10:03:58] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 seMetering.read(["currentSummDelivered"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:03:58] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":39,"commandIdentifier":0}]
+[2026-02-13 10:03:58] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=74 Len=26]
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=2 frmRx=0](ackRx=2)
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=2 frmTx=3)
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=3)
+[2026-02-13 10:03:58] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=74 Len=7]
+[2026-02-13 10:03:58] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=23 messageTag=68 status=OK]
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=3 frmTx=3)
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=3)
+[2026-02-13 10:03:58] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=74 Len=22]
+[2026-02-13 10:03:58] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":23} messageTag=68
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=3 frmTx=3)
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:03:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=3)
+[2026-02-13 10:03:58] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=74 Len=38]
+[2026-02-13 10:03:58] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":90} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":172,"lastHopRssi":-57,"lastHopTimestamp":0} messageContents=18270100000025a50b00000000
+[2026-02-13 10:03:58] debug: 	zh:controller: Received payload: clusterID=1794, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=172, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":39,"commandIdentifier":1},"payload":[{"attrId":0,"status":0,"dataType":37,"attrData":2981}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:03:58] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'seMetering', data '{"currentSummDelivered":2981}' from endpoint 1 with groupID 0
+[2026-02-13 10:03:58] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":172,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":238}'
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=3 frmTx=3)
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=3)
+[2026-02-13 10:04:20] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=89:"INCOMING_ROUTE_RECORD_HANDLER" Seq=74 Len=18]
+[2026-02-13 10:04:20] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=25563 sourceEui=0xa4c13800ab3b1cc6 lastHopLqi=224 lastHopRssi=-44 relayCount=0 relayList=
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=3 frmTx=3)
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=3)
+[2026-02-13 10:04:20] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=74 Len=37]
+[2026-02-13 10:04:20] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":25,"sourceEndpoint":1,"destinationEndpoint":1,"options":256,"groupId":0,"sequence":231} packetInfo:{"senderShortId":25563,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":224,"lastHopRssi":-44,"lastHopTimestamp":0} messageContents=01d401001812100502200110
+[2026-02-13 10:04:20] debug: 	zh:controller: Received payload: clusterID=25, address=25563, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=224, frame={"header":{"frameControl":{"frameType":1,"manufacturerSpecific":false,"direction":0,"disableDefaultResponse":false,"reservedBits":0},"transactionSequenceNumber":212,"commandIdentifier":1},"payload":{"fieldControl":0,"manufacturerCode":4632,"imageType":1296,"fileVersion":268509186},"command":{"ID":1,"response":2,"parameters":[{"name":"fieldControl","type":24},{"name":"manufacturerCode","type":33},{"name":"imageType","type":33,"max":65471},{"name":"fileVersion","type":35},{"name":"hardwareVersion","type":33,"conditions":[{"type":"bitMaskSet","param":"fieldControl","mask":1}]}],"required":true,"name":"queryNextImageRequest"}}
+[2026-02-13 10:04:20] debug: 	z2m: Received Zigbee message from 'Paulmann Spring Bulb 29159', type 'commandQueryNextImageRequest', cluster 'genOta', data '{"fieldControl":0,"fileVersion":268509186,"imageType":1296,"manufacturerCode":4632}' from endpoint 1 with groupID 0
+[2026-02-13 10:04:20] debug: 	z2m: Device 'Paulmann Spring Bulb 29159' requested OTA
+[2026-02-13 10:04:20] debug: 	zh:controller:endpoint: CommandResponse 0xa4c13800ab3b1cc6/1 genOta.queryNextImageResponse({"status":152}, {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":1,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:04:20] debug: 	zh:ember: ~~~> [ZCL to=0xa4c13800ab3b1cc6:25563 apsFrame={"profileId":260,"clusterId":25,"sourceEndpoint":1,"destinationEndpoint":1,"options":4352,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":1,"direction":1,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":212,"commandIdentifier":2}]
+[2026-02-13 10:04:20] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=75 Len=25]
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=3 frmRx=5](ackRx=3)
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=3 frmTx=4)
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=4)
+[2026-02-13 10:04:20] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=75 Len=7]
+[2026-02-13 10:04:20] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=24 messageTag=69 status=OK]
+[2026-02-13 10:04:20] debug: 	z2m: Responded to OTA request of 'Paulmann Spring Bulb 29159' with 'NO_IMAGE_AVAILABLE'
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=4 frmTx=4)
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:04:20] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=4)
+[2026-02-13 10:04:20] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=75 Len=22]
+[2026-02-13 10:04:20] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=25563 apsFrame={"profileId":260,"clusterId":25,"sourceEndpoint":1,"destinationEndpoint":1,"options":4352,"groupId":0,"sequence":24} messageTag=69
+[2026-02-13 10:04:51] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:51] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=4 frmTx=4)
+[2026-02-13 10:04:51] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:04:51] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=4)
+[2026-02-13 10:04:51] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=125:"INCOMING_MANY_TO_ONE_ROUTE_REQUEST_HANDLER" Seq=75 Len=16]
+[2026-02-13 10:04:51] debug: 	zh:ember:ezsp: ezspIncomingManyToOneRouteRequestHandler: source=40200 longId=0x842712fffedb8ddb cost=1
+[2026-02-13 10:04:58] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 haElectricalMeasurement.read(["rmsVoltage","rmsCurrent","activePower"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:04:58] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":40,"commandIdentifier":0}]
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=76 Len=30]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=4 frmRx=0](ackRx=4)
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=4 frmTx=5)
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=5)
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=76 Len=7]
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=25 messageTag=70 status=OK]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=5 frmTx=5)
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=5)
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=89:"INCOMING_ROUTE_RECORD_HANDLER" Seq=76 Len=18]
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: ezspIncomingRouteRecordHandler: source=7447 sourceEui=0xa4c138247a1a948b lastHopLqi=172 lastHopRssi=-57 relayCount=0 relayList=
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=5 frmTx=5)
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=5)
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=76 Len=22]
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":25} messageTag=70
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=5 frmTx=5)
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=5)
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=76 Len=46]
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":91} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":168,"lastHopRssi":-58,"lastHopTimestamp":0} messageContents=18280105050021ed000805002100000b0500210000
+[2026-02-13 10:04:58] debug: 	zh:controller: Received payload: clusterID=2820, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=168, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":40,"commandIdentifier":1},"payload":[{"attrId":1285,"status":0,"dataType":33,"attrData":237},{"attrId":1288,"status":0,"dataType":33,"attrData":0},{"attrId":1291,"status":0,"dataType":33,"attrData":0}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:04:58] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'haElectricalMeasurement', data '{"activePower":0,"rmsCurrent":0,"rmsVoltage":237}' from endpoint 1 with groupID 0
+[2026-02-13 10:04:58] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":168,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":237}'
+[2026-02-13 10:04:58] debug: 	zh:controller:endpoint: ZCL command 0xa4c138247a1a948b/1 seMetering.read(["currentSummDelivered"], {"timeout":10000,"disableResponse":false,"disableRecovery":false,"disableDefaultResponse":true,"direction":0,"reservedBits":0,"writeUndiv":false})
+[2026-02-13 10:04:58] debug: 	zh:ember: ~~~> [ZCL to=0xa4c138247a1a948b:7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":0,"direction":0,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":41,"commandIdentifier":0}]
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: ===> [FRAME: ID=52:"SEND_UNICAST" Seq=77 Len=26]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=5 frmRx=4](ackRx=5)
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=5 frmTx=6)
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=6)
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: <=== [FRAME: ID=52:"SEND_UNICAST" Seq=77 Len=7]
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: ~~~> [SENT type=DIRECT apsSequence=26 messageTag=71 status=OK]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=6)
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=63:"MESSAGE_SENT_HANDLER" Seq=77 Len=22]
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: ezspMessageSentHandler: status=OK type=DIRECT indexOrDestination=7447 apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":4416,"groupId":0,"sequence":26} messageTag=71
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:04:58] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=6)
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=77 Len=38]
+[2026-02-13 10:04:58] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":1794,"sourceEndpoint":1,"destinationEndpoint":1,"options":320,"groupId":0,"sequence":92} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":168,"lastHopRssi":-58,"lastHopTimestamp":0} messageContents=18290100000025a50b00000000
+[2026-02-13 10:04:58] debug: 	zh:controller: Received payload: clusterID=1794, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=168, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":41,"commandIdentifier":1},"payload":[{"attrId":0,"status":0,"dataType":37,"attrData":2981}],"command":{"ID":1,"name":"readRsp","parameters":[{"name":"attrId","type":9},{"name":"status","type":8},{"name":"dataType","type":8,"conditions":[{"type":"fieldEquals","field":"status","value":0}]},{"name":"attrData","type":1000,"conditions":[{"type":"fieldEquals","field":"status","value":0}]}]}}
+[2026-02-13 10:04:58] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'readResponse', cluster 'seMetering', data '{"currentSummDelivered":2981}' from endpoint 1 with groupID 0
+[2026-02-13 10:04:58] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":168,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":237}'
+[2026-02-13 10:05:00] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:00] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:05:00] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:05:00] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=6)
+[2026-02-13 10:05:00] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=77 Len=32]
+[2026-02-13 10:05:00] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":6,"sourceEndpoint":1,"destinationEndpoint":1,"options":256,"groupId":0,"sequence":93} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":172,"lastHopRssi":-57,"lastHopTimestamp":0} messageContents=18e70a00001000
+[2026-02-13 10:05:00] debug: 	zh:controller: Received payload: clusterID=6, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=172, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":231,"commandIdentifier":10},"payload":[{"attrId":0,"dataType":16,"attrData":0}],"command":{"ID":10,"name":"report","parameters":[{"name":"attrId","type":9},{"name":"dataType","type":8},{"name":"attrData","type":1000}]}}
+[2026-02-13 10:05:00] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'attributeReport', cluster 'genOnOff', data '{"onOff":0}' from endpoint 1 with groupID 0
+[2026-02-13 10:05:00] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":172,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":237}'
+[2026-02-13 10:05:00] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:00] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=6 frmTx=6)
+[2026-02-13 10:05:00] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:05:00] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=6)
+[2026-02-13 10:05:00] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=77 Len=33]
+[2026-02-13 10:05:00] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=UNICAST apsFrame={"profileId":260,"clusterId":2820,"sourceEndpoint":1,"destinationEndpoint":1,"options":256,"groupId":0,"sequence":94} packetInfo:{"senderShortId":7447,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":172,"lastHopRssi":-57,"lastHopTimestamp":0} messageContents=18e80a0805210000
+[2026-02-13 10:05:00] debug: 	zh:controller: Received payload: clusterID=2820, address=7447, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=172, frame={"header":{"frameControl":{"frameType":0,"manufacturerSpecific":false,"direction":1,"disableDefaultResponse":true,"reservedBits":0},"transactionSequenceNumber":232,"commandIdentifier":10},"payload":[{"attrId":1288,"dataType":33,"attrData":0}],"command":{"ID":10,"name":"report","parameters":[{"name":"attrId","type":9},{"name":"dataType","type":8},{"name":"attrData","type":1000}]}}
+[2026-02-13 10:05:00] debug: 	z2m: Received Zigbee message from 'Tuya Connected Outlet', type 'attributeReport', cluster 'haElectricalMeasurement', data '{"rmsCurrent":0}' from endpoint 1 with groupID 0
+[2026-02-13 10:05:00] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/Tuya Connected Outlet', payload '{"child_lock":"UNLOCK","countdown":0,"current":0,"energy":29.81,"indicator_mode":"off/on","linkquality":172,"power":0,"power_outage_memory":"off","state":"OFF","update":{"installed_version":-1,"latest_version":-1,"state":null},"voltage":237}'
+[2026-02-13 10:05:05] debug: 	z2m:mqtt: Received MQTT message on 'zigbee2mqtt/bridge/request/restart' with data '{"transaction":"sg9f8-1"}'
+[2026-02-13 10:05:05] info: 	z2m: Restarting Zigbee2MQTT
+[2026-02-13 10:05:05] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/response/restart', payload '{"data":{},"status":"ok","transaction":"sg9f8-1"}'
+[2026-02-13 10:05:06] debug: 	z2m: Saving state to file /config/zigbee2mqtt/state.json
+[2026-02-13 10:05:06] info: 	z2m:mqtt: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload '{"state":"offline"}'
+[2026-02-13 10:05:06] info: 	z2m: Disconnecting from MQTT server
+[2026-02-13 10:05:06] info: 	z2m: Stopping zigbee-herdsman...
+[2026-02-13 10:05:06] debug: 	zh:controller: Disable joining
+[2026-02-13 10:05:06] debug: 	zh:ember: ~~~> [ZCL BROADCAST apsFrame={"profileId":41440,"clusterId":33,"sourceEndpoint":242,"destinationEndpoint":242,"options":4416,"groupId":65533,"sequence":0} header={"frameControl":{"reservedBits":0,"frameType":1,"direction":1,"disableDefaultResponse":true,"manufacturerSpecific":false},"transactionSequenceNumber":42,"commandIdentifier":2}]
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=54:"SEND_BROADCAST" Seq=78 Len=27]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=6 frmRx=1](ackRx=6)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7](ackRx=6 frmTx=7)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=7)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=54:"SEND_BROADCAST" Seq=78 Len=7]
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ~~~> [SENT type=BROADCAST apsSequence=27 messageTag=72 status=OK]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7](ackRx=7 frmTx=7)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=7)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [CBFRAME: ID=69:"INCOMING_MESSAGE_HANDLER" Seq=78 Len=30]
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ezspIncomingMessageHandler: type=BROADCAST_LOOPBACK apsFrame={"profileId":41440,"clusterId":33,"sourceEndpoint":242,"destinationEndpoint":242,"options":256,"groupId":0,"sequence":27} packetInfo:{"senderShortId":0,"senderLongId":"0xffffffffffffffff","bindingIndex":255,"addressIndex":255,"lastHopLqi":255,"lastHopRssi":0,"lastHopTimestamp":0} messageContents=192a020a0000
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=107:"CLEAR_TRANSIENT_LINK_KEYS" Seq=79 Len=5]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=7 frmRx=3](ackRx=7)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0](ackRx=7 frmTx=0)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=0)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=107:"CLEAR_TRANSIENT_LINK_KEYS" Seq=79 Len=5]
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=85:"SET_POLICY" Seq=80 Len=7]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=0 frmRx=4](ackRx=0)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1](ackRx=0 frmTx=1)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=1 frmNum=4](frmRx=4) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=5](ackRx=1)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=85:"SET_POLICY" Seq=80 Len=6]
+[2026-02-13 10:05:06] debug: 	zh:ember: [EzspPolicyId] SET 'TRUST_CENTER_POLICY' TO '2' with status=OK.
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=34:"PERMIT_JOINING" Seq=81 Len=6]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=1 frmRx=5](ackRx=1)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2](ackRx=1 frmTx=2)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=2 frmNum=5](frmRx=5) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=6](ackRx=2)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=34:"PERMIT_JOINING" Seq=81 Len=6]
+[2026-02-13 10:05:06] debug: 	zh:ember: Permit joining on coordinator for 0 sec.
+[2026-02-13 10:05:06] debug: 	zh:ember: ~~~> [ZDO PERMIT_JOINING_REQUEST BROADCAST to=65532 messageTag=51 payload=330001]
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=54:"SEND_BROADCAST" Seq=82 Len=24]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=2 frmRx=6](ackRx=2)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3](ackRx=2 frmTx=3)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=3 frmNum=6](frmRx=6) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=7](ackRx=3)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=54:"SEND_BROADCAST" Seq=82 Len=7]
+[2026-02-13 10:05:06] debug: 	zh:ember: ~~~> [SENT ZDO BROADCAST messageTag=51 apsSequence=28 status=OK]
+[2026-02-13 10:05:06] debug: 	zh:controller:database: Writing database to '/config/zigbee2mqtt/database.db'
+[2026-02-13 10:05:06] debug: 	zh:controller: Creating coordinator backup
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=40:"GET_NETWORK_PARAMETERS" Seq=83 Len=5]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=3 frmRx=7](ackRx=3)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4](ackRx=3 frmTx=4)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=4 frmNum=7](frmRx=7) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=0](ackRx=4)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=40:"GET_NETWORK_PARAMETERS" Seq=83 Len=27]
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=38:"GET_EUI64" Seq=84 Len=5]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=4 frmRx=0](ackRx=4)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5](ackRx=4 frmTx=5)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=5 frmNum=0](frmRx=0) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=1](ackRx=5)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=38:"GET_EUI64" Seq=84 Len=13]
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=278:"GET_NETWORK_KEY_INFO" Seq=85 Len=5]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=5 frmRx=1](ackRx=5)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6](ackRx=5 frmTx=6)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=6 frmNum=1](frmRx=1) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=2](ackRx=6)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=278:"GET_NETWORK_KEY_INFO" Seq=85 Len=17]
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=276:"EXPORT_KEY" Seq=86 Len=23]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=6 frmRx=2](ackRx=6)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7](ackRx=6 frmTx=7)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=7 frmNum=2](frmRx=2) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=3](ackRx=7)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=276:"EXPORT_KEY" Seq=86 Len=25]
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: ===> [FRAME: ID=276:"EXPORT_KEY" Seq=87 Len=23]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=DATA frmTx=7 frmRx=3](ackRx=7)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA]
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0](ackRx=7 frmTx=0)
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: <--- [FRAME type=DATA ackNum=0 frmNum=3](frmRx=3) Added to rxQueue
+[2026-02-13 10:05:06] debug: 	zh:ember:uart:ash: ---> [FRAME type=ACK frmRx=4](ackRx=0)
+[2026-02-13 10:05:06] debug: 	zh:ember:ezsp: <=== [FRAME: ID=276:"EXPORT_KEY" Seq=87 Len=25]
+[2026-02-13 10:05:06] info: 	zh:controller: Wrote coordinator backup to '/config/zigbee2mqtt/coordinator_backup.json'
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash: ASH COUNTERS since last clear:
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Total frames: RX=775, TX=997
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Cancelled   : RX=0, TX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   DATA frames : RX=775, TX=222
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   DATA bytes  : RX=16273, TX=5813
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Retry frames: RX=0, TX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   ACK frames  : RX=0, TX=775
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   NAK frames  : RX=0, TX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   nRdy frames : RX=0, TX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   CRC errors      : RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Comm errors     : RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Length < minimum: RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Length > maximum: RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Bad controls    : RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Bad lengths     : RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Bad ACK numbers : RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Out of buffers  : RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Retry dupes     : RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   Out of sequence : RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash:   ACK timeouts    : RX=0
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash: Port closed, error=null
+[2026-02-13 10:05:06] info: 	zh:ember:uart:ash: ======== ASH stopped ========
+[2026-02-13 10:05:06] info: 	zh:ember:ezsp: ======== EZSP stopped ========
+[2026-02-13 10:05:06] info: 	zh:ember: ======== Ember Adapter Stopped ========
+[2026-02-13 10:05:06] info: 	z2m: Stopped zigbee-herdsman
+[2026-02-13 10:05:06] info: 	z2m: Stopped Zigbee2MQTT

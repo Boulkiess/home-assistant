@@ -1,0 +1,40 @@
+- trigger:
+    - platform: state
+      entity_id: sensor.galaxy_s23_fabien_next_alarm
+    - platform: time
+      at: "03:00:00"
+
+  sensor:
+    - name: Galaxy S23 Alarm Workday Morning
+      device_class: timestamp
+
+      state: >
+        {% set entity = 'sensor.galaxy_s23_fabien_next_alarm' %}
+        {% set min_h = 3 %}
+        {% set max_h = 11 %}
+
+        {% set alarm = states(entity) %}
+
+        {% if alarm not in ['unknown','unavailable','none',''] %}
+          {% set dt = as_local(as_datetime(alarm)) %}
+          {% set is_workday = dt.weekday() in [0,1,2,3,4] %}
+
+          {% if is_workday
+                and min_h <= dt.hour < max_h
+                and dt > now() %}
+            {{ dt.isoformat() }}
+          {% else %}
+            {{ none }}
+          {% endif %}
+        {% else %}
+          {{ none }}
+        {% endif %}
+
+    - name: Galaxy S23 Alarm Workday Morning Date
+      state: >
+        {% set s = states('sensor.galaxy_s23_alarm_workday_morning') %}
+        {% if s not in ['unknown','unavailable','none',''] %}
+          {{ as_local(as_datetime(s)).strftime('%H:%M') }}
+        {% else %}
+          --
+        {% endif %}

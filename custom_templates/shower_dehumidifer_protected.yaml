@@ -1,0 +1,25 @@
+- switch:
+    - name: "Dehumidifier Protected"
+      unique_id: dehumidifier_protected
+
+      state: "{{ is_state('switch.dehumidifier', 'on') }}"
+
+      variables:
+        min_interval_seconds: 300
+        elapsed: >
+          {{ as_timestamp(now()) -
+              as_timestamp(states.switch.dehumidifier.last_changed) }}
+
+      turn_on:
+        - condition: template
+          value_template: "{{ elapsed > min_interval_seconds }}"
+        - service: switch.turn_on
+          target:
+            entity_id: switch.dehumidifier
+
+      turn_off:
+        - condition: template
+          value_template: "{{ elapsed > min_interval_seconds }}"
+        - service: switch.turn_off
+          target:
+            entity_id: switch.dehumidifier

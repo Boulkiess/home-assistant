@@ -1,0 +1,127 @@
+- id: '1726522549290'
+  name: Night mode
+  entities:
+    light.all:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6666
+      min_mireds: 150
+      max_mireds: 500
+      effect_list:
+      - None
+      - blink
+      - breathe
+      - candle
+      - channel_change
+      - finish_effect
+      - fire
+      - glisten
+      - okay
+      - opal
+      - prism
+      - sparkle
+      - stop_effect
+      - sunrise
+      - sunset
+      - unknown
+      supported_color_modes:
+      - color_temp
+      - xy
+      effect:
+      color_mode:
+      brightness:
+      color_temp_kelvin:
+      color_temp:
+      hs_color:
+      rgb_color:
+      xy_color:
+      entity_id:
+      - light.bedroom
+      - light.desk
+      - light.kitchen
+      - light.living_room
+      icon: mdi:lightbulb-group
+      friendly_name: all
+      supported_features: 44
+      state: 'off'
+  icon: mdi:moon-waning-crescent
+  metadata:
+    light.all:
+      entity_only: true
+- id: '1729720290289'
+  name: Cooking Session
+  entities:
+    light.kitchen:
+      effect_list:
+      - blink
+      - breathe
+      - channel_change
+      - finish_effect
+      - okay
+      - stop_effect
+      supported_color_modes:
+      - brightness
+      effect:
+      color_mode: brightness
+      brightness: 255
+      entity_id:
+      - light.0x842712fffedb8ddb
+      - light.ikea_tradfri_mittled_driver
+      icon: mdi:lightbulb-group
+      friendly_name: kitchen
+      supported_features: 44
+      state: 'on'
+    light.living_room:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6666
+      min_mireds: 150
+      max_mireds: 500
+      effect_list:
+      - None
+      - blink
+      - breathe
+      - candle
+      - channel_change
+      - finish_effect
+      - fire
+      - glisten
+      - okay
+      - opal
+      - prism
+      - sparkle
+      - stop_effect
+      - sunrise
+      - sunset
+      - unknown
+      supported_color_modes:
+      - color_temp
+      - xy
+      icon: mdi:lightbulb-group
+      friendly_name: living_room
+      supported_features: 44
+      effect: None
+      color_mode: color_temp
+      brightness: 82
+      color_temp_kelvin: 2050
+      color_temp: 487
+      hs_color:
+      - 30.382
+      - 91.897
+      rgb_color:
+      - 255
+      - 139
+      - 20
+      xy_color:
+      - 0.594
+      - 0.385
+      entity_id:
+      - light.tv_left
+      - light.tv_right
+      - light.paulmann_spring_bulb_29159
+      - light.lamp_post
+      state: 'on'
+  icon: mdi:chef-hat
+  metadata:
+    light.kitchen:
+      entity_only: true
+    light.living_room:
+      entity_only: true

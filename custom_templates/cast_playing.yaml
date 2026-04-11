@@ -1,0 +1,6 @@
+- binary_sensor:
+    - name: "TV Playing"
+      unique_id: tv_playing
+      device_class: running
+      state: >
+        {{ is_state('media_player.connect_tv_de_sfr_2', 'playing') }}

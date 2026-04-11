@@ -1,0 +1,58 @@
+homeassistant: true
+advanced:
+  network_key:
+    - 95
+    - 79
+    - 162
+    - 132
+    - 65
+    - 46
+    - 110
+    - 194
+    - 96
+    - 211
+    - 192
+    - 87
+    - 41
+    - 63
+    - 3
+    - 177
+  pan_id: 36961
+  ext_pan_id:
+    - 110
+    - 244
+    - 2
+    - 96
+    - 197
+    - 124
+    - 20
+    - 80
+  homeassistant_legacy_entity_attributes: false
+  legacy_api: false
+  legacy_availability_payload: false
+mqtt:
+  server: mqtt://core-mosquitto:1883
+  user: mqtt
+  password: mqtt
+  base_topic: zigbee2mqtt
+frontend:
+  port: 8099
+serial:
+  port: >-
+    /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_4a3cf6fa99dbed11a440e62d62c613ac-if00-port0
+  adapter: ember
+device_options:
+  legacy: false
+devices:
+  '0x30fb10fffe4c12d6':
+    friendly_name: IKEA Tradfri Switch 1
+  '0x30fb10fffe4c1e7d':
+    friendly_name: IKEA Tradfri Switch 2
+  '0x842712fffedb8ddb':
+    friendly_name: IKEA Tradfri Mittled Driver
+  '0xa4c13800ab3b1cc6':
+    friendly_name: Paulmann Spring Bulb 29159
+  '0xa4c138247a1a948b':
+    friendly_name: Tuya Connected Outlet
+  '0xd44867fffeff5bc8':
+    friendly_name: IKEA Rodret Switch 1

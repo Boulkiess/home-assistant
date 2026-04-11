@@ -7,6 +7,8 @@ class PlantWateringCard extends HTMLElement {
 
   set hass(hass) {
     this._hass = hass;
+    if (this._deleted) return;
+
     if (!this._rendered) {
       this._render();
       this._rendered = true;
@@ -48,7 +50,7 @@ class PlantWateringCard extends HTMLElement {
     const needsWatering = this._needsWatering(attrs);
     const level = this._waterLevel(attrs);
     const daysSince = attrs.days_since_watered;
-    const interval  = attrs.watering_interval;
+    const interval = attrs.watering_interval;
     const nextWatering = (interval !== undefined && daysSince !== undefined)
       ? Math.max(0, interval - daysSince) : null;
 
@@ -82,7 +84,7 @@ class PlantWateringCard extends HTMLElement {
     if (badge) {
       if (this._cfg('show_badge', true)) {
         badge.style.display = 'inline-block';
-        badge.textContent   = needsWatering ? '💧 À arroser' : '✓ Arrosé';
+        badge.textContent = needsWatering ? '💧 À arroser' : '✓ Arrosé';
         badge.style.background = needsWatering
           ? 'var(--error-color,#db4437)'
           : 'var(--success-color,#43a047)';
@@ -97,7 +99,7 @@ class PlantWateringCard extends HTMLElement {
     const stateObj = this._hass.states[this._config.entity];
     if (!stateObj) return;
 
-    const today   = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split('T')[0];
     const plantId = this._config.plant_id || stateObj.attributes.plant_name;
 
     const btn = this.shadowRoot.querySelector('.water-btn');
@@ -120,10 +122,10 @@ class PlantWateringCard extends HTMLElement {
     if (!stateObj) return;
     const attrs = stateObj.attributes;
     const overlay = this.shadowRoot.querySelector('.modal-overlay');
-    overlay.querySelector('[name=plant_name]').value         = attrs.plant_name || '';
-    overlay.querySelector('[name=last_watered]').value       = attrs.last_watered || '';
-    overlay.querySelector('[name=last_fertilized]').value    = attrs.last_fertilized || '';
-    overlay.querySelector('[name=watering_interval]').value  = attrs.watering_interval ?? '';
+    overlay.querySelector('[name=plant_name]').value = attrs.plant_name || '';
+    overlay.querySelector('[name=last_watered]').value = attrs.last_watered || '';
+    overlay.querySelector('[name=last_fertilized]').value = attrs.last_fertilized || '';
+    overlay.querySelector('[name=watering_interval]').value = attrs.watering_interval ?? '';
     overlay.querySelector('[name=watering_postponed]').value = attrs.watering_postponed ?? 0;
     overlay.style.display = 'flex';
   }
@@ -139,11 +141,12 @@ class PlantWateringCard extends HTMLElement {
 
     const data = { plant_id: plantId };
     const v = (n) => overlay.querySelector(`[name=${n}]`).value;
-    if (v('plant_name'))         data.plant_name         = v('plant_name').trim();
-    if (v('last_watered'))       data.last_watered        = v('last_watered');
-    if (v('last_fertilized'))    data.last_fertilized     = v('last_fertilized');
-    if (v('watering_interval')   !== '') data.watering_interval  = parseInt(v('watering_interval'));
-    if (v('watering_postponed')  !== '') data.watering_postponed = parseInt(v('watering_postponed'));
+
+    if (v('plant_name')) data.plant_name = v('plant_name').trim();
+    if (v('last_watered')) data.last_watered = v('last_watered');
+    if (v('last_fertilized')) data.last_fertilized = v('last_fertilized');
+    if (v('watering_interval') !== '') data.watering_interval = parseInt(v('watering_interval'));
+    if (v('watering_postponed') !== '') data.watering_postponed = parseInt(v('watering_postponed'));
 
     const saveBtn = overlay.querySelector('.save-btn');
     saveBtn.disabled = true;
@@ -160,6 +163,39 @@ class PlantWateringCard extends HTMLElement {
     saveBtn.textContent = 'Enregistrer';
   }
 
+  async _deletePlant() {
+    const stateObj = this._hass.states[this._config.entity];
+    if (!stateObj) return;
+
+    const plantId = this._config.plant_id || stateObj.attributes.plant_name;
+
+    if (!confirm(`Supprimer la plante "${plantId}" ?`)) return;
+
+    const overlay = this.shadowRoot.querySelector('.modal-overlay');
+    const btn = overlay.querySelector('.delete-btn');
+
+    btn.disabled = true;
+    btn.textContent = 'Suppression…';
+
+    try {
+      await this._hass.callService('plant_diary', 'delete_plant', {
+        plant_id: plantId,
+      });
+
+      this._closeEditModal();
+
+
+      this._deleted = true;
+      this.shadowRoot.innerHTML = '';
+
+    } catch (e) {
+      alert(`Erreur suppression : ${e.message || e}`);
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Supprimer';
+  }
+
   _render() {
     if (!this._hass || !this._config) return;
     const entity = this._config.entity;
@@ -170,19 +206,19 @@ class PlantWateringCard extends HTMLElement {
       return;
     }
 
-    const attrs        = stateObj.attributes;
-    const plantName    = attrs.plant_name || attrs.friendly_name || entity;
-    const icon         = attrs.icon || 'mdi:flower';
-    const needsWatering= this._needsWatering(attrs);
-    const level        = this._waterLevel(attrs);
-    const daysSince    = attrs.days_since_watered;
-    const interval     = attrs.watering_interval;
+    const attrs = stateObj.attributes;
+    const plantName = attrs.plant_name || attrs.friendly_name || entity;
+    const icon = attrs.icon || 'mdi:flower';
+    const needsWatering = this._needsWatering(attrs);
+    const level = this._waterLevel(attrs);
+    const daysSince = attrs.days_since_watered;
+    const interval = attrs.watering_interval;
     const nextWatering = (interval !== undefined && daysSince !== undefined)
       ? Math.max(0, interval - daysSince) : null;
 
-    const barColor   = this._cfg('bar_color',   'var(--info-color, #2196f3)');
-    const barOpacity = this._cfg('bar_opacity',  0.18);
-    const photoUrl   = this._cfg('photo_url',    null);
+    const barColor = this._cfg('bar_color', 'var(--info-color, #2196f3)');
+    const barOpacity = this._cfg('bar_opacity', 0.18);
+    const photoUrl = this._cfg('photo_url', null);
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -279,6 +315,16 @@ class PlantWateringCard extends HTMLElement {
           background: var(--primary-color, #03a9f4); color: #fff;
         }
         .save-btn:disabled { opacity: 0.6; cursor: default; }
+
+        .delete-btn {
+          padding: 8px 16px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          font-size: 0.9rem;
+          background: var(--error-color,#db4437);
+          color: #fff;
+        }
       </style>
 
       <ha-card>
@@ -286,9 +332,9 @@ class PlantWateringCard extends HTMLElement {
 
         <button class="water-btn" title="Cliquer pour arroser" aria-label="Enregistrer l'arrosage">
           ${photoUrl
-            ? `<img class="avatar-photo" src="${photoUrl}" alt="${plantName}">`
-            : `<div class="avatar-icon"><ha-icon icon="${icon}"></ha-icon></div>`
-          }
+        ? `<img class="avatar-photo" src="${photoUrl}" alt="${plantName}">`
+        : `<div class="avatar-icon"><ha-icon icon="${icon}"></ha-icon></div>`
+      }
         </button>
 
         <div class="info">
@@ -311,6 +357,7 @@ class PlantWateringCard extends HTMLElement {
           <div class="field"><label>Intervalle d'arrosage (jours)</label><input name="watering_interval" type="number" min="1"></div>
           <div class="field"><label>Arrosage reporté (jours)</label><input name="watering_postponed" type="number" min="0"></div>
           <div class="modal-actions">
+            <button class="delete-btn">Supprimer</button>
             <button class="cancel-btn">Annuler</button>
             <button class="save-btn">Enregistrer</button>
           </div>
@@ -318,33 +365,39 @@ class PlantWateringCard extends HTMLElement {
       </div>
     `;
 
-    // Clic court → arrosage
     this.shadowRoot.querySelector('.water-btn')
       .addEventListener('click', () => this._handleWaterClick());
 
-    // Appui long → modale
     const card = this.shadowRoot.querySelector('ha-card');
     let longPressTimer = null;
+
     const startLongPress = () => {
       longPressTimer = setTimeout(() => { longPressTimer = null; this._openEditModal(); }, 600);
     };
     const cancelLongPress = () => {
       if (longPressTimer) { clearTimeout(longPressTimer); longPressTimer = null; }
     };
-    card.addEventListener('mousedown',   startLongPress);
-    card.addEventListener('touchstart',  startLongPress, { passive: true });
-    card.addEventListener('mouseup',     cancelLongPress);
-    card.addEventListener('mouseleave',  cancelLongPress);
-    card.addEventListener('touchend',    cancelLongPress);
+
+    card.addEventListener('mousedown', startLongPress);
+    card.addEventListener('touchstart', startLongPress, { passive: true });
+    card.addEventListener('mouseup', cancelLongPress);
+    card.addEventListener('mouseleave', cancelLongPress);
+    card.addEventListener('touchend', cancelLongPress);
     card.addEventListener('touchcancel', cancelLongPress);
 
-    // Modale
     this.shadowRoot.querySelector('.cancel-btn')
       .addEventListener('click', () => this._closeEditModal());
+
     this.shadowRoot.querySelector('.save-btn')
       .addEventListener('click', () => this._submitEdit());
+
+    this.shadowRoot.querySelector('.delete-btn')
+      .addEventListener('click', () => this._deletePlant());
+
     this.shadowRoot.querySelector('.modal-overlay')
-      .addEventListener('click', (e) => { if (e.target === e.currentTarget) this._closeEditModal(); });
+      .addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) this._closeEditModal();
+      });
   }
 
   getCardSize() { return 1; }
@@ -352,6 +405,7 @@ class PlantWateringCard extends HTMLElement {
 }
 
 customElements.define('plant-watering-card', PlantWateringCard);
+
 window.customCards = window.customCards || [];
 window.customCards.push({
   type: 'plant-watering-card',

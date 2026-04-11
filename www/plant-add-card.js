@@ -1,7 +1,7 @@
 class PlantAddCard extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
     this._rendered = false;
   }
 
@@ -20,26 +20,26 @@ class PlantAddCard extends HTMLElement {
   }
 
   _openModal() {
-    const overlay = this.shadowRoot.querySelector('.modal-overlay');
+    const overlay = this.shadowRoot.querySelector(".modal-overlay");
     if (!overlay) return;
 
-    overlay.style.display = 'flex';
+    overlay.style.display = "flex";
 
-    const today = new Date().toISOString().split('T')[0];
-    const input = this.shadowRoot.querySelector('[name=last_watered]');
+    const today = new Date().toISOString().split("T")[0];
+    const input = this.shadowRoot.querySelector("[name=last_watered]");
     if (input) input.value = today;
   }
 
   _closeModal() {
-    const overlay = this.shadowRoot.querySelector('.modal-overlay');
-    if (overlay) overlay.style.display = 'none';
+    const overlay = this.shadowRoot.querySelector(".modal-overlay");
+    if (overlay) overlay.style.display = "none";
   }
 
   async _submit() {
     const root = this.shadowRoot;
     const v = (n) => root.querySelector(`[name=${n}]`)?.value;
 
-    const plantName = v('plant_name')?.trim();
+    const plantName = v("plant_name")?.trim();
     if (!plantName) {
       alert("Plant name is required");
       return;
@@ -47,28 +47,27 @@ class PlantAddCard extends HTMLElement {
 
     const data = {
       plant_name: plantName,
-      plant_id: plantName.toLowerCase().replace(/\s+/g, '_'),
+      plant_id: plantName.toLowerCase().replace(/\s+/g, "_"),
     };
 
-    if (v('watering_interval') !== '')
-      data.watering_interval = parseInt(v('watering_interval'));
+    if (v("watering_interval") !== "")
+      data.watering_interval = parseInt(v("watering_interval"));
 
-    if (v('last_watered'))
-      data.last_watered = v('last_watered');
+    if (v("last_watered")) data.last_watered = v("last_watered");
 
-    const btn = root.querySelector('.save-btn');
+    const btn = root.querySelector(".save-btn");
     btn.disabled = true;
-    btn.textContent = 'Creating...';
+    btn.textContent = "Creating...";
 
     try {
-      await this._hass.callService('plant_diary', 'create_plant', data);
+      await this._hass.callService("plant_diary", "create_plant", data);
       this._closeModal();
     } catch (e) {
       alert(`Error: ${e.message || e}`);
     }
 
     btn.disabled = false;
-    btn.textContent = 'Create';
+    btn.textContent = "Create";
   }
 
   _render() {
@@ -180,29 +179,35 @@ class PlantAddCard extends HTMLElement {
     `;
 
     // Events (only attached once)
-    this.shadowRoot.querySelector('ha-card')
-      .addEventListener('click', () => this._openModal());
+    this.shadowRoot
+      .querySelector("ha-card")
+      .addEventListener("click", () => this._openModal());
 
-    this.shadowRoot.querySelector('.cancel-btn')
-      .addEventListener('click', () => this._closeModal());
+    this.shadowRoot
+      .querySelector(".cancel-btn")
+      .addEventListener("click", () => this._closeModal());
 
-    this.shadowRoot.querySelector('.save-btn')
-      .addEventListener('click', () => this._submit());
+    this.shadowRoot
+      .querySelector(".save-btn")
+      .addEventListener("click", () => this._submit());
 
-    this.shadowRoot.querySelector('.modal-overlay')
-      .addEventListener('click', (e) => {
+    this.shadowRoot
+      .querySelector(".modal-overlay")
+      .addEventListener("click", (e) => {
         if (e.target === e.currentTarget) this._closeModal();
       });
   }
 
-  getCardSize() { return 1; }
+  getCardSize() {
+    return 1;
+  }
 }
 
-customElements.define('plant-add-card', PlantAddCard);
+customElements.define("plant-add-card", PlantAddCard);
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: 'plant-add-card',
-  name: 'Plant Add Card',
-  description: 'Add a new plant (Plant Diary)',
+  type: "plant-add-card",
+  name: "Plant Add Card",
+  description: "Add a new plant (Plant Diary)",
 });

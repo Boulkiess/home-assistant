@@ -58,11 +58,21 @@ class PlantWateringCard extends HTMLElement {
     if (bar) bar.style.width = (level * 100) + '%';
 
     const icon = root.querySelector('ha-icon');
+    const avatar = root.querySelector('.avatar-icon');
+
     if (icon) {
       icon.style.color = needsWatering
         ? 'var(--error-color, #db4437)'
         : 'var(--primary-text-color)';
       icon.setAttribute('icon', attrs.icon || 'mdi:flower');
+    }
+
+    // NEW: border on avatar when watering needed
+    if (avatar) {
+      const borderColor = this._cfg('icon_border_color', 'var(--error-color, #db4437)');
+      avatar.style.border = needsWatering
+        ? `2px solid ${borderColor}`
+        : '2px solid transparent';
     }
 
     const nameEl = root.querySelector('.plant-name');
@@ -183,8 +193,6 @@ class PlantWateringCard extends HTMLElement {
       });
 
       this._closeEditModal();
-
-
       this._deleted = true;
       this.shadowRoot.innerHTML = '';
 

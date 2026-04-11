@@ -1,2 +1,22 @@
+# Core
+.storage/
+home-assistant_v2.db*
+.ha_run.lock
+
+# Logs
 *.log
-log
+
+# Zigbee2MQTT runtime
+zigbee2mqtt/database.db
+zigbee2mqtt/state.json
+
+# Temporary / cache
+*.db-shm
+*.db-wal
+
+# Secrets (souvent exclu)
+secrets.yaml
+
+# IDE
+.vscode/
+.idea/

@@ -72,13 +72,23 @@ class PlantWateringCard extends HTMLElement {
       icon.setAttribute("icon", attrs.icon || "mdi:flower");
     }
 
-    // NEW: border on avatar when watering needed
     if (avatar) {
       const borderColor = this._cfg(
         "icon_border_color",
         "var(--error-color, #db4437)",
       );
-      avatar.style.border = needsWatering
+
+      avatar.style.borderColor = needsWatering ? borderColor : "transparent";
+    }
+
+    const photo = root.querySelector(".avatar-photo");
+    if (photo) {
+      const borderColor = this._cfg(
+        "icon_border_color",
+        "var(--error-color, #db4437)",
+      );
+
+      photo.style.border = needsWatering
         ? `2px solid ${borderColor}`
         : "2px solid transparent";
     }
@@ -285,9 +295,16 @@ class PlantWateringCard extends HTMLElement {
         @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
         .avatar-icon {
-          width: 48px; height: 48px; border-radius: 50%;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
           background: var(--secondary-background-color);
-          display: flex; align-items: center; justify-content: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          border: 2px solid transparent;
+          transition: border-color 0.3s ease;
         }
         ha-icon {
           --mdc-icon-size: 28px;

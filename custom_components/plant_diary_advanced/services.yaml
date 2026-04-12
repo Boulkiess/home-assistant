@@ -1,0 +1,133 @@
+create_plant:
+  name: Create plant
+  description: Create a new plant.
+  fields:
+    plant_name:
+      name: Plant name
+      description: Display name of the plant.
+      required: true
+      example: "Monstera"
+      selector:
+        text:
+    last_watered:
+      name: Last watered
+      description: Date the plant was last watered (YYYY-MM-DD).
+      required: false
+      example: "2026-04-12"
+      selector:
+        date:
+    last_fertilized:
+      name: Last fertilized
+      description: Date the plant was last fertilized (YYYY-MM-DD).
+      required: false
+      selector:
+        date:
+    watering_interval:
+      name: Watering interval (days)
+      description: Static watering interval in days. Ignored if watering_interval_template is set.
+      required: false
+      example: 14
+      selector:
+        number:
+          min: 1
+          max: 365
+    watering_interval_template:
+      name: Watering interval template
+      description: >
+        Jinja2 template that evaluates to the number of days between waterings.
+        Has access to all standard HA template variables (now(), states(), etc.).
+      required: false
+      example: "{{ 21 if now().month in [12,1,2] else 7 }}"
+      selector:
+        template:
+    watering_postponed:
+      name: Postponed (days)
+      description: Extra days added to the current watering interval.
+      required: false
+      example: 0
+      selector:
+        number:
+          min: 0
+          max: 30
+    icon:
+      name: Icon
+      description: MDI icon for the plant.
+      required: false
+      example: "mdi:flower"
+      selector:
+        icon:
+
+update_plant:
+  name: Update plant
+  description: Update an existing plant's attributes.
+  fields:
+    plant_id:
+      name: Plant ID
+      description: Internal ID of the plant (its plant_name at creation time).
+      required: true
+      example: "Monstera"
+      selector:
+        text:
+    plant_name:
+      name: Plant name
+      description: New display name.
+      required: false
+      selector:
+        text:
+    last_watered:
+      name: Last watered
+      description: Date the plant was last watered (YYYY-MM-DD).
+      required: false
+      selector:
+        date:
+    last_fertilized:
+      name: Last fertilized
+      description: Date the plant was last fertilized (YYYY-MM-DD).
+      required: false
+      selector:
+        date:
+    watering_interval:
+      name: Watering interval (days)
+      description: Static watering interval in days.
+      required: false
+      selector:
+        number:
+          min: 1
+          max: 365
+    watering_interval_template:
+      name: Watering interval template
+      description: Jinja2 template evaluating to the number of days between waterings.
+      required: false
+      selector:
+        template:
+    watering_postponed:
+      name: Postponed (days)
+      description: Extra days added to the current watering interval.
+      required: false
+      selector:
+        number:
+          min: 0
+          max: 30
+    icon:
+      name: Icon
+      description: MDI icon for the plant.
+      required: false
+      selector:
+        icon:
+
+delete_plant:
+  name: Delete plant
+  description: Permanently delete a plant and remove its entity.
+  fields:
+    plant_id:
+      name: Plant ID
+      description: Internal ID of the plant to delete.
+      required: true
+      example: "Monstera"
+      selector:
+        text:
+
+update_days_since_watered:
+  name: Refresh days since watered
+  description: Force a state refresh for all plants (e.g. via automation at midnight).
+  fields: {}

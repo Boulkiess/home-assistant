@@ -13,6 +13,8 @@ zigbee2mqtt/state.json
 # Temporary / cache
 *.db-shm
 *.db-wal
+*.lock
+.cache
 
 # Secrets (souvent exclu)
 secrets.yaml

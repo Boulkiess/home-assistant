@@ -81,7 +81,7 @@ class PlantAddCard extends HTMLElement {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 20px;
+          padding: 0px;
           cursor: pointer;
         }
 

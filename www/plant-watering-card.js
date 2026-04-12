@@ -269,12 +269,21 @@ class PlantWateringCard extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <style>
-        :host { display: block; }
-        ha-card {
-          display: flex; align-items: center;
-          padding: 16px; gap: 16px; box-sizing: border-box;
-          position: relative; user-select: none; overflow: hidden;
+        :host {
+          display: block;
         }
+
+        ha-card {
+          display: flex;
+          align-items: center;
+          padding: 16px;
+          gap: 16px;
+          box-sizing: border-box;
+          position: relative;
+          user-select: none;
+          overflow: hidden;
+        }
+
         .water-bar {
           position: absolute; left: 0; top: 0; bottom: 0;
           background: ${barColor}; opacity: ${barOpacity};
@@ -282,17 +291,44 @@ class PlantWateringCard extends HTMLElement {
           transition: width 0.8s ease;
           pointer-events: none;
         }
+
         .water-btn {
-          background: none; border: none; cursor: pointer; padding: 0;
-          border-radius: 50%; flex-shrink: 0;
-          display: flex; align-items: center; justify-content: center;
-          position: relative; z-index: 1;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          border-radius: 50%;
+          flex-shrink: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          z-index: 1;
           transition: transform 0.15s;
         }
-        .water-btn:active { transform: scale(0.92); }
-        .water-btn:disabled { opacity: 0.5; cursor: default; }
-        .water-btn.loading .avatar-icon ha-icon { animation: spin 0.8s linear infinite; }
-        @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+        .water-btn:active {
+          transform: scale(0.92);
+        }
+
+        .water-btn:disabled {
+          opacity: 0.5;
+          cursor: default;
+        }
+
+        .water-btn.loading .avatar-icon ha-icon {
+          animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+          from {
+            transform: rotate(0deg)
+          }
+
+          to {
+            transform: rotate(360deg)
+          }
+        }
 
         .avatar-icon {
           width: 48px;
@@ -306,26 +342,42 @@ class PlantWateringCard extends HTMLElement {
           border: 2px solid transparent;
           transition: border-color 0.3s ease;
         }
+
         ha-icon {
           --mdc-icon-size: 28px;
           color: ${needsWatering ? "var(--error-color, #db4437)" : "var(--primary-text-color)"};
           transition: color 0.3s;
         }
+
         .avatar-photo {
-          width: 48px; height: 48px; border-radius: 50%;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
           object-fit: cover;
         }
 
-        .info { flex: 1; min-width: 0; position: relative; z-index: 1; }
+        .info {
+          flex: 1;
+          min-width: 0;
+          position: relative;
+          z-index: 1;
+        }
+
         .plant-name {
           font-size: 1rem; font-weight: 500; color: var(--primary-text-color);
           white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
           display: ${this._cfg("show_name", true) ? "block" : "none"};
         }
+
         .details {
-          font-size: 0.8rem; color: var(--secondary-text-color);
-          margin-top: 3px; display: flex; flex-direction: column; gap: 1px;
+          font-size: 0.8rem;
+          color: var(--secondary-text-color);
+          margin-top: 3px;
+          display: flex;
+          flex-direction: column;
+          gap: 1px;
         }
+
         .badge {
           display: ${this._cfg("show_badge", true) ? "inline-block" : "none"};
           margin-top: 4px; padding: 2px 8px; border-radius: 12px;
@@ -333,42 +385,101 @@ class PlantWateringCard extends HTMLElement {
           background: ${needsWatering ? "var(--error-color,#db4437)" : "var(--success-color,#43a047)"};
         }
 
-        /* Modal */
         .modal-overlay {
-          display: none; position: fixed; inset: 0; z-index: 9999;
-          background: rgba(0,0,0,0.55);
-          align-items: center; justify-content: center;
+          display: none;
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          background: rgba(0, 0, 0, 0.55);
+          align-items: center;
+          justify-content: center;
         }
+
         .modal {
           background: var(--card-background-color, #fff);
-          border-radius: 12px; padding: 24px; width: 320px; max-width: 90vw;
-          display: flex; flex-direction: column; gap: 14px;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-          max-height: 90vh; overflow-y: auto;
+          border-radius: 12px;
+          padding: 24px;
+          width: 320px;
+          max-width: 90vw;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+          max-height: 90vh;
+          overflow-y: auto;
         }
-        .modal h3 { margin: 0; font-size: 1rem; font-weight: 500; color: var(--primary-text-color); }
-        .field { display: flex; flex-direction: column; gap: 4px; }
-        .field label { font-size: 0.78rem; color: var(--secondary-text-color); }
-        .field input {
-          padding: 8px 10px; border-radius: 8px; font-size: 0.9rem;
-          border: 1px solid var(--divider-color, #e0e0e0);
-          background: var(--secondary-background-color);
-          color: var(--primary-text-color); outline: none; transition: border-color 0.2s;
-        }
-        .field input:focus { border-color: var(--primary-color); }
-        .field .hint { font-size: 0.72rem; color: var(--secondary-text-color); margin-top: 2px; }
-        .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
-        .cancel-btn {
-          padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer;
-          font-size: 0.9rem; background: var(--secondary-background-color);
+
+        .modal h3 {
+          margin: 0;
+          font-size: 1rem;
+          font-weight: 500;
           color: var(--primary-text-color);
         }
-        .save-btn {
-          padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;
-          font-size: 0.9rem; font-weight: 500;
-          background: var(--primary-color, #03a9f4); color: #fff;
+
+        .field {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
         }
-        .save-btn:disabled { opacity: 0.6; cursor: default; }
+
+        .field label {
+          font-size: 0.78rem;
+          color: var(--secondary-text-color);
+        }
+
+        .field input {
+          padding: 8px 10px;
+          border-radius: 8px;
+          font-size: 0.9rem;
+          border: 1px solid var(--divider-color, #e0e0e0);
+          background: var(--secondary-background-color);
+          color: var(--primary-text-color);
+          outline: none;
+          transition: border-color 0.2s;
+        }
+
+        .field input:focus {
+          border-color: var(--primary-color);
+        }
+
+        .field .hint {
+          font-size: 0.72rem;
+          color: var(--secondary-text-color);
+          margin-top: 2px;
+        }
+
+        .modal-actions {
+          display: flex;
+          gap: 10px;
+          justify-content: flex-end;
+          margin-top: 4px;
+        }
+
+        .cancel-btn {
+          padding: 8px 16px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          font-size: 0.9rem;
+          background: var(--secondary-background-color);
+          color: var(--primary-text-color);
+        }
+
+        .save-btn {
+          padding: 8px 18px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          font-size: 0.9rem;
+          font-weight: 500;
+          background: var(--primary-color, #03a9f4);
+          color: #fff;
+        }
+
+        .save-btn:disabled {
+          opacity: 0.6;
+          cursor: default;
+        }
 
         .delete-btn {
           padding: 8px 16px;
@@ -376,7 +487,7 @@ class PlantWateringCard extends HTMLElement {
           border: none;
           cursor: pointer;
           font-size: 0.9rem;
-          background: var(--error-color,#db4437);
+          background: var(--error-color, #db4437);
           color: #fff;
         }
       </style>

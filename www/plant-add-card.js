@@ -73,77 +73,78 @@ class PlantAddCard extends HTMLElement {
   _render() {
     this.shadowRoot.innerHTML = `
       <style>
-        :host { display:block; }
+        :host {
+          display: block;
+        }
 
         ha-card {
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          padding:20px;
-          cursor:pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          cursor: pointer;
         }
 
         .add-btn {
-          width:56px;
-          height:56px;
-          border-radius:50%;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
           background: var(--primary-color);
-          color:#fff;
-          font-size:28px;
-          display:flex;
-          align-items:center;
-          justify-content:center;
+          color: #fff;
+          font-size: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
-        /* Modal */
         .modal-overlay {
-          display:none;
-          position:fixed;
-          inset:0;
-          z-index:9999;
-          background:rgba(0,0,0,0.5);
-          align-items:center;
-          justify-content:center;
+          display: none;
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          background: rgba(0, 0, 0, 0.5);
+          align-items: center;
+          justify-content: center;
         }
 
         .modal {
           background: var(--card-background-color);
-          border-radius:12px;
-          padding:20px;
-          width:320px;
-          display:flex;
-          flex-direction:column;
-          gap:12px;
+          border-radius: 12px;
+          padding: 20px;
+          width: 320px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
         }
 
         .field {
-          display:flex;
-          flex-direction:column;
-          gap:4px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
         }
 
         input {
-          padding:8px;
-          border-radius:6px;
-          border:1px solid var(--divider-color);
+          padding: 8px;
+          border-radius: 6px;
+          border: 1px solid var(--divider-color);
         }
 
         .actions {
-          display:flex;
-          justify-content:flex-end;
-          gap:8px;
+          display: flex;
+          justify-content: flex-end;
+          gap: 8px;
         }
 
         button {
-          padding:8px 14px;
-          border:none;
-          border-radius:6px;
-          cursor:pointer;
+          padding: 8px 14px;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
         }
 
         .save-btn {
           background: var(--primary-color);
-          color:#fff;
+          color: #fff;
         }
       </style>
 

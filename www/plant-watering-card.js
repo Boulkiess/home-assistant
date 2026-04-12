@@ -72,22 +72,17 @@ class PlantWateringCard extends HTMLElement {
       icon.setAttribute("icon", attrs.icon || "mdi:flower");
     }
 
-    if (avatar) {
-      const borderColor = this._cfg(
-        "icon_border_color",
-        "var(--error-color, #db4437)",
-      );
+    const borderColor = this._cfg(
+      "icon_border_color",
+      "var(--error-color, #db4437)",
+    );
 
+    if (avatar) {
       avatar.style.borderColor = needsWatering ? borderColor : "transparent";
     }
 
     const photo = root.querySelector(".avatar-photo");
     if (photo) {
-      const borderColor = this._cfg(
-        "icon_border_color",
-        "var(--error-color, #db4437)",
-      );
-
       photo.style.border = needsWatering
         ? `2px solid ${borderColor}`
         : "2px solid transparent";
@@ -216,12 +211,10 @@ class PlantWateringCard extends HTMLElement {
     if (!stateObj) return;
 
     const plantId = this._config.plant_id || stateObj.attributes.plant_name;
-
     if (!confirm(`Supprimer la plante "${plantId}" ?`)) return;
 
     const overlay = this.shadowRoot.querySelector(".modal-overlay");
     const btn = overlay.querySelector(".delete-btn");
-
     btn.disabled = true;
     btn.textContent = "Suppression…";
 
@@ -229,7 +222,6 @@ class PlantWateringCard extends HTMLElement {
       await this._hass.callService("plant_diary", "delete_plant", {
         plant_id: plantId,
       });
-
       this._closeEditModal();
       this._deleted = true;
       this.shadowRoot.innerHTML = "";
@@ -266,22 +258,40 @@ class PlantWateringCard extends HTMLElement {
     const barColor = this._cfg("bar_color", "var(--info-color, #2196f3)");
     const barOpacity = this._cfg("bar_opacity", 0.18);
     const photoUrl = this._cfg("photo_url", null);
+    const borderColor = this._cfg(
+      "icon_border_color",
+      "var(--error-color, #db4437)",
+    );
+
+    // Visible text lines determine extra height beyond the 56px base
+    const showName = this._cfg("show_name", true);
+    const showLastWatered = this._cfg("show_last_watered", true);
+    const showDaysSince = this._cfg("show_days_since", true);
+    const showNextWatering = this._cfg("show_next_watering", true);
+    const showBadge = this._cfg("show_badge", true);
+
+    // Base: 56px. Each extra text line beyond the name adds ~18px. Badge adds 22px.
+    const extraLines =
+      (showLastWatered ? 1 : 0) +
+      (showDaysSince ? 1 : 0) +
+      (showNextWatering ? 1 : 0);
+    const minHeight =
+      56 + (extraLines > 0 ? extraLines * 18 : 0) + (showBadge ? 22 : 0);
 
     this.shadowRoot.innerHTML = `
       <style>
-        :host {
-          display: block;
-        }
+        :host { display: block; }
 
         ha-card {
           display: flex;
           align-items: center;
-          padding: 16px;
-          gap: 16px;
+          padding: 0 12px;
+          gap: 12px;
           box-sizing: border-box;
           position: relative;
           user-select: none;
           overflow: hidden;
+          min-height: ${minHeight}px;
         }
 
         .water-bar {
@@ -307,53 +317,42 @@ class PlantWateringCard extends HTMLElement {
           transition: transform 0.15s;
         }
 
-        .water-btn:active {
-          transform: scale(0.92);
-        }
-
-        .water-btn:disabled {
-          opacity: 0.5;
-          cursor: default;
-        }
-
-        .water-btn.loading .avatar-icon ha-icon {
-          animation: spin 0.8s linear infinite;
-        }
+        .water-btn:active { transform: scale(0.92); }
+        .water-btn:disabled { opacity: 0.5; cursor: default; }
+        .water-btn.loading .avatar-icon ha-icon { animation: spin 0.8s linear infinite; }
 
         @keyframes spin {
-          from {
-            transform: rotate(0deg)
-          }
-
-          to {
-            transform: rotate(360deg)
-          }
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
         }
 
         .avatar-icon {
-          width: 48px;
-          height: 48px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           background: var(--secondary-background-color);
           display: flex;
           align-items: center;
           justify-content: center;
           box-sizing: border-box;
-          border: 2px solid transparent;
+          border: 2px solid ${needsWatering ? borderColor : "transparent"};
           transition: border-color 0.3s ease;
         }
 
         ha-icon {
-          --mdc-icon-size: 28px;
+          --mdc-icon-size: 22px;
           color: ${needsWatering ? "var(--error-color, #db4437)" : "var(--primary-text-color)"};
           transition: color 0.3s;
         }
 
         .avatar-photo {
-          width: 48px;
-          height: 48px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           object-fit: cover;
+          box-sizing: border-box;
+          border: 2px solid ${needsWatering ? borderColor : "transparent"};
+          transition: border-color 0.3s ease;
         }
 
         .info {
@@ -361,134 +360,88 @@ class PlantWateringCard extends HTMLElement {
           min-width: 0;
           position: relative;
           z-index: 1;
+          padding: 8px 0;
         }
 
         .plant-name {
-          font-size: 1rem; font-weight: 500; color: var(--primary-text-color);
-          white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-          display: ${this._cfg("show_name", true) ? "block" : "none"};
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: var(--primary-text-color);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: ${showName ? "block" : "none"};
+          line-height: 1.3;
         }
 
         .details {
-          font-size: 0.8rem;
+          font-size: 0.75rem;
           color: var(--secondary-text-color);
-          margin-top: 3px;
+          margin-top: 1px;
           display: flex;
           flex-direction: column;
-          gap: 1px;
+          gap: 0px;
+          line-height: 1.4;
         }
 
         .badge {
-          display: ${this._cfg("show_badge", true) ? "inline-block" : "none"};
-          margin-top: 4px; padding: 2px 8px; border-radius: 12px;
-          font-size: 0.72rem; font-weight: 500; color: #fff;
+          display: ${showBadge ? "inline-block" : "none"};
+          margin-top: 3px;
+          padding: 1px 7px;
+          border-radius: 10px;
+          font-size: 0.68rem;
+          font-weight: 500;
+          color: #fff;
           background: ${needsWatering ? "var(--error-color,#db4437)" : "var(--success-color,#43a047)"};
         }
 
+        /* Modal */
         .modal-overlay {
-          display: none;
-          position: fixed;
-          inset: 0;
-          z-index: 9999;
-          background: rgba(0, 0, 0, 0.55);
-          align-items: center;
-          justify-content: center;
+          display: none; position: fixed; inset: 0; z-index: 9999;
+          background: rgba(0,0,0,0.55);
+          align-items: center; justify-content: center;
         }
 
         .modal {
           background: var(--card-background-color, #fff);
-          border-radius: 12px;
-          padding: 24px;
-          width: 320px;
-          max-width: 90vw;
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-          max-height: 90vh;
-          overflow-y: auto;
+          border-radius: 12px; padding: 24px; width: 320px; max-width: 90vw;
+          display: flex; flex-direction: column; gap: 14px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+          max-height: 90vh; overflow-y: auto;
         }
 
-        .modal h3 {
-          margin: 0;
-          font-size: 1rem;
-          font-weight: 500;
-          color: var(--primary-text-color);
-        }
+        .modal h3 { margin: 0; font-size: 1rem; font-weight: 500; color: var(--primary-text-color); }
 
-        .field {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-
-        .field label {
-          font-size: 0.78rem;
-          color: var(--secondary-text-color);
-        }
-
+        .field { display: flex; flex-direction: column; gap: 4px; }
+        .field label { font-size: 0.78rem; color: var(--secondary-text-color); }
         .field input {
-          padding: 8px 10px;
-          border-radius: 8px;
-          font-size: 0.9rem;
+          padding: 8px 10px; border-radius: 8px; font-size: 0.9rem;
           border: 1px solid var(--divider-color, #e0e0e0);
           background: var(--secondary-background-color);
-          color: var(--primary-text-color);
-          outline: none;
-          transition: border-color 0.2s;
+          color: var(--primary-text-color); outline: none; transition: border-color 0.2s;
         }
+        .field input:focus { border-color: var(--primary-color); }
 
-        .field input:focus {
-          border-color: var(--primary-color);
-        }
-
-        .field .hint {
-          font-size: 0.72rem;
-          color: var(--secondary-text-color);
-          margin-top: 2px;
-        }
-
-        .modal-actions {
-          display: flex;
-          gap: 10px;
-          justify-content: flex-end;
-          margin-top: 4px;
-        }
+        .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; align-items: center; }
 
         .cancel-btn {
-          padding: 8px 16px;
-          border-radius: 8px;
-          border: none;
-          cursor: pointer;
-          font-size: 0.9rem;
-          background: var(--secondary-background-color);
+          padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer;
+          font-size: 0.9rem; background: var(--secondary-background-color);
           color: var(--primary-text-color);
         }
 
         .save-btn {
-          padding: 8px 18px;
-          border-radius: 8px;
-          border: none;
-          cursor: pointer;
-          font-size: 0.9rem;
-          font-weight: 500;
-          background: var(--primary-color, #03a9f4);
-          color: #fff;
+          padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;
+          font-size: 0.9rem; font-weight: 500;
+          background: var(--primary-color, #03a9f4); color: #fff;
         }
 
-        .save-btn:disabled {
-          opacity: 0.6;
-          cursor: default;
-        }
+        .save-btn:disabled { opacity: 0.6; cursor: default; }
 
         .delete-btn {
-          padding: 8px 16px;
-          border-radius: 8px;
-          border: none;
-          cursor: pointer;
-          font-size: 0.9rem;
-          background: var(--error-color, #db4437);
-          color: #fff;
+          padding: 8px 16px; border-radius: 8px; border: none; cursor: pointer;
+          font-size: 0.9rem; background: var(--error-color, #db4437); color: #fff;
+          margin-right: auto;
         }
       </style>
 
@@ -506,9 +459,9 @@ class PlantWateringCard extends HTMLElement {
         <div class="info">
           <div class="plant-name">${plantName}</div>
           <div class="details">
-            ${this._cfg("show_last_watered", true) ? `<span>Dernier arrosage : ${attrs.last_watered || "—"}</span>` : ""}
-            ${this._cfg("show_days_since", true) && daysSince !== undefined ? `<span>Il y a ${daysSince} jour${daysSince > 1 ? "s" : ""} (intervalle : ${interval}j)</span>` : ""}
-            ${this._cfg("show_next_watering", true) && nextWatering !== null && !needsWatering ? `<span>Prochain dans ${nextWatering} jour${nextWatering > 1 ? "s" : ""}</span>` : ""}
+            ${showLastWatered ? `<span>Dernier arrosage : ${attrs.last_watered || "—"}</span>` : ""}
+            ${showDaysSince && daysSince !== undefined ? `<span>Il y a ${daysSince} jour${daysSince > 1 ? "s" : ""} (intervalle : ${interval}j)</span>` : ""}
+            ${showNextWatering && nextWatering !== null && !needsWatering ? `<span>Prochain dans ${nextWatering} jour${nextWatering > 1 ? "s" : ""}</span>` : ""}
           </div>
           <span class="badge">${needsWatering ? "💧 À arroser" : "✓ Arrosé"}</span>
         </div>
@@ -537,7 +490,6 @@ class PlantWateringCard extends HTMLElement {
 
     const card = this.shadowRoot.querySelector("ha-card");
     let longPressTimer = null;
-
     const startLongPress = () => {
       longPressTimer = setTimeout(() => {
         longPressTimer = null;
@@ -550,7 +502,6 @@ class PlantWateringCard extends HTMLElement {
         longPressTimer = null;
       }
     };
-
     card.addEventListener("mousedown", startLongPress);
     card.addEventListener("touchstart", startLongPress, { passive: true });
     card.addEventListener("mouseup", cancelLongPress);
@@ -561,15 +512,12 @@ class PlantWateringCard extends HTMLElement {
     this.shadowRoot
       .querySelector(".cancel-btn")
       .addEventListener("click", () => this._closeEditModal());
-
     this.shadowRoot
       .querySelector(".save-btn")
       .addEventListener("click", () => this._submitEdit());
-
     this.shadowRoot
       .querySelector(".delete-btn")
       .addEventListener("click", () => this._deletePlant());
-
     this.shadowRoot
       .querySelector(".modal-overlay")
       .addEventListener("click", (e) => {

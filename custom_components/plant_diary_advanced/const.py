@@ -1,5 +1,5 @@
-DOMAIN = "plant_diary"
-STORAGE_KEY = "plant_diary.plants"
+DOMAIN = "plant_diary_advanced"
+STORAGE_KEY = "plant_diary_advanced.plants"
 STORAGE_VERSION = 1
 
 ATTR_PLANT_NAME = "plant_name"

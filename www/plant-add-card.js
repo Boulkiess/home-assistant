@@ -83,11 +83,12 @@ class PlantAddCard extends HTMLElement {
           justify-content: center;
           padding: 0px;
           cursor: pointer;
+          min-height: 56px;
         }
 
         .add-btn {
-          width: 56px;
-          height: 56px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           background: var(--primary-color);
           color: #fff;

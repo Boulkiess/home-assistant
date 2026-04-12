@@ -1,0 +1,13 @@
+{
+    "component": {
+        "title": "Plant Diary Advanced",
+        "config": {
+            "step": {
+                "user": {
+                    "title": "Configurer Plant Diary Advanced",
+                    "description": "Aucune option requise. Cliquez sur Soumettre pour ajouter l'intégration."
+                }
+            }
+        }
+    }
+}

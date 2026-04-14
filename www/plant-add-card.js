@@ -60,7 +60,11 @@ class PlantAddCard extends HTMLElement {
     btn.textContent = "Creating...";
 
     try {
-      await this._hass.callService("plant_diary", "create_plant", data);
+      await this._hass.callService(
+        "plant_diary_advanced",
+        "create_plant",
+        data,
+      );
       this._closeModal();
     } catch (e) {
       alert(`Error: ${e.message || e}`);

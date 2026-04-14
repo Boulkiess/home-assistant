@@ -138,7 +138,7 @@ class PlantWateringCard extends HTMLElement {
     }
 
     try {
-      await this._hass.callService("plant_diary", "update_plant", {
+      await this._hass.callService("plant_diary_advanced", "update_plant", {
         plant_id: plantId,
         last_watered: today,
       });
@@ -196,7 +196,11 @@ class PlantWateringCard extends HTMLElement {
     saveBtn.textContent = "Enregistrement…";
 
     try {
-      await this._hass.callService("plant_diary", "update_plant", data);
+      await this._hass.callService(
+        "plant_diary_advanced",
+        "update_plant",
+        data,
+      );
       this._closeEditModal();
     } catch (e) {
       alert(`Erreur lors de la mise à jour : ${e.message || e}`);
@@ -219,7 +223,7 @@ class PlantWateringCard extends HTMLElement {
     btn.textContent = "Suppression…";
 
     try {
-      await this._hass.callService("plant_diary", "delete_plant", {
+      await this._hass.callService("plant_diary_advanced", "delete_plant", {
         plant_id: plantId,
       });
       this._closeEditModal();

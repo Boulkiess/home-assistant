@@ -1,10 +1,11 @@
 """Plant Diary sensor entity."""
+
 from __future__ import annotations
 
 import logging
 from datetime import date, timedelta
 from typing import Any
-
+from functools import cached_property
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
@@ -48,7 +49,7 @@ class PlantEntity(SensorEntity):
         self._plant_id = plant_id
         self._data = dict(data)
         self._attr_unique_id = f"{DOMAIN}_{plant_id}"
-        self._attr_name = f"plant_diary_{data.get(ATTR_PLANT_NAME, plant_id)}"
+        self._attr_name = f"{DOMAIN}_{data.get(ATTR_PLANT_NAME, plant_id)}"
 
     # ------------------------------------------------------------------
     # Template evaluation
@@ -88,7 +89,7 @@ class PlantEntity(SensorEntity):
     # SensorEntity interface
     # ------------------------------------------------------------------
 
-    @property
+    @cached_property
     def native_value(self) -> str:
         days = self._days_since_watered()
         if days is None:
@@ -97,7 +98,7 @@ class PlantEntity(SensorEntity):
         postponed = int(self._data.get(ATTR_WATERING_POSTPONED, 0))
         return STATE_NEEDS_WATER if days >= interval + postponed else STATE_OK
 
-    @property
+    @cached_property
     def extra_state_attributes(self) -> dict[str, Any]:
         days = self._days_since_watered()
         interval = self._evaluate_interval()
@@ -120,7 +121,9 @@ class PlantEntity(SensorEntity):
 
         # Expose template string if present (useful for UI editors)
         if ATTR_WATERING_INTERVAL_TEMPLATE in self._data:
-            attrs[ATTR_WATERING_INTERVAL_TEMPLATE] = self._data[ATTR_WATERING_INTERVAL_TEMPLATE]
+            attrs[ATTR_WATERING_INTERVAL_TEMPLATE] = self._data[
+                ATTR_WATERING_INTERVAL_TEMPLATE
+            ]
 
         return attrs
 

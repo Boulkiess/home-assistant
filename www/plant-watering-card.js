@@ -178,6 +178,7 @@ class PlantWateringCard extends HTMLElement {
       editMapField.style.display = "none";
       editIntervalField.querySelector("[name=watering_interval]").value =
         attrs.watering_interval ?? "";
+      editMapField.querySelector("[name=watering_interval_map]").value = "";
     }
 
     overlay.querySelector("[name=watering_postponed]").value =
@@ -214,7 +215,23 @@ class PlantWateringCard extends HTMLElement {
         v("watering_interval_map") &&
         v("watering_interval_map").trim() !== ""
       ) {
-        data.watering_interval_map = v("watering_interval_map").trim();
+        // On autorise le mapping sur plusieurs lignes (YAML ou JSON)
+        let mapVal = v("watering_interval_map").trim();
+        // Si ce n'est pas du JSON, on tente de convertir le YAML simple en JSON
+        if (!mapVal.startsWith("{") && mapVal.includes(":")) {
+          try {
+            const lines = mapVal.split(/\r?\n/);
+            const obj = {};
+            for (const line of lines) {
+              const m = line.match(/^\s*([^:]+):\s*(\d+)\s*$/);
+              if (m) obj[m[1].trim()] = parseInt(m[2], 10);
+            }
+            mapVal = JSON.stringify(obj);
+          } catch (e) {
+            // ignore
+          }
+        }
+        data.watering_interval_map = mapVal;
       }
     }
 
@@ -449,13 +466,18 @@ class PlantWateringCard extends HTMLElement {
 
         .field { display: flex; flex-direction: column; gap: 4px; }
         .field label { font-size: 0.78rem; color: var(--secondary-text-color); }
-        .field input {
+        .field input, .field textarea {
           padding: 8px 10px; border-radius: 8px; font-size: 0.9rem;
           border: 1px solid var(--divider-color, #e0e0e0);
           background: var(--secondary-background-color);
           color: var(--primary-text-color); outline: none; transition: border-color 0.2s;
         }
-        .field input:focus { border-color: var(--primary-color); }
+        .field input:focus, .field textarea:focus { border-color: var(--primary-color); }
+        .field textarea {
+          min-height: 60px;
+          resize: vertical;
+          font-family: inherit;
+        }
 
         .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; align-items: center; }
 
@@ -508,8 +530,17 @@ class PlantWateringCard extends HTMLElement {
            <div class="field"><label>Nom de la plante</label><input name="plant_name" type="text"></div>
            <div class="field"><label>Dernier arrosage</label><input name="last_watered" type="date"></div>
            <div class="field"><label>Dernière fertilisation</label><input name="last_fertilized" type="date"></div>
-           <div class="field"><label>Intervalle d'arrosage (jours)</label><input name="watering_interval" type="number" min="1"></div>
-           <div class="field"><label>Carte d'intervalles (YAML ou JSON)</label><input name="watering_interval_map" type="text" placeholder="{&quot;été&quot;:7, &quot;hiver&quot;:14}"></div>
+           <div class="field" id="edit-interval-field">
+             <label>Intervalle d'arrosage (jours)</label>
+             <input name="watering_interval" type="number" min="1">
+           </div>
+           <div class="field" id="edit-map-field" style="display:none">
+             <label>Carte d'intervalles (YAML ou JSON, un par ligne)</label>
+             <textarea name="watering_interval_map" placeholder='{"été":7, "hiver":14}\nou\nété: 7\nhiver: 14'></textarea>
+           </div>
+           <div class="field">
+             <label><input type="checkbox" id="adv-edit-toggle"> Mode avancé (mapping par saison/période)</label>
+           </div>
            <div class="field"><label>Arrosage reporté (jours)</label><input name="watering_postponed" type="number" min="0"></div>
            <div class="field"><label>Icône (ex: mdi:flower)</label><input name="icon" type="text" placeholder="mdi:flower"></div>
           <div class="modal-actions">
@@ -534,6 +565,24 @@ class PlantWateringCard extends HTMLElement {
           waterBtn.click();
         });
       }
+    }
+
+    // Gestion du toggle avancé pour l'édition de l'intervalle
+    const advEditToggle = this.shadowRoot.querySelector("#adv-edit-toggle");
+    const editIntervalField = this.shadowRoot.querySelector(
+      "#edit-interval-field",
+    );
+    const editMapField = this.shadowRoot.querySelector("#edit-map-field");
+    if (advEditToggle && editIntervalField && editMapField) {
+      advEditToggle.addEventListener("change", () => {
+        if (advEditToggle.checked) {
+          editIntervalField.style.display = "none";
+          editMapField.style.display = "";
+        } else {
+          editIntervalField.style.display = "";
+          editMapField.style.display = "none";
+        }
+      });
     }
 
     const card = this.shadowRoot.querySelector("ha-card");

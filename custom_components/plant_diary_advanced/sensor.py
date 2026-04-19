@@ -58,34 +58,33 @@ class PlantEntity(SensorEntity):
     # ------------------------------------------------------------------
 
     def _evaluate_interval(self) -> int:
-        """Evaluate watering_interval_template or fall back to static value."""
-        tmpl_str = self._data.get(ATTR_WATERING_INTERVAL_TEMPLATE)
-        if tmpl_str:
+        # 1. Mapping dynamique par jour de l'année
+        interval_map = self._data.get("watering_interval_map")
+        if interval_map and isinstance(interval_map, dict):
             try:
-                tmpl = template_helper.Template(str(tmpl_str), self.hass)
-                result = tmpl.async_render()
-                _LOGGER.debug(
-                    "Plant %s: template result = '%s'", self._plant_id, result
-                )
-                # Si le résultat n'est pas un nombre, fallback
-                try:
-                    val = int(float(str(result).strip()))
-                    return max(1, val)
-                except Exception:
-                    _LOGGER.warning(
-                        "Plant %s: template result '%s' is not a number, fallback to static interval",
-                        self._plant_id,
-                        result,
-                    )
-            except Exception as err:
+                today = date.today().timetuple().tm_yday
+                sorted_days = sorted((int(k), int(v)) for k, v in interval_map.items())
+                value = None
+                for day, interval in sorted_days:
+                    if today >= day:
+                        value = interval
+                if value is not None:
+                    return max(1, value)
+            except Exception as e:
                 _LOGGER.warning(
-                    "Plant %s: template evaluation failed (%s), falling back to static interval",
-                    self._plant_id,
-                    err,
+                    f"Plant {self._plant_id}: erreur mapping intervalle: {e}"
                 )
-        # Fallback explicite : si watering_interval existe, l'utiliser, sinon 7
+        # 2. Sensor d'intervalle dynamique
+        sensor_id = f"sensor.plant_diary_advanced_interval_{self._plant_id}"
+        sensor = self.hass.states.get(sensor_id)
+        if sensor and sensor.state not in (None, "unknown", "unavailable"):
+            try:
+                return max(1, int(float(sensor.state)))
+            except Exception:
+                pass
+        # 3. Fallback sur la logique actuelle
         try:
-            return int(self._data.get(ATTR_WATERING_INTERVAL, 7))
+            return int(self._data.get("watering_interval", 7))
         except Exception:
             return 7
 

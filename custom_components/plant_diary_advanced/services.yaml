@@ -24,22 +24,22 @@ create_plant:
         date:
     watering_interval:
       name: Watering interval (days)
-      description: Static watering interval in days. Ignored if watering_interval_template is set.
+      description: Static watering interval in days. Ignored if watering_interval_map is set.
       required: false
       example: 14
       selector:
         number:
           min: 1
           max: 365
-    watering_interval_template:
-      name: Watering interval template
+    watering_interval_map:
+      name: Watering interval map
       description: >
-        Jinja2 template that evaluates to the number of days between waterings.
-        Has access to all standard HA template variables (now(), states(), etc.).
+        JSON ou Jinja2 qui évalue à une structure de mapping dynamique pour l'intervalle d'arrosage (remplace watering_interval_template).
+        Peut être une chaîne JSON ou un template Jinja2 qui retourne un JSON.
       required: false
-      example: "{{ 21 if now().month in [12,1,2] else 7 }}"
+      example: '{"winter": 21, "summer": 7}'
       selector:
-        template:
+        text:
     watering_postponed:
       name: Postponed (days)
       description: Extra days added to the current watering interval.
@@ -94,12 +94,12 @@ update_plant:
         number:
           min: 1
           max: 365
-    watering_interval_template:
-      name: Watering interval template
-      description: Jinja2 template evaluating to the number of days between waterings.
+    watering_interval_map:
+      name: Watering interval map
+      description: Mapping dynamique pour l'intervalle d'arrosage (remplace watering_interval_template).
       required: false
       selector:
-        template:
+        text:
     watering_postponed:
       name: Postponed (days)
       description: Extra days added to the current watering interval.

@@ -19,8 +19,12 @@ from .const import (
     ATTR_LAST_WATERED,
     ATTR_LAST_FERTILIZED,
     ATTR_WATERING_INTERVAL,
-    ATTR_WATERING_INTERVAL_TEMPLATE,
+    ATTR_WATERING_INTERVAL_MAP,
     ATTR_WATERING_POSTPONED,
+    ATTR_DAYS_SINCE_WATERED,
+    ATTR_DAYS_UNTIL_WATERED,
+    STATE_OK,
+    STATE_NEEDS_WATER,
 )
 from .sensor import PlantEntity
 from .storage import PlantStorage
@@ -35,7 +39,8 @@ _PLANT_BASE_FIELDS = {
     vol.Optional(ATTR_LAST_WATERED): cv.date,
     vol.Optional(ATTR_LAST_FERTILIZED): cv.date,
     vol.Optional(ATTR_WATERING_INTERVAL): vol.All(vol.Coerce(int), vol.Range(min=1)),
-    vol.Optional(ATTR_WATERING_INTERVAL_TEMPLATE): cv.template,
+    # vol.Optional(ATTR_WATERING_INTERVAL_TEMPLATE): cv.template,  # supprimé, remplacé par ATTR_WATERING_INTERVAL_MAP
+    vol.Optional(ATTR_WATERING_INTERVAL_MAP): cv.string,
     vol.Optional(ATTR_WATERING_POSTPONED): vol.All(vol.Coerce(int), vol.Range(min=0)),
     vol.Optional("icon"): cv.string,
 }
@@ -90,9 +95,10 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
         entity = PlantEntity(hass, plant_id, _coerce_dates(data))
         entities[plant_id] = entity
         initial_entities.append(entity)
-        template_str = data.get("watering_interval_template")
-        if template_str:
-            sensor = PlantIntervalSensor(hass, plant_id, template_str)
+        # Nouveau : supporte la clé watering_interval_map (remplace watering_interval_template)
+        interval_map = data.get("watering_interval_map")
+        if interval_map:
+            sensor = PlantIntervalSensor(hass, plant_id, interval_map)
             interval_sensors[plant_id] = sensor
             await component.async_add_entities([sensor])
 
@@ -124,9 +130,9 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
         entity = PlantEntity(hass, plant_id, data)
         entities[plant_id] = entity
         await component.async_add_entities([entity])
-        template_str = data.get("watering_interval_template")
-        if template_str:
-            sensor = PlantIntervalSensor(hass, plant_id, template_str)
+        interval_map = data.get("watering_interval_map")
+        if interval_map:
+            sensor = PlantIntervalSensor(hass, plant_id, interval_map)
             hass.data[DOMAIN]["interval_sensors"][plant_id] = sensor
             await component.async_add_entities([sensor])
 

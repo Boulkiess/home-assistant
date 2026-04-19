@@ -16,7 +16,7 @@ from .const import (
     ATTR_LAST_WATERED,
     ATTR_LAST_FERTILIZED,
     ATTR_WATERING_INTERVAL,
-    ATTR_WATERING_INTERVAL_TEMPLATE,
+    ATTR_WATERING_INTERVAL_MAP,
     ATTR_WATERING_POSTPONED,
 )
 from .sensor import PlantEntity
@@ -28,7 +28,7 @@ PLANT_SCHEMA = vol.Schema(
         vol.Optional(ATTR_LAST_WATERED): str,
         vol.Optional(ATTR_LAST_FERTILIZED): str,
         vol.Optional(ATTR_WATERING_INTERVAL): int,
-        vol.Optional(ATTR_WATERING_INTERVAL_TEMPLATE): str,
+        vol.Optional(ATTR_WATERING_INTERVAL_MAP): str,
         vol.Optional(ATTR_WATERING_POSTPONED): int,
     }
 )

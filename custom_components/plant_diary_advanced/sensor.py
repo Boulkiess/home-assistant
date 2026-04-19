@@ -17,7 +17,7 @@ from .const import (
     ATTR_LAST_WATERED,
     ATTR_LAST_FERTILIZED,
     ATTR_WATERING_INTERVAL,
-    ATTR_WATERING_INTERVAL_TEMPLATE,
+    ATTR_WATERING_INTERVAL_MAP,
     ATTR_WATERING_POSTPONED,
     ATTR_DAYS_SINCE_WATERED,
     ATTR_DAYS_UNTIL_WATERED,
@@ -59,7 +59,7 @@ class PlantEntity(SensorEntity):
 
     def _evaluate_interval(self) -> int:
         # 1. Mapping dynamique par jour de l'année
-        interval_map = self._data.get("watering_interval_map")
+        interval_map = self._data.get(ATTR_WATERING_INTERVAL_MAP)
         if interval_map and isinstance(interval_map, dict):
             try:
                 today = date.today().timetuple().tm_yday
@@ -136,12 +136,9 @@ class PlantEntity(SensorEntity):
             "icon": self._data.get("icon", "mdi:flower"),
         }
 
-        # Expose template string if present (useful for UI editors)
-        if ATTR_WATERING_INTERVAL_TEMPLATE in self._data:
-            attrs[ATTR_WATERING_INTERVAL_TEMPLATE] = self._data[
-                ATTR_WATERING_INTERVAL_TEMPLATE
-            ]
-
+        # Expose interval map if present (useful for UI editors)
+        if ATTR_WATERING_INTERVAL_MAP in self._data:
+            attrs[ATTR_WATERING_INTERVAL_MAP] = self._data[ATTR_WATERING_INTERVAL_MAP]
         return attrs
 
     # ------------------------------------------------------------------

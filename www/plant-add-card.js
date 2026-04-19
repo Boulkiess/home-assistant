@@ -48,18 +48,25 @@ class PlantAddCard extends HTMLElement {
     const data = {
       plant_name: plantName,
     };
-
+    // Intervalle d'arrosage (nombre)
     if (v("watering_interval") !== "") {
       const intervalValue = v("watering_interval");
-      // Si c'est un nombre, envoie watering_interval, sinon watering_interval_template
       if (/^\d+$/.test(intervalValue)) {
         data.watering_interval = parseInt(intervalValue);
-      } else {
-        data.watering_interval_template = intervalValue;
       }
     }
-
+    // Carte d'intervalles (template YAML/JSON)
+    if (
+      v("watering_interval_map") &&
+      v("watering_interval_map").trim() !== ""
+    ) {
+      data.watering_interval_map = v("watering_interval_map").trim();
+    }
     if (v("last_watered")) data.last_watered = v("last_watered");
+    if (v("last_fertilized")) data.last_fertilized = v("last_fertilized");
+    if (v("watering_postponed") !== "")
+      data.watering_postponed = parseInt(v("watering_postponed"));
+    if (v("icon") && v("icon").trim() !== "") data.icon = v("icon").trim();
 
     const btn = root.querySelector(".save-btn");
     btn.disabled = true;
@@ -176,28 +183,48 @@ class PlantAddCard extends HTMLElement {
         <div class="modal">
           <h3>New plant</h3>
 
-          <div class="field">
-            <label>Name</label>
-            <input name="plant_name" type="text">
-          </div>
-
            <div class="field">
-             <label>Watering interval (days or template)</label>
-             <input name="watering_interval" type="text" placeholder="7 or {{ 15 if ... }}">
+             <label>Nom</label>
+             <input name="plant_name" type="text">
            </div>
 
-          <div class="field">
-            <label>Last watered</label>
-            <input name="last_watered" type="date">
-          </div>
+           <div class="field">
+             <label>Intervalle d'arrosage (jours)</label>
+             <input name="watering_interval" type="number" min="1" placeholder="7">
+           </div>
 
-          <div class="actions">
-            <button class="cancel-btn">Cancel</button>
-            <button class="save-btn">Create</button>
-          </div>
-        </div>
-      </div>
-    `;
+           <div class="field">
+             <label>Carte d'intervalles (YAML ou JSON)</label>
+             <input name="watering_interval_map" type="text" placeholder="{&quot;été&quot;:7, &quot;hiver&quot;:14}">
+           </div>
+
+           <div class="field">
+             <label>Dernier arrosage</label>
+             <input name="last_watered" type="date">
+           </div>
+
+           <div class="field">
+             <label>Dernière fertilisation</label>
+             <input name="last_fertilized" type="date">
+           </div>
+
+           <div class="field">
+             <label>Arrosage reporté (jours)</label>
+             <input name="watering_postponed" type="number" min="0" value="0">
+           </div>
+
+           <div class="field">
+             <label>Icône (ex: mdi:flower)</label>
+             <input name="icon" type="text" placeholder="mdi:flower">
+           </div>
+
+           <div class="actions">
+             <button class="cancel-btn">Annuler</button>
+             <button class="save-btn">Créer</button>
+           </div>
+         </div>
+       </div>
+     `;
 
     // Events (only attached once)
     this.shadowRoot

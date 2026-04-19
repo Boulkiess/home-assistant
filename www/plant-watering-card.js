@@ -168,6 +168,14 @@ class PlantWateringCard extends HTMLElement {
       attrs.watering_interval ?? "";
     overlay.querySelector("[name=watering_postponed]").value =
       attrs.watering_postponed ?? 0;
+    // Ajout pour watering_interval_map et icon
+    if (overlay.querySelector("[name=watering_interval_map]")) {
+      overlay.querySelector("[name=watering_interval_map]").value =
+        attrs.watering_interval_map || "";
+    }
+    if (overlay.querySelector("[name=icon]")) {
+      overlay.querySelector("[name=icon]").value = attrs.icon || "";
+    }
     overlay.style.display = "flex";
   }
 
@@ -190,6 +198,9 @@ class PlantWateringCard extends HTMLElement {
       data.watering_interval = parseInt(v("watering_interval"));
     if (v("watering_postponed") !== "")
       data.watering_postponed = parseInt(v("watering_postponed"));
+    if (v("watering_interval_map") && v("watering_interval_map").trim() !== "")
+      data.watering_interval_map = v("watering_interval_map").trim();
+    if (v("icon") && v("icon").trim() !== "") data.icon = v("icon").trim();
 
     const saveBtn = overlay.querySelector(".save-btn");
     saveBtn.disabled = true;
@@ -474,11 +485,13 @@ class PlantWateringCard extends HTMLElement {
       <div class="modal-overlay">
         <div class="modal">
           <h3>✏️ Modifier la plante</h3>
-          <div class="field"><label>Nom de la plante</label><input name="plant_name" type="text"></div>
-          <div class="field"><label>Dernier arrosage</label><input name="last_watered" type="date"></div>
-          <div class="field"><label>Dernière fertilisation</label><input name="last_fertilized" type="date"></div>
-          <div class="field"><label>Intervalle d'arrosage (jours)</label><input name="watering_interval" type="number" min="1"></div>
-          <div class="field"><label>Arrosage reporté (jours)</label><input name="watering_postponed" type="number" min="0"></div>
+           <div class="field"><label>Nom de la plante</label><input name="plant_name" type="text"></div>
+           <div class="field"><label>Dernier arrosage</label><input name="last_watered" type="date"></div>
+           <div class="field"><label>Dernière fertilisation</label><input name="last_fertilized" type="date"></div>
+           <div class="field"><label>Intervalle d'arrosage (jours)</label><input name="watering_interval" type="number" min="1"></div>
+           <div class="field"><label>Carte d'intervalles (YAML ou JSON)</label><input name="watering_interval_map" type="text" placeholder="{&quot;été&quot;:7, &quot;hiver&quot;:14}"></div>
+           <div class="field"><label>Arrosage reporté (jours)</label><input name="watering_postponed" type="number" min="0"></div>
+           <div class="field"><label>Icône (ex: mdi:flower)</label><input name="icon" type="text" placeholder="mdi:flower"></div>
           <div class="modal-actions">
             <button class="delete-btn">Supprimer</button>
             <button class="cancel-btn">Annuler</button>

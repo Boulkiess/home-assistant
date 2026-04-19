@@ -38,30 +38,34 @@ class PlantAddCard extends HTMLElement {
   async _submit() {
     const root = this.shadowRoot;
     const v = (n) => root.querySelector(`[name=${n}]`)?.value;
+    const advanced = root.querySelector("[name=advanced]")?.checked;
 
     const plantName = v("plant_name")?.trim();
     if (!plantName) {
-      alert("Plant name is required");
+      alert("Le nom de la plante est requis");
       return;
     }
 
     const data = {
       plant_name: plantName,
     };
-    // Intervalle d'arrosage (nombre)
-    if (v("watering_interval") !== "") {
-      const intervalValue = v("watering_interval");
-      if (/^\d+$/.test(intervalValue)) {
-        data.watering_interval = parseInt(intervalValue);
+
+    if (!advanced) {
+      if (v("watering_interval") !== "") {
+        const val = v("watering_interval");
+        if (/^\d+$/.test(val)) {
+          data.watering_interval = parseInt(val);
+        }
+      }
+    } else {
+      if (
+        v("watering_interval_map") &&
+        v("watering_interval_map").trim() !== ""
+      ) {
+        data.watering_interval_map = v("watering_interval_map").trim();
       }
     }
-    // Carte d'intervalles (template YAML/JSON)
-    if (
-      v("watering_interval_map") &&
-      v("watering_interval_map").trim() !== ""
-    ) {
-      data.watering_interval_map = v("watering_interval_map").trim();
-    }
+
     if (v("last_watered")) data.last_watered = v("last_watered");
     if (v("last_fertilized")) data.last_fertilized = v("last_fertilized");
     if (v("watering_postponed") !== "")
@@ -70,7 +74,7 @@ class PlantAddCard extends HTMLElement {
 
     const btn = root.querySelector(".save-btn");
     btn.disabled = true;
-    btn.textContent = "Creating...";
+    btn.textContent = "Création...";
 
     try {
       await this._hass.callService(
@@ -80,7 +84,6 @@ class PlantAddCard extends HTMLElement {
       );
       this._closeModal();
 
-      // Affiche un message de succès et propose de recharger la page
       const successDiv = document.createElement("div");
       successDiv.style.cssText =
         "background: #43a047; color: #fff; padding: 16px; border-radius: 8px; margin: 16px 0; text-align: center;";
@@ -89,11 +92,11 @@ class PlantAddCard extends HTMLElement {
       successDiv.querySelector("#reload-btn").onclick = () =>
         window.location.reload();
     } catch (e) {
-      alert(`Error: ${e.message || e}`);
+      alert(`Erreur : ${e.message || e}`);
     }
 
     btn.disabled = false;
-    btn.textContent = "Create";
+    btn.textContent = "Créer";
   }
 
   _render() {
@@ -188,15 +191,20 @@ class PlantAddCard extends HTMLElement {
              <input name="plant_name" type="text">
            </div>
 
-           <div class="field">
-             <label>Intervalle d'arrosage (jours)</label>
-             <input name="watering_interval" type="number" min="1" placeholder="7">
-           </div>
 
-           <div class="field">
-             <label>Carte d'intervalles (YAML ou JSON)</label>
-             <input name="watering_interval_map" type="text" placeholder="{&quot;été&quot;:7, &quot;hiver&quot;:14}">
-           </div>
+            <div class="field">
+              <label>Intervalle d'arrosage (jours, une valeur par ligne)</label>
+              <textarea name="watering_interval" rows="3" placeholder="7\n14\n21"></textarea>
+            </div>
+
+            <div class="field">
+              <label><input type="checkbox" name="advanced" id="advanced-toggle"> Mode avancé (définir une carte YAML/JSON)</label>
+            </div>
+
+            <div class="field" id="advanced-map-field" style="display:none">
+              <label>Carte d'intervalles (YAML ou JSON)</label>
+              <textarea name="watering_interval_map" rows="3" placeholder="{&quot;été&quot;:7, &quot;hiver&quot;:14}"></textarea>
+            </div>
 
            <div class="field">
              <label>Dernier arrosage</label>
@@ -238,6 +246,22 @@ class PlantAddCard extends HTMLElement {
     this.shadowRoot
       .querySelector(".save-btn")
       .addEventListener("click", () => this._submit());
+
+    // Gestion du toggle avancé
+    const advToggle = this.shadowRoot.querySelector("#advanced-toggle");
+    const intervalField = this.shadowRoot.querySelector(
+      '[name="watering_interval"]',
+    ).parentElement;
+    const mapField = this.shadowRoot.querySelector("#advanced-map-field");
+    advToggle.addEventListener("change", (e) => {
+      if (advToggle.checked) {
+        intervalField.style.display = "none";
+        mapField.style.display = "";
+      } else {
+        intervalField.style.display = "";
+        mapField.style.display = "none";
+      }
+    });
 
     this.shadowRoot
       .querySelector(".modal-overlay")

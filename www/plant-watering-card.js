@@ -159,6 +159,11 @@ class PlantWateringCard extends HTMLElement {
     if (!stateObj) return;
     const attrs = stateObj.attributes;
     const overlay = this.shadowRoot.querySelector(".modal-overlay");
+    const advEditToggle = this.shadowRoot.querySelector("#adv-edit-toggle");
+    const editIntervalField = this.shadowRoot.querySelector(
+      "#edit-interval-field",
+    );
+    const editMapField = this.shadowRoot.querySelector("#edit-map-field");
 
     overlay.querySelector("[name=plant_name]").value = attrs.plant_name || "";
     overlay.querySelector("[name=last_watered]").value =
@@ -166,19 +171,21 @@ class PlantWateringCard extends HTMLElement {
     overlay.querySelector("[name=last_fertilized]").value =
       attrs.last_fertilized || "";
 
-    if (attrs.watering_interval_map) {
-      advEditToggle.checked = true;
-      editIntervalField.style.display = "none";
-      editMapField.style.display = "";
-      editMapField.querySelector("[name=watering_interval_map]").value =
-        attrs.watering_interval_map;
-    } else {
-      advEditToggle.checked = false;
-      editIntervalField.style.display = "";
-      editMapField.style.display = "none";
-      editIntervalField.querySelector("[name=watering_interval]").value =
-        attrs.watering_interval ?? "";
-      editMapField.querySelector("[name=watering_interval_map]").value = "";
+    if (advEditToggle && editIntervalField && editMapField) {
+      if (attrs.watering_interval_map) {
+        advEditToggle.checked = true;
+        editIntervalField.style.display = "none";
+        editMapField.style.display = "";
+        editMapField.querySelector("[name=watering_interval_map]").value =
+          attrs.watering_interval_map;
+      } else {
+        advEditToggle.checked = false;
+        editIntervalField.style.display = "";
+        editMapField.style.display = "none";
+        editIntervalField.querySelector("[name=watering_interval]").value =
+          attrs.watering_interval ?? "";
+        editMapField.querySelector("[name=watering_interval_map]").value = "";
+      }
     }
 
     overlay.querySelector("[name=watering_postponed]").value =
@@ -195,6 +202,7 @@ class PlantWateringCard extends HTMLElement {
     const overlay = this.shadowRoot.querySelector(".modal-overlay");
     const stateObj = this._hass.states[this._config.entity];
     const plantId = this._config.plant_id || stateObj.attributes.plant_name;
+    const advEditToggle = this.shadowRoot.querySelector("#adv-edit-toggle");
 
     const data = { plant_id: plantId };
     const v = (n) => overlay.querySelector(`[name=${n}]`).value;
@@ -203,7 +211,7 @@ class PlantWateringCard extends HTMLElement {
     if (v("last_watered")) data.last_watered = v("last_watered");
     if (v("last_fertilized")) data.last_fertilized = v("last_fertilized");
 
-    if (!advEditToggle.checked) {
+    if (!advEditToggle || !advEditToggle.checked) {
       if (v("watering_interval") !== "") {
         const val = v("watering_interval");
         if (/^\d+$/.test(val)) {

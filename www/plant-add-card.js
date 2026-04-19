@@ -49,8 +49,15 @@ class PlantAddCard extends HTMLElement {
       plant_name: plantName,
     };
 
-    if (v("watering_interval") !== "")
-      data.watering_interval = parseInt(v("watering_interval"));
+    if (v("watering_interval") !== "") {
+      const intervalValue = v("watering_interval");
+      // Si c'est un nombre, envoie watering_interval, sinon watering_interval_template
+      if (/^\d+$/.test(intervalValue)) {
+        data.watering_interval = parseInt(intervalValue);
+      } else {
+        data.watering_interval_template = intervalValue;
+      }
+    }
 
     if (v("last_watered")) data.last_watered = v("last_watered");
 
@@ -174,10 +181,10 @@ class PlantAddCard extends HTMLElement {
             <input name="plant_name" type="text">
           </div>
 
-          <div class="field">
-            <label>Watering interval (days)</label>
-            <input name="watering_interval" type="number">
-          </div>
+           <div class="field">
+             <label>Watering interval (days or template)</label>
+             <input name="watering_interval" type="text" placeholder="7 or {{ 15 if ... }}">
+           </div>
 
           <div class="field">
             <label>Last watered</label>

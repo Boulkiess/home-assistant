@@ -73,6 +73,12 @@ update_plant:
       example: "Monstera"
       selector:
         text:
+    note:
+      name: Note
+      description: Utiliser l'attribut plant_id du capteur pour les updates (nom interne immuable).
+      required: false
+      selector:
+        text:
     plant_name:
       name: Plant name
       description: New display name.

@@ -16,6 +16,7 @@ from homeassistant.helpers.event import async_track_time_change
 from .const import (
     DOMAIN,
     ATTR_PLANT_NAME,
+    ATTR_PLANT_ID,
     ATTR_LAST_WATERED,
     ATTR_LAST_FERTILIZED,
     ATTR_WATERING_INTERVAL,
@@ -54,7 +55,7 @@ CREATE_PLANT_SCHEMA = vol.Schema(
 
 UPDATE_PLANT_SCHEMA = vol.Schema(
     {
-        vol.Required("plant_id"): cv.string,
+        vol.Required(ATTR_PLANT_ID): cv.string,
         vol.Optional(ATTR_PLANT_NAME): cv.string,
         **_PLANT_BASE_FIELDS,
     }
@@ -62,7 +63,7 @@ UPDATE_PLANT_SCHEMA = vol.Schema(
 
 DELETE_PLANT_SCHEMA = vol.Schema(
     {
-        vol.Required("plant_id"): cv.string,
+        vol.Required(ATTR_PLANT_ID): cv.string,
     }
 )
 
@@ -125,14 +126,14 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
         _LOGGER.info("Plant '%s' created", plant_id)
 
     async def handle_update_plant(call: ServiceCall) -> None:
-        plant_id = call.data["plant_id"]
+        plant_id = call.data[ATTR_PLANT_ID]
         entity = entities.get(plant_id)
 
         if entity is None:
             _LOGGER.error("Plant '%s' not found", plant_id)
             return
 
-        update = {k: v for k, v in call.data.items() if k != "plant_id"}
+        update = {k: v for k, v in call.data.items() if k != ATTR_PLANT_ID}
         serialized = _serialize(update)
 
         await storage.async_update(plant_id, serialized)
@@ -142,7 +143,7 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
         _LOGGER.info("Plant '%s' updated: %s", plant_id, list(update.keys()))
 
     async def handle_delete_plant(call: ServiceCall) -> None:
-        plant_id = call.data["plant_id"]
+        plant_id = call.data[ATTR_PLANT_ID]
         entity = entities.get(plant_id)
 
         if entity is None:

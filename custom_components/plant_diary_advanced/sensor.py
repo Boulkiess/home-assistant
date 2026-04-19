@@ -14,6 +14,7 @@ from homeassistant.helpers import template as template_helper
 from .const import (
     DOMAIN,
     ATTR_PLANT_NAME,
+    ATTR_PLANT_ID,
     ATTR_LAST_WATERED,
     ATTR_LAST_FERTILIZED,
     ATTR_WATERING_INTERVAL,
@@ -147,6 +148,7 @@ class PlantEntity(SensorEntity):
             days_until = max(0, interval + postponed - days)
 
         attrs: dict[str, Any] = {
+            ATTR_PLANT_ID: self._plant_id,
             ATTR_PLANT_NAME: self._data.get(ATTR_PLANT_NAME, self._plant_id),
             ATTR_LAST_WATERED: self._data.get(ATTR_LAST_WATERED),
             ATTR_LAST_FERTILIZED: self._data.get(ATTR_LAST_FERTILIZED),

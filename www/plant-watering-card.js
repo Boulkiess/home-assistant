@@ -129,7 +129,10 @@ class PlantWateringCard extends HTMLElement {
     if (!stateObj) return;
 
     const today = new Date().toISOString().split("T")[0];
-    const plantId = this._config.plant_id || stateObj.attributes.plant_name;
+    const plantId =
+      this._config.plant_id ||
+      stateObj.attributes.plant_id ||
+      stateObj.attributes.plant_name;
 
     const btn = this.shadowRoot.querySelector(".water-btn");
     if (btn) {
@@ -201,7 +204,10 @@ class PlantWateringCard extends HTMLElement {
   async _submitEdit() {
     const overlay = this.shadowRoot.querySelector(".modal-overlay");
     const stateObj = this._hass.states[this._config.entity];
-    const plantId = this._config.plant_id || stateObj.attributes.plant_name;
+    const plantId =
+      this._config.plant_id ||
+      stateObj.attributes.plant_id ||
+      stateObj.attributes.plant_name;
     const advEditToggle = this.shadowRoot.querySelector("#adv-edit-toggle");
 
     const data = { plant_id: plantId };
@@ -270,7 +276,10 @@ class PlantWateringCard extends HTMLElement {
     const stateObj = this._hass.states[this._config.entity];
     if (!stateObj) return;
 
-    const plantId = this._config.plant_id || stateObj.attributes.plant_name;
+    const plantId =
+      this._config.plant_id ||
+      stateObj.attributes.plant_id ||
+      stateObj.attributes.plant_name;
     if (!confirm(`Supprimer la plante "${plantId}" ?`)) return;
 
     const overlay = this.shadowRoot.querySelector(".modal-overlay");

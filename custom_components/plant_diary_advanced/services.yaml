@@ -33,11 +33,15 @@ create_plant:
           max: 365
     watering_interval_map:
       name: Watering interval map
-      description: >
-        JSON ou Jinja2 qui évalue à une structure de mapping dynamique pour l'intervalle d'arrosage (remplace watering_interval_template).
-        Peut être une chaîne JSON ou un template Jinja2 qui retourne un JSON.
+      description: |
+        Mapping dynamique pour l'intervalle d'arrosage (remplace watering_interval_template).
+        Format attendu : texte multi-ligne, chaque ligne "jour:valeur" (exemple : 1:4\n150:42\n170:2).
+        Le jour correspond au jour de l'année (1 à 366), la valeur à l'intervalle d'arrosage en jours.
       required: false
-      example: '{"winter": 21, "summer": 7}'
+      example: |
+        1:4
+        150:42
+        170:2
       selector:
         text:
     watering_postponed:

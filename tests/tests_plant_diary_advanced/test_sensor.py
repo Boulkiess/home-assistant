@@ -15,7 +15,7 @@ def test_entity_unique_id_and_name():
         "last_fertilized": "2024-04-01",
         "watering_interval": 7,
         "watering_postponed": 2,
-        "watering_interval_map": '{"winter": 21, "summer": 7}',
+        "watering_interval_map": "1:4\n150:42\n170:2",
     }
     entity = PlantEntity(hass, "monstera", data)
     # Identifiants
@@ -29,7 +29,8 @@ def test_entity_unique_id_and_name():
     assert attrs["plant_name"] == "Monstera"
     assert attrs["last_watered"] == "2024-04-19"
     assert attrs["last_fertilized"] == "2024-04-01"
-    assert attrs["watering_interval"] == 7
+    # Si un mapping est fourni, la première valeur (jour le plus bas) doit être utilisée
+    assert attrs["watering_interval"] == 4
     assert attrs["watering_postponed"] == 2
     assert "watering_interval_map" in attrs
 
@@ -40,7 +41,7 @@ def test_entity_with_no_last_watered():
         "plant_name": "Test",
         # last_watered is omitted
         "watering_interval": 7,
-        "watering_interval_map": '{"winter": 21, "summer": 7}',
+        "watering_interval_map": "1:4\n150:42\n170:2",
     }
     entity = PlantEntity(hass, "test", data)
     # L'entité ne doit pas être indisponible
@@ -52,7 +53,7 @@ def test_entity_with_no_last_watered():
     attrs = entity.extra_state_attributes
     assert attrs["plant_name"] == "Test"
     assert attrs["last_watered"] is None
-    assert attrs["watering_interval"] == 7
+    assert attrs["watering_interval"] == 4
     assert "watering_interval_map" in attrs
 
 
@@ -64,7 +65,7 @@ def test_list_plants_logs_all_states(monkeypatch):
             self.extra_state_attributes = {
                 "plant_name": plant_id,
                 "watering_interval": 7,
-                "watering_interval_map": '{"winter": 21, "summer": 7}',
+                "watering_interval_map": "1:4\n150:42\n170:2",
             }
 
     entities = {"test1": DummyEntity("test1"), "test2": DummyEntity("test2")}

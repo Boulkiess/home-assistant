@@ -57,10 +57,31 @@ class PlantEntity(SensorEntity):
     # Template evaluation
     # ------------------------------------------------------------------
 
+    def _parse_interval_map(self, raw_map):
+        """Parse un champ texte multi-ligne 'jour:valeur' en dict[int, int]."""
+        if not raw_map:
+            return None
+        if isinstance(raw_map, dict):
+            return raw_map
+        if isinstance(raw_map, str):
+            lines = [l.strip() for l in raw_map.strip().splitlines() if l.strip()]
+            mapping = {}
+            for line in lines:
+                if ":" in line:
+                    day, val = line.split(":", 1)
+                    try:
+                        mapping[int(day.strip())] = int(val.strip())
+                    except Exception:
+                        continue
+            return mapping if mapping else None
+        return None
+
     def _evaluate_interval(self) -> int:
-        # 1. Mapping dynamique par jour de l'année
-        interval_map = self._data.get(ATTR_WATERING_INTERVAL_MAP)
-        if interval_map and isinstance(interval_map, dict):
+        # 1. Mapping dynamique par jour de l'année (champ texte multi-ligne)
+        interval_map = self._parse_interval_map(
+            self._data.get(ATTR_WATERING_INTERVAL_MAP)
+        )
+        if interval_map:
             try:
                 today = date.today().timetuple().tm_yday
                 sorted_days = sorted((int(k), int(v)) for k, v in interval_map.items())

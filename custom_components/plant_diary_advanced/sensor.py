@@ -64,7 +64,19 @@ class PlantEntity(SensorEntity):
             try:
                 tmpl = template_helper.Template(str(tmpl_str), self.hass)
                 result = tmpl.async_render()
-                return max(1, int(float(str(result).strip())))
+                _LOGGER.debug(
+                    "Plant %s: template result = '%s'", self._plant_id, result
+                )
+                # Si le résultat n'est pas un nombre, fallback
+                try:
+                    val = int(float(str(result).strip()))
+                    return max(1, val)
+                except Exception:
+                    _LOGGER.warning(
+                        "Plant %s: template result '%s' is not a number, fallback to static interval",
+                        self._plant_id,
+                        result,
+                    )
             except Exception as err:
                 _LOGGER.warning(
                     "Plant %s: template evaluation failed (%s), falling back to static interval",

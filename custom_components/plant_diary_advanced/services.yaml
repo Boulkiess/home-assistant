@@ -44,6 +44,7 @@ create_plant:
         170:2
       selector:
         text:
+          multiline: true
     watering_postponed:
       name: Postponed (days)
       description: Extra days added to the current watering interval.

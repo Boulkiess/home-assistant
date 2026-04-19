@@ -87,20 +87,11 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
 
     # Track live entities by plant_id
     entities: dict[str, PlantEntity] = {}
-    interval_sensors = {}
-
-    # Load persisted plants
     initial_entities = []
     for plant_id, data in storage.get_all().items():
         entity = PlantEntity(hass, plant_id, _coerce_dates(data))
         entities[plant_id] = entity
         initial_entities.append(entity)
-        # Nouveau : supporte la clé watering_interval_map (remplace watering_interval_template)
-        interval_map = data.get("watering_interval_map")
-        if interval_map:
-            sensor = PlantIntervalSensor(hass, plant_id, interval_map)
-            interval_sensors[plant_id] = sensor
-            await component.async_add_entities([sensor])
 
     await component.async_add_entities(initial_entities)
 
@@ -108,7 +99,6 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
     hass.data[DOMAIN]["storage"] = storage
     hass.data[DOMAIN]["entities"] = entities
     hass.data[DOMAIN]["component"] = component
-    hass.data[DOMAIN]["interval_sensors"] = interval_sensors
 
     # ------------------------------------------------------------------
     # Services
@@ -130,11 +120,6 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
         entity = PlantEntity(hass, plant_id, data)
         entities[plant_id] = entity
         await component.async_add_entities([entity])
-        interval_map = data.get("watering_interval_map")
-        if interval_map:
-            sensor = PlantIntervalSensor(hass, plant_id, interval_map)
-            hass.data[DOMAIN]["interval_sensors"][plant_id] = sensor
-            await component.async_add_entities([sensor])
 
         hass.bus.async_fire(f"{DOMAIN}_plant_created", {"plant_id": plant_id})
         _LOGGER.info("Plant '%s' created", plant_id)

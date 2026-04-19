@@ -1,4 +1,4 @@
-"""Plant Diary — custom Home Assistant integration."""
+"""Plant Diary Advanced — custom Home Assistant integration."""
 
 from __future__ import annotations
 

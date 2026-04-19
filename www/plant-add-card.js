@@ -47,7 +47,6 @@ class PlantAddCard extends HTMLElement {
 
     const data = {
       plant_name: plantName,
-      plant_id: plantName.toLowerCase().replace(/\s+/g, "_"),
     };
 
     if (v("watering_interval") !== "")
@@ -66,6 +65,15 @@ class PlantAddCard extends HTMLElement {
         data,
       );
       this._closeModal();
+
+      // Affiche un message de succès et propose de recharger la page
+      const successDiv = document.createElement("div");
+      successDiv.style.cssText =
+        "background: #43a047; color: #fff; padding: 16px; border-radius: 8px; margin: 16px 0; text-align: center;";
+      successDiv.innerHTML = `Plante créée avec succès !<br><button style='margin-top:8px;padding:8px 16px;border:none;border-radius:6px;background:#fff;color:#43a047;cursor:pointer;font-weight:bold;' id='reload-btn'>Recharger la page</button>`;
+      this.parentElement && this.parentElement.insertBefore(successDiv, this);
+      successDiv.querySelector("#reload-btn").onclick = () =>
+        window.location.reload();
     } catch (e) {
       alert(`Error: ${e.message || e}`);
     }

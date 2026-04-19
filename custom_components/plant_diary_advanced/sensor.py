@@ -49,8 +49,9 @@ class PlantEntity(SensorEntity):
         self._plant_id = plant_id
         self._data = dict(data)
         self._attr_unique_id = f"plant_diary_advanced_{plant_id}"
-        # Nom d'entité : plant_monstera
-        self._attr_name = f"plant_{data.get(ATTR_PLANT_NAME, plant_id)}"
+        # Nom d'entité technique : plant_<id> (id = plant_id, donc slugifié)
+        self._attr_name = f"plant_{plant_id}"
+        self._attr_friendly_name = data.get(ATTR_PLANT_NAME, plant_id)
 
     # ------------------------------------------------------------------
     # Template evaluation

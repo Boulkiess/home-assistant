@@ -30,3 +30,27 @@ describe("PlantAddCard", () => {
     expect(overlay.style.display).toBe("flex");
   });
 });
+test("ne doit jamais envoyer plant_id au service", () => {
+  const card = document.createElement("plant-add-card");
+  document.body.appendChild(card);
+  card.setConfig({});
+  let called = false;
+  card._hass = {
+    callService: (domain, service, data) => {
+      called = true;
+      expect(data.plant_id).toBeUndefined();
+      return Promise.resolve();
+    },
+  };
+  // Simule le DOM
+  card.shadowRoot.querySelector = (sel) => {
+    if (sel === "[name=plant_name]") return { value: "Test" };
+    if (sel === "[name=watering_interval]") return { value: "" };
+    if (sel === "[name=last_watered]") return null;
+    if (sel === ".save-btn") return { disabled: false, textContent: "" };
+    return null;
+  };
+  card._submit();
+  expect(called).toBe(true);
+  document.body.removeChild(card);
+});

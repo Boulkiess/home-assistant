@@ -82,6 +82,7 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
 
     # Track live entities by plant_id
     entities: dict[str, PlantEntity] = {}
+    interval_sensors = {}
 
     # Load persisted plants
     initial_entities = []
@@ -89,6 +90,11 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
         entity = PlantEntity(hass, plant_id, _coerce_dates(data))
         entities[plant_id] = entity
         initial_entities.append(entity)
+        template_str = data.get("watering_interval_template")
+        if template_str:
+            sensor = PlantIntervalSensor(hass, plant_id, template_str)
+            interval_sensors[plant_id] = sensor
+            await component.async_add_entities([sensor])
 
     await component.async_add_entities(initial_entities)
 
@@ -96,6 +102,7 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
     hass.data[DOMAIN]["storage"] = storage
     hass.data[DOMAIN]["entities"] = entities
     hass.data[DOMAIN]["component"] = component
+    hass.data[DOMAIN]["interval_sensors"] = interval_sensors
 
     # ------------------------------------------------------------------
     # Services
@@ -117,6 +124,11 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
         entity = PlantEntity(hass, plant_id, data)
         entities[plant_id] = entity
         await component.async_add_entities([entity])
+        template_str = data.get("watering_interval_template")
+        if template_str:
+            sensor = PlantIntervalSensor(hass, plant_id, template_str)
+            hass.data[DOMAIN]["interval_sensors"][plant_id] = sensor
+            await component.async_add_entities([sensor])
 
         hass.bus.async_fire(f"{DOMAIN}_plant_created", {"plant_id": plant_id})
         _LOGGER.info("Plant '%s' created", plant_id)
@@ -219,3 +231,6 @@ def _serialize(data: dict[str, Any]) -> dict[str, Any]:
 def _coerce_dates(data: dict[str, Any]) -> dict[str, Any]:
     """Keep dates as strings — PlantEntity handles conversion."""
     return data
+
+
+from .interval_sensor import PlantIntervalSensor

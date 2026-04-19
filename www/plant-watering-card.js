@@ -159,23 +159,30 @@ class PlantWateringCard extends HTMLElement {
     if (!stateObj) return;
     const attrs = stateObj.attributes;
     const overlay = this.shadowRoot.querySelector(".modal-overlay");
+
     overlay.querySelector("[name=plant_name]").value = attrs.plant_name || "";
     overlay.querySelector("[name=last_watered]").value =
       attrs.last_watered || "";
     overlay.querySelector("[name=last_fertilized]").value =
       attrs.last_fertilized || "";
-    overlay.querySelector("[name=watering_interval]").value =
-      attrs.watering_interval ?? "";
+
+    if (attrs.watering_interval_map) {
+      advEditToggle.checked = true;
+      editIntervalField.style.display = "none";
+      editMapField.style.display = "";
+      editMapField.querySelector("[name=watering_interval_map]").value =
+        attrs.watering_interval_map;
+    } else {
+      advEditToggle.checked = false;
+      editIntervalField.style.display = "";
+      editMapField.style.display = "none";
+      editIntervalField.querySelector("[name=watering_interval]").value =
+        attrs.watering_interval ?? "";
+    }
+
     overlay.querySelector("[name=watering_postponed]").value =
       attrs.watering_postponed ?? 0;
-    // Ajout pour watering_interval_map et icon
-    if (overlay.querySelector("[name=watering_interval_map]")) {
-      overlay.querySelector("[name=watering_interval_map]").value =
-        attrs.watering_interval_map || "";
-    }
-    if (overlay.querySelector("[name=icon]")) {
-      overlay.querySelector("[name=icon]").value = attrs.icon || "";
-    }
+    overlay.querySelector("[name=icon]").value = attrs.icon || "";
     overlay.style.display = "flex";
   }
 
@@ -194,12 +201,25 @@ class PlantWateringCard extends HTMLElement {
     if (v("plant_name")) data.plant_name = v("plant_name").trim();
     if (v("last_watered")) data.last_watered = v("last_watered");
     if (v("last_fertilized")) data.last_fertilized = v("last_fertilized");
-    if (v("watering_interval") !== "")
-      data.watering_interval = parseInt(v("watering_interval"));
+
+    if (!advEditToggle.checked) {
+      if (v("watering_interval") !== "") {
+        const val = v("watering_interval");
+        if (/^\d+$/.test(val)) {
+          data.watering_interval = parseInt(val);
+        }
+      }
+    } else {
+      if (
+        v("watering_interval_map") &&
+        v("watering_interval_map").trim() !== ""
+      ) {
+        data.watering_interval_map = v("watering_interval_map").trim();
+      }
+    }
+
     if (v("watering_postponed") !== "")
       data.watering_postponed = parseInt(v("watering_postponed"));
-    if (v("watering_interval_map") && v("watering_interval_map").trim() !== "")
-      data.watering_interval_map = v("watering_interval_map").trim();
     if (v("icon") && v("icon").trim() !== "") data.icon = v("icon").trim();
 
     const saveBtn = overlay.querySelector(".save-btn");

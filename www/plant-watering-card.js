@@ -521,9 +521,20 @@ class PlantWateringCard extends HTMLElement {
       </div>
     `;
 
-    this.shadowRoot
-      .querySelector(".water-btn")
-      .addEventListener("click", () => this._handleWaterClick());
+    const waterBtn = this.shadowRoot.querySelector(".water-btn");
+    if (waterBtn) {
+      waterBtn.addEventListener("click", () => this._handleWaterClick());
+      // Correction : s'assurer que cliquer sur l'image déclenche aussi l'arrosage
+      const avatarPhoto = waterBtn.querySelector(".avatar-photo");
+      if (avatarPhoto) {
+        avatarPhoto.style.pointerEvents = "auto";
+        avatarPhoto.addEventListener("click", (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          waterBtn.click();
+        });
+      }
+    }
 
     const card = this.shadowRoot.querySelector("ha-card");
     let longPressTimer = null;

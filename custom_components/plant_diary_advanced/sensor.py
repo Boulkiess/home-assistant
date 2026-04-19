@@ -48,8 +48,9 @@ class PlantEntity(SensorEntity):
         self.hass = hass
         self._plant_id = plant_id
         self._data = dict(data)
-        self._attr_unique_id = f"{DOMAIN}_{plant_id}"
-        self._attr_name = f"{DOMAIN}_{data.get(ATTR_PLANT_NAME, plant_id)}"
+        self._attr_unique_id = f"plant_diary_advanced_{plant_id}"
+        # Nom d'entité : plant_monstera
+        self._attr_name = f"plant_{data.get(ATTR_PLANT_NAME, plant_id)}"
 
     # ------------------------------------------------------------------
     # Template evaluation

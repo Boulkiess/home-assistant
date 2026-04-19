@@ -12,4 +12,4 @@ def test_entity_unique_id_and_name():
     data = {"plant_name": "Monstera"}
     entity = PlantEntity(hass, "monstera", data)
     assert entity.unique_id == "plant_diary_advanced_monstera"
-    assert entity.name == "plant_diary_advanced_Monstera"
+    assert entity.name == "plant_Monstera"

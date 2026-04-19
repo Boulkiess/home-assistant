@@ -158,6 +158,13 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
         for entity in entities.values():
             entity.async_write_ha_state()
 
+    async def handle_list_plants(call: ServiceCall) -> None:
+        """Liste toutes les plantes et leur état complet dans les logs."""
+        for plant_id, entity in entities.items():
+            _LOGGER.info(
+                f"Plante: {plant_id} | Etat: {entity.native_value} | Attributs: {entity.extra_state_attributes}"
+            )
+
     hass.services.async_register(
         DOMAIN, "create_plant", handle_create_plant, schema=CREATE_PLANT_SCHEMA
     )
@@ -168,6 +175,7 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
         DOMAIN, "delete_plant", handle_delete_plant, schema=DELETE_PLANT_SCHEMA
     )
     hass.services.async_register(DOMAIN, "update_days_since_watered", handle_refresh)
+    hass.services.async_register(DOMAIN, "list_plants", handle_list_plants)
 
     # ------------------------------------------------------------------
     # Auto-refresh at midnight so days_since_watered ticks over

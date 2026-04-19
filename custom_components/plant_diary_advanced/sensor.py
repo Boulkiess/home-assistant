@@ -71,7 +71,11 @@ class PlantEntity(SensorEntity):
                     self._plant_id,
                     err,
                 )
-        return int(self._data.get(ATTR_WATERING_INTERVAL, 7))
+        # Fallback explicite : si watering_interval existe, l'utiliser, sinon 7
+        try:
+            return int(self._data.get(ATTR_WATERING_INTERVAL, 7))
+        except Exception:
+            return 7
 
     # ------------------------------------------------------------------
     # Computed properties

@@ -43,6 +43,25 @@ class PlantWateringCard extends HTMLElement {
     return this._config[key] !== undefined ? this._config[key] : fallback;
   }
 
+  _mapStringToYaml(mapVal) {
+    if (!mapVal) return "";
+    const trimmed = String(mapVal).trim();
+    if (trimmed === "") return "";
+    if (trimmed.startsWith("{")) {
+      try {
+        const obj = JSON.parse(trimmed);
+        if (obj && typeof obj === "object") {
+          return Object.entries(obj)
+            .map(([key, value]) => `${key}: ${value}`)
+            .join("\n");
+        }
+      } catch (e) {
+        // ignore
+      }
+    }
+    return trimmed;
+  }
+
   _updateDisplay() {
     const root = this.shadowRoot;
     if (!root.querySelector("ha-card")) return;
@@ -185,7 +204,7 @@ class PlantWateringCard extends HTMLElement {
         editIntervalField.style.display = "none";
         editMapField.style.display = "";
         editMapField.querySelector("[name=watering_interval_map]").value =
-          attrs.watering_interval_map;
+          this._mapStringToYaml(attrs.watering_interval_map);
       } else {
         advEditToggle.checked = false;
         editIntervalField.style.display = "";
@@ -238,18 +257,16 @@ class PlantWateringCard extends HTMLElement {
         v("watering_interval_map") &&
         v("watering_interval_map").trim() !== ""
       ) {
-        // On autorise le mapping sur plusieurs lignes (YAML ou JSON)
+        // On conserve le mapping au format YAML (affichage et stockage)
         let mapVal = v("watering_interval_map").trim();
-        // Si ce n'est pas du JSON, on tente de convertir le YAML simple en JSON
-        if (!mapVal.startsWith("{") && mapVal.includes(":")) {
+        if (mapVal.startsWith("{")) {
           try {
-            const lines = mapVal.split(/\r?\n/);
-            const obj = {};
-            for (const line of lines) {
-              const m = line.match(/^\s*([^:]+):\s*(\d+)\s*$/);
-              if (m) obj[m[1].trim()] = parseInt(m[2], 10);
+            const obj = JSON.parse(mapVal);
+            if (obj && typeof obj === "object") {
+              mapVal = Object.entries(obj)
+                .map(([key, value]) => `${key}: ${value}`)
+                .join("\n");
             }
-            mapVal = JSON.stringify(obj);
           } catch (e) {
             // ignore
           }

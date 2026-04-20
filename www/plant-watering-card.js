@@ -170,7 +170,10 @@ class PlantWateringCard extends HTMLElement {
     const stateObj = this._hass.states[this._config.entity];
     if (!stateObj) return;
 
-    const today = new Date().toISOString().split("T")[0];
+    const now = new Date();
+    const today = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+      .toISOString()
+      .split("T")[0];
     const plantId =
       this._config.plant_id ||
       stateObj.attributes.plant_id ||

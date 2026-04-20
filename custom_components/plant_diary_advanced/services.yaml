@@ -111,6 +111,7 @@ update_plant:
       required: false
       selector:
         text:
+          multiline: true
     watering_postponed:
       name: Postponed (days)
       description: Extra days added to the current watering interval.

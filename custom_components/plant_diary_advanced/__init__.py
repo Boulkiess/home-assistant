@@ -22,10 +22,6 @@ from .const import (
     ATTR_WATERING_INTERVAL,
     ATTR_WATERING_INTERVAL_MAP,
     ATTR_WATERING_POSTPONED,
-    ATTR_DAYS_SINCE_WATERED,
-    ATTR_DAYS_UNTIL_WATERED,
-    STATE_OK,
-    STATE_NEEDS_WATER,
 )
 from .sensor import PlantEntity
 from .storage import PlantStorage
@@ -90,7 +86,7 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
     entities: dict[str, PlantEntity] = {}
     initial_entities = []
     for plant_id, data in storage.get_all().items():
-        entity = PlantEntity(hass, plant_id, _coerce_dates(data))
+        entity = PlantEntity(hass, plant_id, data)
         entities[plant_id] = entity
         initial_entities.append(entity)
 
@@ -128,7 +124,11 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
 
     async def handle_update_plant(call: ServiceCall) -> None:
         plant_id = call.data[ATTR_PLANT_ID]
-        _LOGGER.info("Service update_plant appelé: plant_id=%s data=%s", plant_id, dict(call.data))
+        _LOGGER.info(
+            "Service update_plant appelé: plant_id=%s data=%s",
+            plant_id,
+            dict(call.data),
+        )
         entity = entities.get(plant_id)
 
         if entity is None:
@@ -162,7 +162,9 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
 
     async def handle_refresh(call: ServiceCall) -> None:
         """Force state refresh on all plants (call at midnight via automation)."""
-        _LOGGER.info("Service update_days_since_watered appelé: %s plantes", len(entities))
+        _LOGGER.info(
+            "Service update_days_since_watered appelé: %s plantes", len(entities)
+        )
         for entity in entities.values():
             entity.async_write_ha_state()
 
@@ -216,18 +218,7 @@ async def async_unload_entry(hass: HomeAssistant, entry) -> bool:
 
 def _serialize(data: dict[str, Any]) -> dict[str, Any]:
     """Convert date objects to ISO strings for JSON storage."""
-    out = {}
-    for k, v in data.items():
-        if isinstance(v, date):
-            out[k] = v.isoformat()
-        else:
-            out[k] = v
-    return out
-
-
-def _coerce_dates(data: dict[str, Any]) -> dict[str, Any]:
-    """Keep dates as strings — PlantEntity handles conversion."""
-    return data
-
-
-from .interval_sensor import PlantIntervalSensor
+    return {
+        key: (value.isoformat() if isinstance(value, date) else value)
+        for key, value in data.items()
+    }

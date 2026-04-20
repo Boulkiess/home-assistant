@@ -54,26 +54,19 @@ class PlantAddCard extends HTMLElement {
     };
 
     if (!advanced) {
-      if (v("watering_interval") !== "") {
-        const val = v("watering_interval");
-        if (/^\d+$/.test(val)) {
-          data.watering_interval = parseInt(val);
-        }
-      }
+      const interval = this._parseInteger(v("watering_interval"));
+      if (interval !== null) data.watering_interval = interval;
     } else {
-      if (
-        v("watering_interval_map") &&
-        v("watering_interval_map").trim() !== ""
-      ) {
-        data.watering_interval_map = v("watering_interval_map").trim();
-      }
+      const mapVal = this._normalizeIntervalMap(v("watering_interval_map"));
+      if (mapVal) data.watering_interval_map = mapVal;
     }
 
     if (v("last_watered")) data.last_watered = v("last_watered");
     if (v("last_fertilized")) data.last_fertilized = v("last_fertilized");
-    if (v("watering_postponed") !== "")
-      data.watering_postponed = parseInt(v("watering_postponed"));
-    if (v("icon") && v("icon").trim() !== "") data.icon = v("icon").trim();
+    const postponed = this._parseInteger(v("watering_postponed"));
+    if (postponed !== null) data.watering_postponed = postponed;
+    const icon = v("icon")?.trim();
+    if (icon) data.icon = icon;
 
     const btn = root.querySelector(".save-btn");
     btn.disabled = true;
@@ -258,14 +251,10 @@ class PlantAddCard extends HTMLElement {
       '[name="watering_interval"]',
     ).parentElement;
     const mapField = this.shadowRoot.querySelector("#advanced-map-field");
-    advToggle.addEventListener("change", (e) => {
-      if (advToggle.checked) {
-        intervalField.style.display = "none";
-        mapField.style.display = "";
-      } else {
-        intervalField.style.display = "";
-        mapField.style.display = "none";
-      }
+    advToggle.addEventListener("change", () => {
+      const showAdvanced = advToggle.checked;
+      intervalField.style.display = showAdvanced ? "none" : "";
+      mapField.style.display = showAdvanced ? "" : "none";
     });
 
     this.shadowRoot
@@ -277,6 +266,31 @@ class PlantAddCard extends HTMLElement {
 
   getCardSize() {
     return 1;
+  }
+
+  _parseInteger(value) {
+    if (value === undefined || value === null || value === "") return null;
+    if (!/^\d+$/.test(String(value).trim())) return null;
+    return parseInt(value, 10);
+  }
+
+  _normalizeIntervalMap(raw) {
+    if (!raw) return "";
+    const trimmed = String(raw).trim();
+    if (trimmed === "") return "";
+    if (trimmed.startsWith("{")) {
+      try {
+        const obj = JSON.parse(trimmed);
+        if (obj && typeof obj === "object") {
+          return Object.entries(obj)
+            .map(([key, value]) => `${key}: ${value}`)
+            .join("\n");
+        }
+      } catch (e) {
+        // ignore
+      }
+    }
+    return trimmed;
   }
 }
 

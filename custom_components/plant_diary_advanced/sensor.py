@@ -3,13 +3,12 @@
 from __future__ import annotations
 
 import logging
-from datetime import date, timedelta
-from typing import Any, cast
+from datetime import date
 from functools import cached_property
+from typing import Any, cast
+
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers import template as template_helper
 
 from .const import (
     DOMAIN,
@@ -58,7 +57,7 @@ class PlantEntity(SensorEntity):
     # Template evaluation
     # ------------------------------------------------------------------
 
-    def _parse_interval_map(self, raw_map):
+    def _parse_interval_map(self, raw_map: Any) -> dict[int, int] | None:
         """Parse un champ texte multi-ligne 'jour:valeur' en dict[int, int]."""
         if not raw_map:
             return None
@@ -66,13 +65,13 @@ class PlantEntity(SensorEntity):
             return raw_map
         if isinstance(raw_map, str):
             lines = [l.strip() for l in raw_map.strip().splitlines() if l.strip()]
-            mapping = {}
+            mapping: dict[int, int] = {}
             for line in lines:
                 if ":" in line:
                     day, val = line.split(":", 1)
                     try:
                         mapping[int(day.strip())] = int(val.strip())
-                    except Exception:
+                    except (TypeError, ValueError):
                         continue
             return mapping if mapping else None
         return None
@@ -92,9 +91,11 @@ class PlantEntity(SensorEntity):
                         value = interval
                 if value is not None:
                     return max(1, value)
-            except Exception as e:
+            except (TypeError, ValueError) as exc:
                 _LOGGER.warning(
-                    f"Plant {self._plant_id}: erreur mapping intervalle: {e}"
+                    "Plant %s: erreur mapping intervalle: %s",
+                    self._plant_id,
+                    exc,
                 )
         # 2. Sensor d'intervalle dynamique
         sensor_id = f"sensor.plant_diary_advanced_interval_{self._plant_id}"
@@ -102,12 +103,12 @@ class PlantEntity(SensorEntity):
         if sensor and sensor.state not in (None, "unknown", "unavailable"):
             try:
                 return max(1, int(float(sensor.state)))
-            except Exception:
+            except (TypeError, ValueError):
                 pass
         # 3. Fallback sur la logique actuelle
         try:
             return int(self._data.get("watering_interval", 7))
-        except Exception:
+        except (TypeError, ValueError):
             return 7
 
     # ------------------------------------------------------------------

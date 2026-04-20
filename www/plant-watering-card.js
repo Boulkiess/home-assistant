@@ -28,15 +28,24 @@ class PlantWateringCard extends HTMLElement {
     const { days_since_watered, watering_interval, watering_postponed } = attrs;
     if (days_since_watered === undefined || watering_interval === undefined)
       return false;
-    return days_since_watered >= watering_interval + (watering_postponed || 0);
+    const days = Number(days_since_watered);
+    const interval = Number(watering_interval);
+    const postponed = Number(watering_postponed || 0);
+    if (!Number.isFinite(days) || !Number.isFinite(interval)) return false;
+    return days >= interval + postponed;
   }
 
   _waterLevel(attrs) {
     const { days_since_watered, watering_interval, watering_postponed } = attrs;
     if (days_since_watered === undefined || watering_interval === undefined)
       return 0;
-    const interval = watering_interval + (watering_postponed || 0);
-    return Math.min(1, Math.max(0, 1 - days_since_watered / interval));
+    const days = Number(days_since_watered);
+    const interval = Number(watering_interval);
+    const postponed = Number(watering_postponed || 0);
+    if (!Number.isFinite(days) || !Number.isFinite(interval) || interval <= 0)
+      return 0;
+    const total = interval + postponed;
+    return Math.min(1, Math.max(0, 1 - days / total));
   }
 
   _cfg(key, fallback) {
@@ -353,6 +362,7 @@ class PlantWateringCard extends HTMLElement {
     const barColor = this._cfg("bar_color", "var(--info-color, #2196f3)");
     const barOpacity = this._cfg("bar_opacity", 0.18);
     const photoUrl = this._cfg("photo_url", null);
+    this.classList.toggle("needs-watering", needsWatering);
 
     // Visible text lines determine extra height beyond the 56px base
     const showName = this._cfg("show_name", true);
@@ -451,13 +461,16 @@ class PlantWateringCard extends HTMLElement {
           background-origin: border-box;
           background-clip: padding-box, border-box;
           background-image:
+            linear-gradient(
+              var(--secondary-background-color),
+              var(--secondary-background-color)
+            ),
             radial-gradient(
               circle at center,
-              rgba(255, 193, 7, 0.18) 0%,
-              rgba(255, 193, 7, 0.38) 55%,
+              rgba(255, 193, 7, 0.12) 0%,
+              rgba(255, 193, 7, 0.3) 55%,
               var(--warning-color, #ffb300) 100%
-            ),
-            var(--secondary-background-color);
+            );
           border-color: transparent;
         }
 

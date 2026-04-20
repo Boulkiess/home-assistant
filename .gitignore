@@ -4,7 +4,7 @@ home-assistant_v2.db*
 .ha_run.lock
 
 # Logs
-*.log
+*.log*
 
 # Zigbee2MQTT runtime
 zigbee2mqtt/database.db

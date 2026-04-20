@@ -570,8 +570,8 @@ class PlantWateringCard extends HTMLElement {
              <input name="watering_interval" type="number" min="1">
            </div>
            <div class="field" id="edit-map-field" style="display:none">
-             <label>Carte d'intervalles (YAML ou JSON, un par ligne)</label>
-             <textarea name="watering_interval_map" placeholder='{"été":7, "hiver":14}\nou\nété: 7\nhiver: 14'></textarea>
+             <label>Carte d'intervalles (YAML ou JSON, entier → entier, un par ligne)</label>
+             <textarea name="watering_interval_map" placeholder='{"1":4, "150":42, "170":2}\nou\n1: 4\n150: 42\n170: 2'></textarea>
            </div>
            <div class="field">
              <label><input type="checkbox" id="adv-edit-toggle"> Mode avancé (mapping par saison/période)</label>

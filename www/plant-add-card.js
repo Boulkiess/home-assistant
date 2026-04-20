@@ -198,8 +198,8 @@ class PlantAddCard extends HTMLElement {
 
 
             <div class="field">
-              <label>Intervalle d'arrosage (jours, une valeur par ligne)</label>
-              <textarea name="watering_interval" rows="3" placeholder="7\n14\n21"></textarea>
+              <label>Intervalle d'arrosage (jours)</label>
+              <textarea name="watering_interval" rows="3" placeholder="7"></textarea>
             </div>
 
             <div class="field">
@@ -207,8 +207,8 @@ class PlantAddCard extends HTMLElement {
             </div>
 
             <div class="field" id="advanced-map-field" style="display:none">
-              <label>Carte d'intervalles (YAML ou JSON)</label>
-              <textarea name="watering_interval_map" rows="3" placeholder="{&quot;été&quot;:7, &quot;hiver&quot;:14}"></textarea>
+              <label>Carte d'intervalles (YAML ou JSON, entier → entier, un par ligne)</label>
+              <textarea name="watering_interval_map" rows="3" placeholder="{&quot;1&quot;:4, &quot;150&quot;:42, &quot;170&quot;:2}"></textarea>
             </div>
 
            <div class="field">

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 from datetime import date, timedelta
-from typing import Any
+from typing import Any, cast
 from functools import cached_property
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.core import HomeAssistant, callback
@@ -171,6 +171,10 @@ class PlantEntity(SensorEntity):
     @callback
     def update_data(self, new_data: dict[str, Any]) -> None:
         self._data.update(new_data)
+        # Invalidate cached computed properties
+        cache = cast(dict[str, Any], self.__dict__)
+        cache.pop("native_value", None)
+        cache.pop("extra_state_attributes", None)
         # Re-evaluate name if plant_name changed
         if ATTR_PLANT_NAME in new_data:
             self._attr_name = f"plant_diary_{new_data[ATTR_PLANT_NAME]}"

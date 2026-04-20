@@ -113,7 +113,10 @@ class PlantWateringCard extends HTMLElement {
         : null;
 
     const bar = root.querySelector(".water-bar");
-    if (bar) bar.style.width = level * 100 + "%";
+    if (bar) {
+      const pct = Math.min(100, Math.max(0, level * 100));
+      bar.style.width = pct === 0 ? "0%" : `${pct.toFixed(2)}%`;
+    }
 
     const icon = root.querySelector("ha-icon");
     const avatar = root.querySelector(".avatar-icon");

@@ -141,11 +141,16 @@ class PlantWateringCard extends HTMLElement {
     }
 
     try {
+      console.info("[plant-watering-card] callService update_plant (water)", {
+        plant_id: plantId,
+        last_watered: today,
+      });
       await this._hass.callService("plant_diary_advanced", "update_plant", {
         plant_id: plantId,
         last_watered: today,
       });
     } catch (e) {
+      console.error("[plant-watering-card] erreur update_plant (water)", e);
       alert(
         `Erreur lors de l'enregistrement de l'arrosage.\nplant_id utilisé : "${plantId}"`,
       );
@@ -194,10 +199,14 @@ class PlantWateringCard extends HTMLElement {
     overlay.querySelector("[name=watering_postponed]").value =
       attrs.watering_postponed ?? 0;
     overlay.querySelector("[name=icon]").value = attrs.icon || "";
+    console.info("[plant-watering-card] ouverture modal édition", {
+      plant_id: attrs.plant_id || attrs.plant_name,
+    });
     overlay.style.display = "flex";
   }
 
   _closeEditModal() {
+    console.info("[plant-watering-card] fermeture modal édition");
     this.shadowRoot.querySelector(".modal-overlay").style.display = "none";
   }
 
@@ -258,6 +267,10 @@ class PlantWateringCard extends HTMLElement {
     saveBtn.textContent = "Enregistrement…";
 
     try {
+      console.info(
+        "[plant-watering-card] callService update_plant (edit)",
+        data,
+      );
       await this._hass.callService(
         "plant_diary_advanced",
         "update_plant",
@@ -265,6 +278,7 @@ class PlantWateringCard extends HTMLElement {
       );
       this._closeEditModal();
     } catch (e) {
+      console.error("[plant-watering-card] erreur update_plant (edit)", e);
       alert(`Erreur lors de la mise à jour : ${e.message || e}`);
     }
 
@@ -288,6 +302,9 @@ class PlantWateringCard extends HTMLElement {
     btn.textContent = "Suppression…";
 
     try {
+      console.info("[plant-watering-card] callService delete_plant", {
+        plant_id: plantId,
+      });
       await this._hass.callService("plant_diary_advanced", "delete_plant", {
         plant_id: plantId,
       });
@@ -295,6 +312,7 @@ class PlantWateringCard extends HTMLElement {
       this._deleted = true;
       this.shadowRoot.innerHTML = "";
     } catch (e) {
+      console.error("[plant-watering-card] erreur delete_plant", e);
       alert(`Erreur suppression : ${e.message || e}`);
     }
 

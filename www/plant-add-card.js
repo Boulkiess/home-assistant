@@ -23,6 +23,7 @@ class PlantAddCard extends HTMLElement {
     const overlay = this.shadowRoot.querySelector(".modal-overlay");
     if (!overlay) return;
 
+    console.info("[plant-add-card] ouverture du modal");
     overlay.style.display = "flex";
 
     const today = new Date().toISOString().split("T")[0];
@@ -32,6 +33,7 @@ class PlantAddCard extends HTMLElement {
 
   _closeModal() {
     const overlay = this.shadowRoot.querySelector(".modal-overlay");
+    console.info("[plant-add-card] fermeture du modal");
     if (overlay) overlay.style.display = "none";
   }
 
@@ -42,6 +44,7 @@ class PlantAddCard extends HTMLElement {
 
     const plantName = v("plant_name")?.trim();
     if (!plantName) {
+      console.warn("[plant-add-card] validation échouée: plant_name requis");
       alert("Le nom de la plante est requis");
       return;
     }
@@ -77,6 +80,7 @@ class PlantAddCard extends HTMLElement {
     btn.textContent = "Création...";
 
     try {
+      console.info("[plant-add-card] callService create_plant", data);
       await this._hass.callService(
         "plant_diary_advanced",
         "create_plant",
@@ -92,6 +96,7 @@ class PlantAddCard extends HTMLElement {
       successDiv.querySelector("#reload-btn").onclick = () =>
         window.location.reload();
     } catch (e) {
+      console.error("[plant-add-card] erreur create_plant", e);
       alert(`Erreur : ${e.message || e}`);
     }
 

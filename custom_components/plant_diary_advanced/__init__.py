@@ -107,6 +107,7 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
 
     async def handle_create_plant(call: ServiceCall) -> None:
         data = dict(call.data)
+        _LOGGER.info("Service create_plant appelé: %s", data)
         plant_name = data[ATTR_PLANT_NAME]
         plant_id = plant_name  # plant_name IS the id
 
@@ -127,6 +128,7 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
 
     async def handle_update_plant(call: ServiceCall) -> None:
         plant_id = call.data[ATTR_PLANT_ID]
+        _LOGGER.info("Service update_plant appelé: plant_id=%s data=%s", plant_id, dict(call.data))
         entity = entities.get(plant_id)
 
         if entity is None:
@@ -144,6 +146,7 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
 
     async def handle_delete_plant(call: ServiceCall) -> None:
         plant_id = call.data[ATTR_PLANT_ID]
+        _LOGGER.info("Service delete_plant appelé: plant_id=%s", plant_id)
         entity = entities.get(plant_id)
 
         if entity is None:
@@ -159,11 +162,13 @@ async def async_setup_entry(hass: HomeAssistant, entry) -> bool:
 
     async def handle_refresh(call: ServiceCall) -> None:
         """Force state refresh on all plants (call at midnight via automation)."""
+        _LOGGER.info("Service update_days_since_watered appelé: %s plantes", len(entities))
         for entity in entities.values():
             entity.async_write_ha_state()
 
     async def handle_list_plants(call: ServiceCall) -> None:
         """Liste toutes les plantes et leur état complet dans les logs."""
+        _LOGGER.info("Service list_plants appelé: %s plantes", len(entities))
         for plant_id, entity in entities.items():
             _LOGGER.info(
                 f"Plante: {plant_id} | Etat: {entity.native_value} | Attributs: {entity.extra_state_attributes}"

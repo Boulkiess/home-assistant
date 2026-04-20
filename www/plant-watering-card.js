@@ -91,21 +91,7 @@ class PlantWateringCard extends HTMLElement {
       icon.setAttribute("icon", attrs.icon || "mdi:flower");
     }
 
-    const borderColor = this._cfg(
-      "icon_border_color",
-      "var(--error-color, #db4437)",
-    );
-
-    if (avatar) {
-      avatar.style.borderColor = needsWatering ? borderColor : "transparent";
-    }
-
-    const photo = root.querySelector(".avatar-photo");
-    if (photo) {
-      photo.style.border = needsWatering
-        ? `2px solid ${borderColor}`
-        : "2px solid transparent";
-    }
+    this.classList.toggle("needs-watering", needsWatering);
 
     const nameEl = root.querySelector(".plant-name");
     if (nameEl)
@@ -362,10 +348,6 @@ class PlantWateringCard extends HTMLElement {
     const barColor = this._cfg("bar_color", "var(--info-color, #2196f3)");
     const barOpacity = this._cfg("bar_opacity", 0.18);
     const photoUrl = this._cfg("photo_url", null);
-    const borderColor = this._cfg(
-      "icon_border_color",
-      "var(--error-color, #db4437)",
-    );
 
     // Visible text lines determine extra height beyond the 56px base
     const showName = this._cfg("show_name", true);
@@ -439,7 +421,7 @@ class PlantWateringCard extends HTMLElement {
           align-items: center;
           justify-content: center;
           box-sizing: border-box;
-          border: 2px solid ${needsWatering ? borderColor : "transparent"};
+          border: 2px solid transparent;
           transition: border-color 0.3s ease;
         }
 
@@ -455,8 +437,23 @@ class PlantWateringCard extends HTMLElement {
           border-radius: 50%;
           object-fit: cover;
           box-sizing: border-box;
-          border: 2px solid ${needsWatering ? borderColor : "transparent"};
+          border: 2px solid transparent;
           transition: border-color 0.3s ease;
+        }
+
+        :host(.needs-watering) .avatar-icon,
+        :host(.needs-watering) .avatar-photo {
+          background-origin: border-box;
+          background-clip: padding-box, border-box;
+          background-image:
+            radial-gradient(
+              circle at center,
+              rgba(255, 193, 7, 0.18) 0%,
+              rgba(255, 193, 7, 0.38) 55%,
+              var(--warning-color, #ffb300) 100%
+            ),
+            var(--secondary-background-color);
+          border-color: transparent;
         }
 
         .info {

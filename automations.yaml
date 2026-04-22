@@ -700,3 +700,28 @@
       notify_device: 772ed3533b28dad67b73d424c02a51e5
       enable_template: '{{ ''10:00:00'' <= now().strftime(''%H:%M:%S'') < ''23:15:00''
         }}'
+- id: '1778000000001'
+  alias: Plant Needs Water Notify
+  description: Notification quand une plante passe à needs_water
+  trigger:
+  - trigger: event
+    event_type: state_changed
+  condition:
+  - condition: template
+    value_template: >-
+      {{
+        trigger.event.data.entity_id is string
+        and trigger.event.data.entity_id.startswith('plant_diary_advanced.')
+        and trigger.event.data.to_state is not none
+        and trigger.event.data.to_state.state == 'needs_water'
+        and (trigger.event.data.from_state is none
+             or trigger.event.data.from_state.state != 'needs_water')
+      }}
+  action:
+  - action: notify.notify
+    data:
+      title: Plante à arroser
+      message: >-
+        {{ trigger.event.data.to_state.attributes.friendly_name
+           or trigger.event.data.entity_id }} a besoin d'eau.
+  mode: single

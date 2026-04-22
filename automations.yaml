@@ -730,4 +730,10 @@
         message: >-
           {{ trigger.event.data.to_state.attributes.friendly_name
              or trigger.event.data.entity_id }} a besoin d'eau.
+    - action: persistent_notification.create
+      data:
+        title: Plante à arroser
+        message: >-
+          {{ trigger.event.data.to_state.attributes.friendly_name
+             or trigger.event.data.entity_id }} a besoin d'eau.
   mode: single

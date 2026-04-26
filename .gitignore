@@ -1,18 +1,18 @@
 # Core
 .storage/
-home-assistant_v2.db*
+# home-assistant_v2.db*
 .ha_run.lock
 
 # Logs
 *.log*
 
 # Zigbee2MQTT runtime
-zigbee2mqtt/database.db
-zigbee2mqtt/state.json
+# zigbee2mqtt/database.db
+# zigbee2mqtt/state.json
 
 # Temporary / cache
-*.db-shm
-*.db-wal
+# *.db-shm
+# *.db-wal
 *.lock
 .cache
 

@@ -1,0 +1,137 @@
+{
+    "0xd44867fffeff5bc8": {
+        "battery": 82,
+        "voltage": 1300,
+        "linkquality": 176,
+        "update": {
+            "state": "available",
+            "installed_version": 16777287,
+            "latest_version": 16777303,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/IKEA/rodret-dimmer-soc_release_prod_v16777303_0a78457a-950c-4903-bfd1-67902aa66cf9.ota",
+            "latest_release_notes": "https://ww8.ikea.com/ikeahomesmart/releasenotes/releasenotes.html"
+        }
+    },
+    "0x30fb10fffe4c12d6": {
+        "linkquality": 148,
+        "update": {
+            "state": "idle",
+            "installed_version": 33816598,
+            "latest_version": 33816598,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/IKEA/zingo-kt-styrbar-remote_release_prod_v33816598_c00d5422-e816-48ec-87a6-40198661d2d5.ota",
+            "latest_release_notes": "https://ww8.ikea.com/ikeahomesmart/releasenotes/releasenotes.html"
+        }
+    },
+    "0x842712fffedb8ddb": {
+        "state": "OFF",
+        "brightness": 203,
+        "update": {
+            "state": "idle",
+            "installed_version": 16777220,
+            "latest_version": 16777220,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/IKEA/tradfri-driver-zingo_release_prod_v16777220_1fd2b92c-45c5-44d0-97c5-5c71c2ecb8d2.ota",
+            "latest_release_notes": "https://ww8.ikea.com/ikeahomesmart/releasenotes/releasenotes.html"
+        }
+    },
+    "0x18690afffe1daaec": {
+        "battery": 100,
+        "humidity": 34.8,
+        "temperature": 22,
+        "comfort_temperature_min": 19,
+        "comfort_temperature_max": 27,
+        "comfort_humidity_min": 40,
+        "comfort_humidity_max": 60,
+        "temperature_units": "celsius",
+        "temperature_calibration": 0,
+        "humidity_calibration": 0
+    },
+    "0x18690afffe11019c": {
+        "battery": 100,
+        "humidity": 36.2,
+        "temperature": 21.9,
+        "comfort_temperature_min": 19,
+        "comfort_temperature_max": 27,
+        "comfort_humidity_min": 40,
+        "comfort_humidity_max": 60,
+        "temperature_units": "celsius",
+        "temperature_calibration": 0,
+        "humidity_calibration": 0,
+        "update": {
+            "state": "idle",
+            "installed_version": 8960,
+            "latest_version": 8960,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Sonoff/snzb-02d_v2.3.0.ota",
+            "latest_release_notes": null
+        }
+    },
+    "0x8c73dafffe8ff178": {
+        "battery": 100,
+        "temperature": 21.3,
+        "humidity": 39.8,
+        "comfort_temperature_min": 19,
+        "comfort_temperature_max": 27,
+        "comfort_humidity_min": 40,
+        "comfort_humidity_max": 60,
+        "temperature_units": "celsius",
+        "temperature_calibration": 0,
+        "humidity_calibration": 0,
+        "update": {
+            "state": "idle",
+            "installed_version": 8960,
+            "latest_version": 8960,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Sonoff/snzb-02d_v2.3.0.ota",
+            "latest_release_notes": null
+        }
+    },
+    "0x18690afffe16c68c": {
+        "battery": 100,
+        "humidity": 41.4,
+        "temperature": 21.6,
+        "comfort_temperature_min": 19,
+        "comfort_temperature_max": 27,
+        "comfort_humidity_min": 40,
+        "comfort_humidity_max": 60,
+        "temperature_units": "celsius",
+        "temperature_calibration": 0,
+        "humidity_calibration": 0,
+        "update": {
+            "state": "idle",
+            "installed_version": 8960,
+            "latest_version": 8960,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Sonoff/snzb-02d_v2.3.0.ota",
+            "latest_release_notes": null
+        }
+    },
+    "0x6cfd22fffe610d7c": {
+        "occupancy": false,
+        "illuminance": 1,
+        "battery": 100,
+        "voltage": 2900,
+        "update": {
+            "state": "idle",
+            "installed_version": 16777316,
+            "latest_version": 16777316,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/IKEA/motionsensor-lds-mg21a_release_prod_v16777316_3a00064a-cc29-4aac-bdb6-c4fa1fb445d5.ota",
+            "latest_release_notes": "https://ww8.ikea.com/ikeahomesmart/releasenotes/releasenotes.html"
+        }
+    },
+    "0xa4c138247a1a948b": {
+        "state": "ON",
+        "child_lock": "UNLOCK",
+        "indicator_mode": "off/on",
+        "power_outage_memory": "off",
+        "voltage": 240,
+        "current": 0,
+        "power": 37,
+        "energy": 38.58,
+        "countdown": 0
+    },
+    "0xa4c13800ab3b1cc6": {
+        "state": "ON",
+        "color_mode": "color_temp",
+        "color_temp": 454,
+        "brightness": 152
+    },
+    "0x8c8b48fffe18b6d8": {
+        "battery": 99
+    }
+}

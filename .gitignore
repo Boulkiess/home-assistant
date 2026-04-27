@@ -11,8 +11,8 @@
 # zigbee2mqtt/state.json
 
 # Temporary / cache
-# *.db-shm
-# *.db-wal
+*.db-shm
+*.db-wal
 *.lock
 .cache
 
